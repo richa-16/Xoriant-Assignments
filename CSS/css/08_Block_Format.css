@@ -1,0 +1,15 @@
+td{
+	background-color: lightblue;
+}
+.row1{
+	border: 5px solid grey;
+	margin-bottom: 20px;
+}
+.row2{
+	border: 3px solid grey;
+	margin-bottom: 20px;
+}
+.row3{
+	border: 1px solid grey;
+	margin-bottom: 20px;
+}

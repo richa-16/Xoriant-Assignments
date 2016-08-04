@@ -1,0 +1,16 @@
+table{
+   	 border-spacing: 10px;
+}
+table{
+	border: 1px solid grey;
+	padding: 10p;
+}
+tr{
+	padding: 50px;
+}
+td{
+	font-size: 30px;
+	border: 1px solid red;
+	padding: 10px;
+	outline: 4px dotted green;
+}

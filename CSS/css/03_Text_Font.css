@@ -1,0 +1,9 @@
+*{
+	background-color: lightblue;
+	font-family: sans-serif;
+}
+
+.uppercaseText{
+	font-size: 20px;
+	text-transform: uppercase;
+}

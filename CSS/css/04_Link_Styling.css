@@ -1,0 +1,18 @@
+*{
+	background-color: lightblue;
+}
+a{
+	color: red;
+}
+a:link{
+	color: pink;
+}
+a:VISITED{
+	color: blue;
+}
+a:ACTIVE{
+	color: black;
+}
+a:HOVER{
+	color: yellow;
+}

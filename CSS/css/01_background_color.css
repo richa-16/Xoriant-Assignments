@@ -1,0 +1,13 @@
+.heading{
+	background-color: #14BCF5;
+	height: 70px;
+}
+
+.heading .paragraph{
+	background-color: #A3BAC2;
+	padding-bottom: 15px;
+}
+.heading .paragraph .specialCase{
+	background-color: #C6EBF7;
+	padding-bottom: 15px;
+}
