@@ -1,10 +1,23 @@
 header{
-	padding: 1em;
 	color: white;
-	background-color: #1abc9c;clear: left;
+	background-color: #1abc9c;
+	clear: left;
 	text-align: center;
+	position: fixed;
+	width: 100%;
+}
+p{
+	font-size: 20px;
 }
 
+h1{
+	text-transform: uppercase;
+}
+h3{
+	text-transform: uppercase;
+	text-align: center;
+	text-decoration: underline;
+}
 
 footer{ 
 	padding: 1em;
@@ -25,8 +38,30 @@ footer{
 .summary h1{
 	text-align: center;
 	text-decoration: underline;
+	text-transform: uppercase;
+}
+.summary {
+	width: 100%;
 }
 
+.summary .centerSummary{
+	width:60%;
+    height: auto;
+    float: left;
+    display:inline;
+    margin-right: 70px;
+    margin-left: 70px;
+    margin-top: 0px;
+    border-right: 1px dotted grey;
+}
+
+.summary .sideLinks{
+    width:30%;
+    height: auto;
+    background: black;
+    display:inline;
+    
+}
 
 .technicalSkills{
 	border-top: 1px solid gray; 
@@ -34,24 +69,53 @@ footer{
 	overflow: hidden;
 }
 
+.technicalSkills table{
+	border-collapse: collapse;
+}
+
 .contactDetails{
-	margin-left: 170px; 
+	margin-top:83px;
 	border-left: 1px solid gray; 
 	padding: 1em;
 	overflow: hidden;
 }
 
-.achievements{
-	
+.selectedProjects{
+	background-color: #B2DFDB;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
 }
 
-.hobbies{
+.selectedProjects .Content{
+	margin-left: 70px;
+}
+
+.selectedProjects h1{
+	background-color: #E0F2F1;
+}
+.experience{ 
+}
+
+.experience .Content{
+	margin-left: 70px;
+}
+
+.achievements{
+	background-color: #B2DFDB;
+	border-top: 1px solid gray; 
+	border-bottom: 1px solid gray;	
+}
+
+.achievements .Content{
+	margin-left: 70px;
+} 
+
+.hobbies{ 
 	max-width:100%;
     height:auto;
     position: relative;
     display:block;
     margin:0 auto;
-    border-top: 1px solid grey;
     
 }
 
@@ -69,13 +133,21 @@ footer{
 .profilePic{
 	float: left;
 	max-width: 160px;
-	margin: 0;
+	margin-top: 100px;
 	padding: 1em;
 }
 
 .main{
 	width: 100%; 
 	border: 1px solid gray;
+}
+.floatingBar{
+	float: right;
+	width: 80px;
+	height:auto;
+	margin-top:25%;
+	position: fixed;
+	background-color: #4DB6AC;
 }
 
 /* Div ends here */
