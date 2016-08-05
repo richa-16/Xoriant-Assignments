@@ -1,4 +1,3 @@
-
 header{
 	padding: 1em;
 	color: white;
@@ -6,7 +5,78 @@ header{
 	text-align: center;
 }
 
+
+footer{ 
+	padding: 1em;
+	color: white;
+	background-color: #1abc9c;
+	clear: left;
+	text-align: center;
+}
+
+/* Articles starts here */
+
+.summary{
+	border-top: 1px solid gray; 
+	padding: 1em; 
+	overflow: hidden;
+}
+
+.summary h1{
+	text-align: center;
+	text-decoration: underline;
+}
+
+
+.technicalSkills{
+	border-top: 1px solid gray; 
+	padding: 1em;
+	overflow: hidden;
+}
+
+.contactDetails{
+	margin-left: 170px; 
+	border-left: 1px solid gray; 
+	padding: 1em;
+	overflow: hidden;
+}
+
+.achievements{
+	
+}
+
+.hobbies{
+	max-width:100%;
+    height:auto;
+    position: relative;
+    display:block;
+    margin:0 auto;
+    border-top: 1px solid grey;
+    
+}
+
+.hobbies img{
+	border: 2px solid grey;
+	max-width:100%;
+    max-height:auto;
+    display:block;
+}
+
+
+/* Articles ends here */
+
+/* Div starts here */
+.profilePic{
+	float: left;
+	max-width: 160px;
+	margin: 0;
+	padding: 1em;
+}
+
 .main{
 	width: 100%; 
 	border: 1px solid gray;
 }
+
+/* Div ends here */
+
