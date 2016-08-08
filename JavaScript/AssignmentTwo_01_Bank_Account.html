@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<title>Bank Account</title>
+	<script src="js/AssignmentTwo_01_Bank_Account.js"></script>
+	</head>
+	<!-- Body starts here -->
+	<body>
+		<center>
+			<h1> Bank Account </h1>
+			<p> Assignment two : Question 1<br>1)	Create Object  BankAccount<br>
+				a.	Add properties accNo, accbal, accName<br>
+				b.	Add methods withdraw(amt), deposite(amt)<br>
+			</p>
+			<br>
+			<br>
+			<br>
+			<label for="accountNumber"> Account number :</label>
+			<input type="number" id="accountNumber" placeholder="Enter account number">
+			<br>
+			<br>
+			<label for="accountName"> Account holder name :</label>
+			<input type="text" id="accountName" placeholder="Enter account name">
+			<br>
+			<br>
+			<label for="accountBalance"> Account Balance :</label>
+			<input type="number" id="accountBalance" placeholder="Enter account balance">
+			<br>
+			<br>
+			<label for="method"> Method :</label>
+			
+			<select id="method">
+				<option value="withdraw"> Withdraw</option>
+				<option value="deposit"> Deposit</option>
+			</select>
+			
+			<br>
+			<br>
+			<label for="method"> Amount :</label>
+			<input type="number" id="amount" placeholder="Enter amount">
+			<br>
+			<br>
+			
+			<input type="button" value="Submit"  onclick="BankAccount()")>
+			
+			
+			<div id="ans">
+			<br>
+			<br>		
+			</div>
+		</center>
+	</body>
+	<!-- Body ends here -->
+</html>
