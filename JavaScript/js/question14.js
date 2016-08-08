@@ -14,5 +14,4 @@ function Counter(){
 	var addElement = document.createElement("p");
 	addElement.innerHTML = "Total characters are (excluding spaces) : "+count;
 	page.appendChild(addElement);
-
 }
