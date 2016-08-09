@@ -1,13 +1,118 @@
 <!DOCTYPE html>
-<html>
+	<html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Sell.com</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/customScripts.js"></script>
 	</head>
-	
-	<!-- Body starts here -->
 	<body>
+		<header>
+			<div class="navigationBar">
+				<ul class="topnav" id="myTopnav">
+				  <div class="row">
+				  	<div class="col-3">
+				  		<li><a class="active" href="#home">Home</a></li>	
+				  	</div>
+				  	<div class="col-6">
+				  	
+				  	</div>
+				  	<div class="col-3">
+				  		<!-- Write login function on onclick -->
+				  		<li><a  type="button" id="loginButton" onclick="openModal('login')">Login</a></li>
+				  		
+				  		<li><a  type="button" id="signUpButton" onclick="openModal('signUp')">SignUp</a></li>
+				  	</div>
+				  </div>
+				</ul>
+			</div>
+		</header>
+		
+		<!-- Modals starts here  -->
+
+		<!-- Login modal -->
+			<div id="login" class="modal">
+			  		<div class="row">
+			  			<div class="col-3">	
+			  			</div>
+						<div class="col-6">
+			  				<form class="modal-content animate">
+							    <div class="imgcontainer">
+							      <span onclick="closeModals('login')" class="close" title="Close Modal">&times;</span>
+							      <img src="img/profile.png" alt="Avatar" class="avatar">
+							    </div>
+							
+							    <div class="container">
+							      <label><b>Username</b></label>
+							      <input type="text" placeholder="Enter Username" name="uname" required>
+							
+							      <label><b>Password</b></label>
+							      <input type="password" placeholder="Enter Password" name="psw" required>
+							        
+							      <button type="submit">Login</button>
+							      <input type="checkbox" checked="checked"> Remember me
+							    </div>
+							
+							    <div class="container" style="background-color:#f1f1f1">
+							      <button type="button" onclick="closeModals('login')" class="cancelbtn">Cancel</button>
+							      <span class="psw">Forgot <a href="#">password?</a></span>
+							    </div>
+							  </form>
+								
+			  			</div>
+						<div class="col-3">
+			  			
+			  			</div>			  		
+			  		</div>
+				    
+				</div>
+		<!-- Login modal ends here  -->
+		
+		<!-- SignUp modal -->
+			<div id="signUp" class="modal">
+			  		<div class="row">
+			  			<div class="col-3">
+			  			
+			  			</div>
+						<div class="col-6">
+			  				<form class="modal-content animate">
+							    <div class="imgcontainer">
+							      <span onclick="closeModals('signUp')" class="close" title="Close Modal">&times;</span>
+							      <img src="img/profile.png" alt="Avatar" class="avatar">
+							    </div>
+							
+							    <div class="container">
+							      <label><b>Username</b></label>
+							      <input type="text" placeholder="Enter Username" name="uname" required>
+							
+							      <label><b>Password</b></label>
+							      <input type="password" placeholder="Enter Password" name="psw" required>
+							        
+							      <button type="submit">SignUp</button>
+							      <input type="checkbox" checked="checked"> Remember me
+							    </div>
+							
+							    <div class="container" style="background-color:#f1f1f1">
+							      <button type="button" onclick="closeModals('signUp')" class="cancelbtn">Cancel</button>
+							      <span class="psw">Forgot <a href="#">password?</a></span>
+							    </div>
+							  </form>
+								
+			  			</div>
+						<div class="col-3">
+			  			
+			  			</div>			  		
+			  		</div>
+				    
+				</div>
+		<!-- SignUp modal ends here  -->
+		
+		<!-- Modals ends here  -->
+		
+		<footer>
+			<h1>Footer</h1>
+		</footer>
 		
 	</body>
-	<!-- Body ends here -->
 </html>
+

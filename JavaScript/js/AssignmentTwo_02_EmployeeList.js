@@ -49,6 +49,7 @@ function DisplayEmployees(){
 	console.log("Display");
 	var para = document.getElementById('ans');
 	var i=0;
+	
 	var addElement = document.createElement("p");
 	addElement.innerHTML = "<br><br><p>New output </p>";
 	para.appendChild(addElement);
