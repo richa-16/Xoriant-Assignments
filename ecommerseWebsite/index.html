@@ -4,9 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/style.css">
-	<script src="js/customScripts.js"></script>
+	<script src="js/renderUi.js"></script>
+	
 	</head>
-	<body>
+	<body onload="renderUi()">
+		<!-- Header starts here  -->
 		<header>
 			<div class="navigationBar">
 				<ul class="topnav" id="myTopnav">
@@ -27,6 +29,35 @@
 				</ul>
 			</div>
 		</header>
+		<!-- Header ends here  -->
+		
+		<!-- Slider starts here -->
+		<div class="slider">
+			<div class="slideshow-container">
+				<center>
+				<div class="mySlides fade">
+				  <img src="img/profile.png" class="sliderImage">  
+				</div>
+				
+				<div class="mySlides fade">
+				  <img src="img/profile.png" class="sliderImage">
+				  
+				</div>
+				
+				<div class="mySlides fade">
+				  <img src="img/profile.png" class="sliderImage">
+				  
+				</div>
+				</center>
+			</div>
+			<br>
+			<div style="text-align:center">
+			  <span class="dot"></span>
+			  <span class="dot"></span>
+			  <span class="dot"></span>
+			</div>
+		</div>
+		<!-- Slider ends here -->
 		
 		<!-- Modals starts here  -->
 
@@ -110,9 +141,17 @@
 		<!-- Modals ends here  -->
 		
 		<footer>
-			<h1>Footer</h1>
+			<div id="div_footer" >
+				<div class="div_img_footer" id="footer_img_link">
+				</div>
+			</div>
 		</footer>
+ 
+		<!-- All scripts starts here -->
+		<script src="js/customScripts.js"></script>
 		
+
+		<!-- All scripts ends here -->
 	</body>
 </html>
 

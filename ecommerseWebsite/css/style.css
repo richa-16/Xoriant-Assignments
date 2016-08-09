@@ -3,6 +3,8 @@
     box-sizing: border-box;
 }
 
+body {font-family: Verdana,sans-serif;}
+
 header{
 	width:100%;
 	height:10px;
@@ -10,8 +12,7 @@ header{
 }
 
 footer{
-	background-color: #333;
-    width: 100%;
+	width: 100%;
     bottom: 0;
  	position: fixed;	
 }
@@ -43,6 +44,7 @@ footer{
 /* For grid layout */
 
 /* Nav bar starts here */
+
 .navigationBar ul.topnav {
   list-style-type: none;
   margin: 0;
@@ -69,6 +71,65 @@ footer{
 .navigationBar ul.topnav li.icon {display: none;}
 
 /* Nav bar ends here */
+
+/* Slider starts here */
+
+/* Slideshow container */
+
+	.slideshow-container {
+	  
+	  max-width: 500px;
+	  position: relative;
+	  margin: auto;
+	}
+	
+	.sliderImage{
+		width: 200px;
+		margin-top: 70px;
+		
+	}
+	
+	
+	
+	/* The dots/bullets/indicators */
+	.dot {
+	  height: 13px;
+	  width: 13px;
+	  margin: 0 2px;
+	  background-color: #bbb;
+	  border-radius: 50%;
+	  display: inline-block;
+	  transition: background-color 0.6s ease;
+	}
+	
+	.active {
+	  background-color: #717171;
+	}
+	
+	/* Fading animation */
+	.fade {
+	  -webkit-animation-name: fade;
+	  -webkit-animation-duration: 1.5s;
+	  animation-name: fade;
+	  animation-duration: 1.5s;
+	}
+	
+	@-webkit-keyframes fade {
+	  from {opacity: .4}
+	  to {opacity: 1}
+	}
+	
+	@keyframes fade {
+	  from {opacity: .4}
+	  to {opacity: 1}
+	}
+	
+	/* On smaller screens, decrease text size */
+	@media only screen and (max-width: 300px) {
+	  .text {font-size: 11px}
+	}
+
+/* Slider ends here */
 
 /* Modals and login starts here */
 	/* Full-width input fields */
@@ -187,7 +248,66 @@ footer{
 }
 /* Modals and login ends here */
 
-/* Slider starts here  */
+/* Footer starts here */
+footer{
+	width: 100%;
+    bottom: 0;
+ 	position: fixed;	
+}
 
-/* Slider ends here*/
+#div_footer{	
+	height: 90px;
+	background-color: DarkOliveGreen;
+	padding: 5px;
+	text-align: center;
+}
+
+#div_footer .a_link:HOVER {
+	background-color: #d1e0b8;
+	color: black;
+}
+
+#div_footer a{
+	color: black;
+	
+	text-decoration:  none;
+	
+}
+#div_footer .a_imgNew:HOVER{
+	background-color: DarkOliveGreen;
+}
+
+#div_footer .a_footer{
+	text-decoration: none;
+	color: black;
+}
+
+
+#div_footer .social_redirect{
+	width: 40px;
+	height: 40px;
+	border-radius: 5px;
+	padding-top: -5px;
+	padding-right: -5px;
+}
+
+#div_footer .div_ftr{
+	padding-top: 10;
+	display: inline;
+	margin: 10px;
+	text-align: left;
+	padding: 2px;
+	font-family: cursive;
+	font-size: 18px;
+	background-color: DarkOliveGreen ;
+}
+
+#div_footer .div_img_footer{
+	padding: 10px;
+	float: right;	
+}
+
+/* Footer ends here */
+
+
 
