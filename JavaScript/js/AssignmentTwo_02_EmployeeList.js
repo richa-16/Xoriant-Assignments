@@ -61,7 +61,7 @@ function DisplayEmployees(){
 		var str = " ";
 		str = "id : " + id + " name : "+ name+" salary : "+ salary +" dep: "+dep;
 		var addElement = document.createElement("p");
-		addElement.innerHTML = "<br><br><p>New output </p>"+str;
+		addElement.innerHTML = str;
 		para.appendChild(addElement);
 		
 	}

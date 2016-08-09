@@ -1,3 +1,4 @@
+
 function BankAccount(){
 	console.log("Start");
 	var accountName = document.getElementById('accountName').value;
