@@ -25,6 +25,7 @@
 			  		<li><a  type="button" id="loginButton" onclick="openModal('login')">Login</a></li>
 			  		
 			  		<li><a  type="button" id="signUpButton" onclick="openModal('signUp')">SignUp</a></li>
+			  		
 			  	</div>
 			  </div>
 			</ul>
@@ -63,7 +64,7 @@
 			</div>
 			<div class="col-3">
 				<ul class="tab">
-				  <li><a href="#" class="tablinks" onmouseover="openTab(event, 'category1')" >Category</a></li>
+				  <li><a href="#" class="tablinks" onblur="closeTab('category1')"  onmouseover="openTab(event, 'category1')" >Category</a></li>
 				  <li><a href="#" class="tablinks" onmouseover="openTab(event, 'category2')" >Category</a></li>
 				  <li><a href="#" class="tablinks" onmouseover="openTab(event, 'category3')" >Category</a></li>
 				</ul>
@@ -130,15 +131,14 @@
 							
 							    <div class="container">
 							      <label><b>Username</b></label>
-							      <input type="text" placeholder="Enter Username" name="uname" required>
+							      <input type="text" placeholder="Enter Username" name="uname" id="username" required>
 							
 							      <label><b>Password</b></label>
-							      <input type="password" placeholder="Enter Password" name="psw" required>
+							      <input type="password" placeholder="Enter Password" name="psw" id="password" required>
 							        
-							      <button type="submit">Login</button>
+							      <button type="button" onclick="loginUser()">Login</button>
 							      <input type="checkbox" checked="checked"> Remember me
 							    </div>
-							
 							    <div class="container" style="background-color:#f1f1f1">
 							      <button type="button" onclick="closeModals('login')" class="cancelbtn">Cancel</button>
 							      <span class="psw">Forgot <a href="#">password?</a></span>
@@ -161,29 +161,36 @@
 			  			
 			  			</div>
 						<div class="col-6">
-			  				<form class="modal-content animate">
-							    <div class="imgcontainer">
-							      <span onclick="closeModals('signUp')" class="close" title="Close Modal">&times;</span>
-							      <img src="img/profile.png" alt="Avatar" class="avatar">
-							    </div>
-							
-							    <div class="container">
-							      <label><b>Username</b></label>
-							      <input type="text" placeholder="Enter Username" name="uname" required>
-							
-							      <label><b>Password</b></label>
-							      <input type="password" placeholder="Enter Password" name="psw" required>
-							        
-							      <button type="submit">SignUp</button>
-							      <input type="checkbox" checked="checked"> Remember me
-							    </div>
-							
-							    <div class="container" style="background-color:#f1f1f1">
-							      <button type="button" onclick="closeModals('signUp')" class="cancelbtn">Cancel</button>
-							      <span class="psw">Forgot <a href="#">password?</a></span>
-							    </div>
-							  </form>
+						<form class="modal-content animate">
+							<div class="container">
+								<h3><u>Registration Details</u></h3>
+
+								<span onclick="closeModals('signUp')" class="close" title="Close Modal">&times;</span>
+									
+								<label>Name</label>
+								<input id="uname" type="text" placeholder="FirstName LastName (For ex. Abhay Suryawanshi)" > 
+								<label>Email</label>
+								<input id="uEmail" type="email" placeholder="Ex. abc.mnq@xyz.com">
 								
+								<label>Contact</label>
+								<input id="uContact" type="tel" placeholder="Only digits" > 
+								<label>Username</label><input id="userName" type="text" placeholder="Username with no spaces and special characters" > <br><br>
+								<label>Password</label><input id="uPass" class="" type="password"  >
+								<label>Confimr Password</label><input id="uConfirmPass" class="" type="password">
+								<center>
+									<button type="button"  onclick="registerUser()">Sign Up</button>
+								<hr width=100% align="left">
+								<button type="button" style="background-color:red;" onclick="closeTab('signUp')">Cancle</button>
+								<hr width=100% align="left">
+								OR LOGIN WITH<br><br>
+								<a href="http://www.facebook.com" > <img width="200px" height="70" type="image" id="login_with_Facebook" src="img/fb.png"  ></a>
+								&nbsp&nbsp&nbsp&nbsp&nbsp
+								<a href="http://www.google.co.in" > <img width="200px" height="70" type="image" id="login_with_Facebook" src="img/google.png" ></a>
+								</center>
+							</div>
+									
+						</form>
+						
 			  			</div>
 						<div class="col-3">
 			  			
@@ -192,6 +199,7 @@
 				    
 				</div>
 		<!-- SignUp modal ends here  -->
+		
 		
 		<!-- Modals ends here  -->
 		<footer class="shiftMiddle">

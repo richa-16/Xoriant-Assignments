@@ -1,40 +1,49 @@
-var footer_links = [{txt:"Privacy policy", link:"Privacy_policy.html"},
-                    {txt:"Terms & Conditions", link:"Terms_and_Conditions.html"},
-                    {txt:"Mission & Vision", link:"Mission_and_Vision.html"},
-                    {txt:"Contact us", link:"Contact_us.html"},
-                    {txt:"About us", link:"About_us.html"}];
-var social_navigation = [{src:"img/facebook_logo.png", link:"http://www.facebook.com"}, 
-                         {src:"img/google_plus_logo.png", link:"http://www.google.com"}, 
-                         {src:"img/twitter_logo.jpg", link:"http://www.twitter.com"},];
-
 function renderUi(){
 	console.log("In render Ui");
 	// render footer
-	footerLoad();
-	
+	checkLogin();
+}
+function checkLogin(){
+	if(sessionStorage.loggeIn == 1){
+		console.log("User is logged In");
+	}else{
+		console.log("User is not loggedIn")
+	}
 }
 
-function footerLoad(){
-	var linkLen = footer_links.length;
-	var social_nav_len = social_navigation.length;
+function loginUser(){
+	var username = document.getElementById('username');
+	var password = document.getElementById('password');
 	
-	var i;
-	
-	for(i=0; i<linkLen; i++)
-		{
-			var old_html=document.getElementById("div_footer").innerHTML;
-			document.getElementById("div_footer").innerHTML=old_html+"<div class='div_ftr'><a class = 'a_link' href='"+ footer_links[i].link + "' class='a_footer'>" + footer_links[i].txt + "</a></div>";
+	if (typeof(Storage) !== "undefined") {
+	    // Store
+		var count = localStorage.getItem("countUsers");
+		var x =1;
+		var login = 0;
+		for(x =1 ; x <=count ; x++){
+			var user = localStorage.getItem(1);
+			var uName = user[0];
+			var uPass = user[1];
+			if(uName == username && uPass == password) {
+				// if password and username is matching then break 
+				login = 1;
+			}
 		}
-	
-	old_html=document.getElementById("div_footer").innerHTML;
-	old_html+="<br>";
-	document.getElementById("div_footer").innerHTML = old_html + "&copy All rights reserved.";
-	
-	for(i=0; i<social_nav_len; i++)
-	{
-		old_html=document.getElementById("footer_img_link").innerHTML;
-		document.getElementById("footer_img_link").innerHTML= old_html + "<a class = 'div_img_footer' href='"+ social_navigation[i].link + "'><img class='social_redirect' src='" + social_navigation[i].src + "'> </a>";
-	}
+		if(login == 1){
+			sessionStorage.loggeIn = 1;
+			window.history(0);
+		}else{
+			alert("Wrong username and password");
+			//document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+		}
+		//localStorage.setItem("countUsers", "Smith");
+	    // Retrieve
+	    
+	} else {
+	    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+	}	
+}
 
-	//<a class="a_img" href="http://www.facebook.com/pages/"><img class="social_redirect" src="Images/facebook_logo.png"></a>
+function registerUser(){
+	
 }
