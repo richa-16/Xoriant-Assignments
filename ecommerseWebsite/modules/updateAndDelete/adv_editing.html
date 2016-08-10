@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<script type="text/javascript" src="js/adv_editing.js">
+</script>
+<link rel="stylesheet" href="css/adv_editing.css">
+
+
+</head>
+<body>
+
+<div >
+	<h2>Advertisement</h2>
+	<hr width=100%>
+	<img id="imgProdImage" width="100px" height="100px" src="images/advertisements/1.jpeg"> <br> <br>
+	Id<br>
+	<input id="txtProdID" type="text" value= "1" disabled ><br><br>
+	Name<br>
+	<input id="txtProdName" type="text" value="Gionee M2" disabled ><br><br>
+	Brand<br>
+	<input id="txtProdBrand" type="text" value="Gionee" disabled ><br><br>
+	Category<br>
+	<input id="txtProdCategory" type="text" value="Mobiles & Tablets" disabled ><br><br>
+	Price<br>
+	Rs.<input id="txtProdPrice" type="text" value="10000" size=17 disabled ><br><br>
+	Status<br>
+	<input id="checkProdSold" type="checkbox" value="Unsold" disabled >Sold <br><br>
+	<input id="fileUpload" type="file" disabled >	<br><br>
+	
+	<input id= "btnUpdate" type="button" value="Update" onclick="updateAdvertisement()">
+	<input id= "btnSubmit" type="button" value="Submit" onclick="submitAdvertisementUpdate()" disabled>
+	<input id= "btnDelete" type="button" value="Delete" onclick="deleteAdvertisement()" >
+	
+</div>
+
+</body>
+</html>
