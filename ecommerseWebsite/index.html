@@ -3,50 +3,48 @@
 	<head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title> Xcell </title>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/renderUi.js"></script>
+
 	
 	</head>
 	<body onload="renderUi()">
 		<!-- Header starts here  -->
-		<header>
-			<div class="navigationBar">
-				<ul class="topnav" id="myTopnav">
-				  <div class="row">
-				  	<div class="col-3">
-				  		<li><a class="active" href="#home">Home</a></li>	
-				  	</div>
-				  	<div class="col-6">
-				  	
-				  	</div>
-				  	<div class="col-3">
-				  		<!-- Write login function on onclick -->
-				  		<li><a  type="button" id="loginButton" onclick="openModal('login')">Login</a></li>
-				  		
-				  		<li><a  type="button" id="signUpButton" onclick="openModal('signUp')">SignUp</a></li>
-				  	</div>
-				  </div>
-				</ul>
-			</div>
-		</header>
+		<div class="navigationBar">
+			<ul class="topnav" id="myTopnav">
+			  <div class="row">
+			  	<div class="col-3">
+			  		<li><a  href="#home">Home</a></li>	
+			  	</div>
+			  	<div class="col-6">
+			  	
+			  	</div>
+			  	<div class="col-3">
+			  		<!-- Write login function on onclick -->
+			  		<li><a  type="button" id="loginButton" onclick="openModal('login')">Login</a></li>
+			  		
+			  		<li><a  type="button" id="signUpButton" onclick="openModal('signUp')">SignUp</a></li>
+			  	</div>
+			  </div>
+			</ul>
+		</div>
 		<!-- Header ends here  -->
-		
+		<!-- Website name -->
+		<div class="row">
+			<p class="sansserif">
+				Xsell
+			<p>
+		</div>
 		<!-- Slider starts here -->
 		<div class="slider">
 			<div class="slideshow-container">
 				<center>
 				<div class="mySlides fade">
-				  <img src="img/profile.png" class="sliderImage">  
+				  <img src="img/slider1.jpg" class="sliderImage">  
 				</div>
-				
 				<div class="mySlides fade">
-				  <img src="img/profile.png" class="sliderImage">
-				  
-				</div>
-				
-				<div class="mySlides fade">
-				  <img src="img/profile.png" class="sliderImage">
-				  
+				  <img src="img/slider2.jpg" class="sliderImage">
 				</div>
 				</center>
 			</div>
@@ -54,10 +52,67 @@
 			<div style="text-align:center">
 			  <span class="dot"></span>
 			  <span class="dot"></span>
-			  <span class="dot"></span>
 			</div>
 		</div>
-		<!-- Slider ends here -->
+		<!--  Slider ends here -->
+		
+		<!-- Navigation bar for category starts here -->
+		<div class="row">
+			<div class="col-4">
+				
+			</div>
+			<div class="col-3">
+				<ul class="tab">
+				  <li><a href="#" class="tablinks" onmouseover="openTab(event, 'category1')" >Category</a></li>
+				  <li><a href="#" class="tablinks" onmouseover="openTab(event, 'category2')" >Category</a></li>
+				  <li><a href="#" class="tablinks" onmouseover="openTab(event, 'category3')" >Category</a></li>
+				</ul>
+			</div>
+			<div class="col-3">
+			</div>	
+		</div>
+		<div class="row">
+			<div class="col-3">
+			</div>
+				<div class="col-6">
+					<div id="category1" class="tabcontent">
+					  <h3>Category 1</h3>
+					  <p>Text</p>
+					  <a href="http://www.google.com">h</a>
+					</div>
+					<div id="category2" class="tabcontent">
+					  <h3>Category 2</h3>
+					  <p>Text</p>
+	
+					  <a href="http://www.google.com">h</a>
+					</div>
+					<div id="category3" class="tabcontent">
+					  <h3>Category 3</h3>
+					  <p>Text</p>
+					  <a href="http://www.google.com">h</a>
+					</div>				
+				</div>
+			<div class="col-3">
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br><br>
+		<br>
+		<br>
+		<br><br>
+		<br>
+		<br>
+		<br><br>
+		<br>
+		<br>
+		<br>
+		<!-- Navigation bar for category ends here -->
 		
 		<!-- Modals starts here  -->
 
@@ -139,18 +194,24 @@
 		<!-- SignUp modal ends here  -->
 		
 		<!-- Modals ends here  -->
-		
-		<footer>
-			<div id="div_footer" >
-				<div class="div_img_footer" id="footer_img_link">
+		<footer class="shiftMiddle">
+			<div class="row" >
+				<div class="col-3">
+					<p class="footerHead"> <span>Navigation</span> </p>
+				</div>
+				<div class="col-3">
+					<p class="footerHead"> <span>Category</span> </p>
+				</div>
+				<div class="col-3">
+					<p class="footerHead"> <span>Pages</span> </p>
+				</div>
+				<div class="col-3">
+					<p class="footerHead"><span>Connect</span></p>
 				</div>
 			</div>
 		</footer>
- 
 		<!-- All scripts starts here -->
 		<script src="js/customScripts.js"></script>
-		
-
 		<!-- All scripts ends here -->
 	</body>
 </html>

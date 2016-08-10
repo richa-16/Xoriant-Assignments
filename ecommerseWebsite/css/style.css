@@ -9,14 +9,24 @@ header{
 	width:100%;
 	height:10px;
 	position: fixed;
+	background-color: #000000;
 }
 
 footer{
 	width: 100%;
     bottom: 0;
- 	position: fixed;	
+ 	position: fixed;
+ 	background-color: #000000;
 }
 
+/* Website name */
+.sansserif {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align:center;
+    font-size: 30px;
+    color: #000000;
+}
+/* Website name ends here */
 /* For grid layout */
 .row::after {
     content: "";
@@ -50,7 +60,7 @@ footer{
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #000000;
 }
 
 
@@ -58,39 +68,32 @@ footer{
 
 .navigationBar ul.topnav li a {
   display: inline-block;
-  color: #f2f2f2;
+  color: #FFFFFF;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
   transition: 0.3s;
-  font-size: 17px;
+  font-size: 15px;
 }
 
-.navigationBar ul.topnav li a:hover {background-color: #555;}
+.navigationBar ul.topnav li a:hover {background-color: #9E9E9E;}
 
 .navigationBar ul.topnav li.icon {display: none;}
 
-/* Nav bar ends here */
+ /* Nav bar ends here */
 
 /* Slider starts here */
 
 /* Slideshow container */
-
 	.slideshow-container {
-	  
-	  max-width: 500px;
+	  max-width: 90%;
 	  position: relative;
 	  margin: auto;
 	}
-	
 	.sliderImage{
-		width: 200px;
-		margin-top: 70px;
-		
-	}
-	
-	
-	
+		width: 100%;
+		height: 350px;
+	}	
 	/* The dots/bullets/indicators */
 	.dot {
 	  height: 13px;
@@ -101,11 +104,9 @@ footer{
 	  display: inline-block;
 	  transition: background-color 0.6s ease;
 	}
-	
 	.active {
 	  background-color: #717171;
 	}
-	
 	/* Fading animation */
 	.fade {
 	  -webkit-animation-name: fade;
@@ -113,23 +114,83 @@ footer{
 	  animation-name: fade;
 	  animation-duration: 1.5s;
 	}
-	
 	@-webkit-keyframes fade {
 	  from {opacity: .4}
 	  to {opacity: 1}
 	}
-	
 	@keyframes fade {
 	  from {opacity: .4}
 	  to {opacity: 1}
 	}
-	
 	/* On smaller screens, decrease text size */
 	@media only screen and (max-width: 300px) {
 	  .text {font-size: 11px}
 	}
 
 /* Slider ends here */
+
+/* Tabs */
+ul.tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    display: inline-block;
+    background-color: #000000;
+    
+}
+
+/* Float the list items side by side */
+ul.tab li {float: left;}
+
+/* Style the links inside the list items */
+ul.tab li a {
+    display: inline-block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 17px;
+    color: #FFFFFF;
+}
+
+/* Change background color of links on hover */
+ul.tab li a:hover {
+    background-color: #9E9E9E;
+}
+
+ul.tab li a:AFTER, .tabcontent {
+    display: none;
+}
+
+/* Create an active/current tablink class */
+ul.tab li a:focus, .active {
+    background-color: #ccc;
+}
+
+
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+/* Tabs */
 
 /* Modals and login starts here */
 	/* Full-width input fields */
@@ -248,66 +309,12 @@ footer{
 }
 /* Modals and login ends here */
 
-/* Footer starts here */
-footer{
-	width: 100%;
-    bottom: 0;
- 	position: fixed;	
-}
-
-#div_footer{	
-	height: 90px;
-	background-color: DarkOliveGreen;
-	padding: 5px;
+/* Footer elements */
+footer .footerHead{
+	color: #FFFFFF;
 	text-align: center;
+
 }
 
-#div_footer .a_link:HOVER {
-	background-color: #d1e0b8;
-	color: black;
-}
-
-#div_footer a{
-	color: black;
-	
-	text-decoration:  none;
-	
-}
-#div_footer .a_imgNew:HOVER{
-	background-color: DarkOliveGreen;
-}
-
-#div_footer .a_footer{
-	text-decoration: none;
-	color: black;
-}
-
-
-#div_footer .social_redirect{
-	width: 40px;
-	height: 40px;
-	border-radius: 5px;
-	padding-top: -5px;
-	padding-right: -5px;
-}
-
-#div_footer .div_ftr{
-	padding-top: 10;
-	display: inline;
-	margin: 10px;
-	text-align: left;
-	padding: 2px;
-	font-family: cursive;
-	font-size: 18px;
-	background-color: DarkOliveGreen ;
-}
-
-#div_footer .div_img_footer{
-	padding: 10px;
-	float: right;	
-}
-
-/* Footer ends here */
-
-
+/* Footer elements */
 
