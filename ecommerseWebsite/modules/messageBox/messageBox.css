@@ -1,0 +1,92 @@
+#hr_first{
+	width: 120px;
+	height: 5px;
+	margin-top: -20px;
+	background-color: #4C0B5F;
+}
+
+h1{
+	margin-top: 0px;
+	font-family: monospace;
+	
+}
+
+#div_chatbox{
+	width: 350px;
+	height: 485px;
+	font-size: 14px;
+	font-family: monospace;
+	border-width: 2px;
+	border-style: solid;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+#main_msg_holder{
+	width: 350px;
+	height: 400px;
+	background-color: white;
+	overflow: scroll; 
+	padding: 2px;
+	padding-bottom: 4px;
+	
+}
+
+.txtMsg{
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: skyblue;
+	color: black;
+	font-size: 15px;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+.buttons{
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	font-size: 15px;
+	padding: 5px;
+	
+}
+
+.msgSent{
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: skyblue;
+	color: black;
+	font-size: 15px;
+	padding: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	float: right;
+	background-color: pink;
+
+}
+
+.msgReceived{
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 5px;
+	border-color: skyblue;
+	color: black;
+	font-size: 15px;
+	padding: 5px;
+	margin-top: 5px;
+	margin-left: 5px;
+	float: left;
+	background-color: grey;
+}
+
+
+
+
+
+
+
+
+
+
