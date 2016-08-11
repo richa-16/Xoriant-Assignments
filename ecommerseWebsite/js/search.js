@@ -25,12 +25,14 @@ function fillCategory(idName){
 	    opt.value = categories[i];
 	    sel.appendChild(opt);
 	}
+	console.log("Calling ");
+	renderUiFromSearch();
 }
-
-
 function searching(){
 	
 	var sort_basis = document.getElementById("filter").value;
+	//var getLocalDatabaseForAds = getLocalDatabaseForAds(); 
+	// replace advertisements variable with localStorage
 	var temp = advertisements;
 	if(sort_basis=="ByDate"){
 		for(var d=0; d<advertisements.length; d++){
@@ -111,6 +113,7 @@ function searching(){
 								"</center>"+
 							"</div>"+
 						"</div>";
+				
 			}
 		}
 	}
@@ -122,8 +125,96 @@ function openModal(modalName){
 	console.log("Reached here ");
 	document.getElementById(modalName).style.display='block';
 }
+
 function closeModals(modalName){
 	console.log("Reached here ");
 	document.getElementById(modalName).style.display='none';
+}
+
+function getLocalDatabaseForAds(){
+	console.log("Get local database here");
+
+	
+}
+
+function renderUiFromSearch(){
+	// Render trending 
+	console.log("renderUiFromSearch ");
+	document.getElementById('trending').innerHTML += "<div class=\"row\">";
+	
+	// random number start
+	var i = 0;
+	var arr = new Array();
+	arr[0] = -1;
+	arr[1] = -1;
+	arr[2] = -1;
+	for(i = 0 ; i< 3; ){
+		var x = parseInt((Math.random()*100))%10;
+		x++;
+		var j = 0;
+		var numUsed = 0;
+		for(j=0; j<3; j++){
+			if(arr[j] == -1){
+				arr[j] = x;
+				i++;
+				break;
+			}
+			if(arr[j] == x){
+				// number allready present 
+				numUsed = 1;
+				break;
+			}
+		}
+		if(numUsed ==1){
+			
+			continue;
+		}
+
+		console.log("Random number "+ x);
+		document.getElementById('trending').innerHTML +="<div class=\"col-4\">"+
+													"<center>"+
+													"<img src=\"images/advertisements/"+x+".jpg\" width=\"100px\" height=\"100px\">"+
+													"</center>"+
+													"</div>";
+	// random number end 
+	}
+	document.getElementById('trending').innerHTML += "</div>";
+	
+	// Render recommendations
+	document.getElementById('recommendations').innerHTML ="<div class=\"row\">";
+	
+	arr[0] = -1;
+	arr[1] = -1;
+	arr[2] = -1;
+	for(i = 0 ; i< 3;){
+		var x = parseInt((Math.random()*100))%10;
+		x++;
+		var j = 0;
+		var numUsed = 0;
+		for(j=0; j<3; j++){
+			if(arr[j] == -1){
+				arr[j] = x;
+				i++;
+				break;
+			}
+			if(arr[j] == x){
+				// number allready present 
+				numUsed = 1;
+				break;
+			}
+		}
+		if(numUsed ==1){
+			continue;
+		}
+
+	   console.log("Random number "+ x);
+	   document.getElementById('recommendations').innerHTML +="<div class=\"col-4\">"+
+													"<center>"+
+													"<img src=\"images/advertisements/"+x+".jpg\" width=\"100px\" height=\"100px\">"+
+													"</center>"+
+													"</div>";
+	// random number end
+	}
+	document.getElementById('recommendations').innerHTML += "</div>";
 }
 

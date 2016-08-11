@@ -8,6 +8,10 @@ function postAdd(){
 	var selectCategory = document.getElementById('selectCategory').value;
 	var sellingPrice = document.getElementById('sellingPrice').value;
 	var image = document.getElementById('image');
+	var status = "unsold";//document.getElementById('postStatus');
+	var date = "12/8/16";//document.getElementById('postDate');
+	//var brand = document.getElementById('postBrand');
+	
 	image = getBase64Image(image);
 	
 	//localStorage.clear();
@@ -27,20 +31,24 @@ function postAdd(){
 	var currentIndex = postCount + 1;
 	console.log("Current Index "+ currentIndex);
 	
-	
 	var postObj =[{
-		pName : pName,
-		pEmail : pEmail,
+		id:currentIndex,
+		name : pName,
+		email : pEmail,
 		pContact : pContact,
-		productName: productName,
-		selectCategory : selectCategory,
-		sellingPrice : sellingPrice,
-		image: image
+		product: productName,
+		category : selectCategory,
+		price : sellingPrice,
+		src: image,
+		date: date,
+		status: status
+		//brand: brand
 	}];
 	
 	console.log("Object created ");
-	var postId = "p"+currentIndex;
-	console.log("Post id "+postId);
+	
+	var postId = "p" + currentIndex;
+	console.log("Post id " + postId);
 	
 	localStorage.setItem(postId, JSON.stringify(postObj));
 	//currentIndex++;
