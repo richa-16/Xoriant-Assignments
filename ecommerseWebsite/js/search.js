@@ -17,8 +17,8 @@ var advertisements=[{id:"1", email:"knnemade99@gmail.com" , name:"Kunal Nemade",
                     {id:"10",email:"knnemade99@gmail.com" , name:"Kunal Nemade", product:"Lightings", brand:"", category:"Electronics & Appliances",price:"900",src:"images/advertisements/10.jpg", status:"unsold",date:"31/03/2016" }];
 
 
-function fillCategory(){
-	var sel = document.getElementById("category");
+function fillCategory(idName){
+	var sel = document.getElementById(idName);
 	for(var i = 0; i < categories.length; i++) {
 	    var opt = document.createElement("option");
 	    opt.innerHTML = categories[i];

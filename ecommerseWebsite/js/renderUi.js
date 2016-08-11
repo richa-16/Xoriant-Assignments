@@ -13,7 +13,6 @@ function checkLogin(){
 		
 	}else{
 		console.log("User is not loggedIn");
-		
 	}
 }
 
@@ -81,6 +80,26 @@ function registerUser(){
 	
 	var password = document.getElementById('rpassword').value;
 	var confirmPass = document.getElementById('uConfirmPass').value;
+	//checking the validation of fields
+	if((name.length == 0) || (email.length == 0) || (contact.length == 0) || (username.length == 0) || (password.length == 0) || (confirmPass.length == 0) ){
+			alert("Please enter details.");
+			return;
+		}		
+	
+	if(isNaN(contact)){
+		alert("Contact number invalid.");
+	}
+
+	if(username.split(' ').length > 1){
+		alert("Username should not contain white spaces.");
+		return;
+	}
+
+	if(password!=confirmPass){
+		alert("Passwords mismatched.");
+		return;
+	}
+
 	//localStorage.clear();
 	console.log("In register User");
 	var count = 0;
@@ -117,7 +136,7 @@ function registerUser(){
 }
 
 function logout(){
-	sessionStorage.loggeIn =0;
+	sessionStorage.loggeIn = 0;
 	redirectPage();
 }
 
