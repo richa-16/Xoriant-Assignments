@@ -2,29 +2,16 @@
 <html>
 	<head>
 	<link rel="stylesheet" href="css/search.css">
-	<script type="text/javascript" src="js/search.js"><</script>
-
+	<script type="text/javascript" src="js/search.js"></script>
 	</head>
-	
 	<body onload="fillCategory()">
-	
 		<div id="searchbox" class="search" >
-				
-				
-
-				
-		
-		<input type="text" id="search" name="search" placeholder="Search">
-				 
-				<select id="category">
-							
-							
-						</select>
-					
-		<input type="button" value="search" name="Search" onclick="searching()">
-		
+			<input type="text" id="search" name="search" placeholder="Search">	 
+				<select id="category">		
+				</select>		
+			<input type="button" value="search" name="Search" onclick="searching()">
 		<div>
-			Sort By:
+			<label for="filter">Sort By:</label>
 			<select  id="filter">
 				<option value="ByDate">By Date</option>
 				<option value="LowesttoHighest">Lowest to highest</option>
@@ -33,15 +20,6 @@
 		</div>
 		
 		<div class="searchresult" id="searchresult">
-			
-
-			
-			
 		</div>
-		
-		
-		
-
 	</body>
-	
 </html>

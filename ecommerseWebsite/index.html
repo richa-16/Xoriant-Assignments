@@ -6,19 +6,19 @@
 	<title> Xcell </title>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="js/renderUi.js"></script>
-
+	<script src="js/search.js"></script>
 	
 	</head>
-	<body onload="renderUi()">
+	<body onload="renderUi();fillCategory()">
 		<!-- Header starts here  -->
 		<div class="navigationBar">
 			<ul class="topnav" id="myTopnav">
 			  <div class="row">
 			  	<div class="col-3">
-			  		<li><a  href="#home">Home</a></li>	
+			  		<li><a  href="#home" class="sansserif">DealBaba</a></li>
 			  	</div>
 			  	<div class="col-6">
-			  	
+			  		
 			  	</div>
 			  	<div class="col-3" id="profileInfo">
 			  		<!-- Write login function on onclick -->
@@ -33,20 +33,37 @@
 		<!-- Header ends here  -->
 		<!-- Website name -->
 		<div class="row">
-			<p class="sansserif">
-				Xsell
-			<p>
+			<br>
+			<br>
+			<div class="col-2">
+			
+			</div>
+			<input type="text" id="search" name="search" placeholder="Search">	 
+			<select id="category">		
+			</select>		
+			<select  id="filter">
+				<option value="ByDate">By Date</option>
+				<option value="LowesttoHighest">Lowest to highest</option>
+				<option value="HighesttoLowest">Highest to Lowest</option>
+			</select>
+			<input type="button" value="search" name="Search" onclick="searching()">
+			<div class="col-2">
+			
+			</div>
+			<br>
+			<br>
+			
 		</div>
 		<!-- Slider starts here -->
 		<div class="slider">
 			<div class="slideshow-container">
 				<center>
-				<div class="mySlides fade">
-				  <img src="img/slider1.jpg" class="sliderImage">  
-				</div>
-				<div class="mySlides fade">
-				  <img src="img/slider2.jpg" class="sliderImage">
-				</div>
+					<div class="mySlides fade">
+					  <img src="img/slider1.jpg" class="sliderImage">  
+					</div>
+					<div class="mySlides fade">
+					  <img src="img/slider2.jpg" class="sliderImage">
+					</div>
 				</center>
 			</div>
 			<br>
@@ -198,8 +215,23 @@
 				    
 				</div>
 		<!-- SignUp modal ends here  -->
-		
-		
+
+		<!-- Search results modal starts here -->
+
+			<div id="searchResults" class="modal">
+				
+			  		<div class="row modal-content">
+			  			<div class="col-1">
+			  			
+			  			</div>
+						<div class="col-11">
+							<div class="searchresult" id="searchresult">
+							</div>
+			  			</div>
+								
+			  		</div>
+			</div>
+		<!-- Search results modal ends here -->
 		<!-- Modals ends here  -->
 		<footer class="shiftMiddle">
 			<div class="row" >
@@ -222,4 +254,3 @@
 		<!-- All scripts ends here -->
 	</body>
 </html>
-
