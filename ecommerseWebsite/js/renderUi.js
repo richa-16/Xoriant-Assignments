@@ -4,12 +4,16 @@ function renderUi(){
 	checkLogin();
 }
 function checkLogin(){
+	var selectDiv = document.getElementById('profileInfo');
 	if(sessionStorage.loggeIn == 1){
 		console.log("User is logged In");
-		
+		// Need to display username here
+		selectDiv.innerHTML = "<li><a type=\"button\" id=\"profileButton\"> "+sessionStorage.userName+"</a><li>";
+		selectDiv.innerHTML += "<li><a type=\"button\" id=\"profileButton\" onclick=\"logout()\"> Logout </a><li>";
 		
 	}else{
-		console.log("User is not loggedIn")
+		console.log("User is not loggedIn");
+		
 	}
 }
 
@@ -28,10 +32,13 @@ function loginUser(){
 		
 		var x =1;
 		var login = 0;
+		// store userId in sessionStorage as well 
+		var userId = 0;
+		var userName = 0;
 		for(x =1 ; x <=count ; x++){
 			var user = JSON.parse(localStorage.getItem(x));
 			var uName = user[0].username;
-			var uPass = user[0].username;
+			var uPass = user[0].password;
 			console.log("Id "+x+" : User name " +uName);
 			console.log("Id "+x+" : User password " +uPass);
 			var uCheck = username.localeCompare(uName);
@@ -42,11 +49,15 @@ function loginUser(){
 				// if password and username is matching then break 
 				console.log("LoggedIN");
 				login = 1;
+				userId = x;
+				userName = user[0].name;
 				break;
 			}
 		}
 		if(login == 1){
 			sessionStorage.loggeIn = 1;
+			sessionStorage.userId = userId;
+			sessionStorage.userName = userName;
 			location.reload();
 		}else{
 			console.log("Not loggedIn");
@@ -105,3 +116,11 @@ function registerUser(){
 	console.log("Last count "+ count);
 }
 
+function logout(){
+	sessionStorage.loggeIn =0;
+	redirectPage();
+}
+
+function redirectPage(){
+	location.reload();
+}
