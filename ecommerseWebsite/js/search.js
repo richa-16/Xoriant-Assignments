@@ -103,13 +103,15 @@ function searching(){
 							temp[i].product+
 							"</div>"+
 							"<div class=\"col-1\"> "+
-							temp[i].price+
+							"<span>&#x20B9;</span>"+temp[i].price+
 							"</div>"+
 							"<div class=\"col-4\"> "+
 								"<center>"+
 								"<button class=\"smallButton\" onclick=\"viewDetails()\" >View Details</button>"+
 								"<button class=\"smallButton\" onclick=\"viewDetails()\" >Call</button>"+
-								"<button class=\"smallButton\" onclick=\"viewDetails()\" >Chat</button>"+
+								"<button class=\"smallButton\" onclick=\"javascript:register_popup('"+temp[i].name+"', '"+temp[i].name+"');\">"+
+                    			"<span>Chat</span>"+
+    				            "</button>"+
 								"</center>"+
 							"</div>"+
 						"</div>";
@@ -173,7 +175,10 @@ function renderUiFromSearch(){
 		console.log("Random number "+ x);
 		document.getElementById('trending').innerHTML +="<div class=\"col-4\">"+
 													"<center>"+
-													"<img src=\"images/advertisements/"+x+".jpg\" width=\"100px\" height=\"100px\">"+
+														"<img src=\"images/advertisements/"+x+".jpg\" width=\"100px\" height=\"100px\">"+
+														"<center>"+
+															"<h4>"+advertisements[x].product+"</h4>"+
+														"</center>"+
 													"</center>"+
 													"</div>";
 	// random number end 
@@ -211,6 +216,9 @@ function renderUiFromSearch(){
 	   document.getElementById('recommendations').innerHTML +="<div class=\"col-4\">"+
 													"<center>"+
 													"<img src=\"images/advertisements/"+x+".jpg\" width=\"100px\" height=\"100px\">"+
+													"<center>"+
+															"<h4>"+advertisements[x].product+"</h4>"+
+														"</center>"+
 													"</center>"+
 													"</div>";
 	// random number end

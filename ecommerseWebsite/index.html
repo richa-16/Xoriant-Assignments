@@ -8,6 +8,7 @@
 	<script src="js/renderUi.js"></script>
 	<script src="js/search.js"></script>
 	<script src="js/localStorage.js"></script>
+	<script src="js/chatApplication.js"></script>
 	
 	</head>
 	<body onload="renderUi();fillCategory('category')">
@@ -16,17 +17,20 @@
 			<ul class="topnav" id="myTopnav">
 			  <div class="row">
 			  	<div class="col-3">
-			  		<li><a  href="#home" class="sansserif">DealBaba</a></li>
+			  		<li><a  href="#home" class="sansserif">DealPanda</a></li>
 			  	</div>
-			  	<div class="col-6">
+
+			  	<div class="col-4">
 			  		
+			  	</div>
+			  	<div class="col-2">
+			  		<li><a type="button" name="Post add" onclick="openModal('postAdd');fillCategory('selectCategory');" class="postButton">
+			  		Post</a><li>
 			  	</div>
 			  	<div class="col-3" id="profileInfo">
 			  		<!-- Write login function on onclick -->
 			  		<li><a  type="button" id="loginButton" onclick="openModal('login')">Login</a></li>
-			  		
 			  		<li><a  type="button" id="signUpButton" onclick="openModal('signUp')">SignUp</a></li>
-			  		
 			  	</div>
 			  </div>
 			</ul>
@@ -36,24 +40,25 @@
 		<div class="row">
 			<br>
 			<br>
-			<div class="col-3">
+			<div class="col-2">
 			</div>
-			<div class="col-8">
+			<div class="col-10">
 				
-				<input type="text" id="search" name="search" placeholder="Search">	 
-				<select id="category">		
+				<input type="text" id="search" name="search" class="searchBox" placeholder="Search">	 
+				<select id="category" class="filterBox">		
 				</select>		
-				<select  id="filter">
-					<option value="ByDate">By Date</option>
-					<option value="LowesttoHighest">Lowest to highest</option>
-					<option value="HighesttoLowest">Highest to Lowest</option>
+				<select  id="filter" class="filterBox">
+					<option value="ByDate" class="filterBox">By Date</option>
+					<option value="LowesttoHighest" class="filterBox">Lowest to highest</option>
+					<option value="HighesttoLowest" class="filterBox">Highest to Lowest</option>
 				</select>
-				<input type="button" value="search" name="Search" onclick="searching()">
-				<input type="button" value="Post" name="Post add" onclick="openModal('postAdd');fillCategory('selectCategory');">
+				<input type="button" value="Search" name="Search" onclick="searching()" class="searchButton">
 				
 			</div>
 			<div class="col-2">
 			</div>
+			<br>
+			<br>
 			<br>
 			<br>
 		</div>
@@ -61,6 +66,9 @@
 		<div class="slider">
 			<div class="slideshow-container">
 				<center>
+					<div class="mySlides fade">
+					  <img src="img/slider3.jpg" class="sliderImage">
+					</div>
 					<div class="mySlides fade">
 					  <img src="img/slider1.jpg" class="sliderImage">  
 					</div>
@@ -71,6 +79,7 @@
 			</div>
 			<br>
 			<div style="text-align:center">
+			  <span class="dot"></span>
 			  <span class="dot"></span>
 			  <span class="dot"></span>
 			</div>
@@ -125,18 +134,26 @@
 		<!-- Navigation bar for category ends here -->
 		<hr>
 		<!-- Trending  -->
-		<div>
+		<div class="trendingDiv">
 			<center>
+				<span>	
 				<h2 class="headings">Trending</h2>
+				</span>
 			</center>
 		</div>
 		<div id="trending">
 			
 		</div>
 		<!-- Trending  -->
-		
+		<br>
 		<!-- Recommendations starts here  -->
-		<div>
+		<div class="recommendationDiv">
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 			<center>
 				<h2 class="headings">Recommended</h2>
 			</center>
@@ -152,7 +169,8 @@
 		<br>
 		<br>
 
-		
+		<!-- Chat application starts here -->
+		<!-- chat application ends here -->
 		<br>
 		<br>
 		<br>
@@ -318,15 +336,82 @@
 			<div class="row" >
 				<div class="col-3">
 					<p class="footerHead"> <span>Navigation</span> </p>
+						
+					<ul>
+						<li class="footerLinks"> Privacy Policy </li>
+						<li class="footerLinks"> About us </li>
+						<li class="footerLinks"> Blog </li>
+					</ul>
+					
+				
 				</div>
 				<div class="col-3">
 					<p class="footerHead"> <span>Category</span> </p>
+					<ul>
+						<li class="footerLinks"> Cars and Bikes </li>
+						<li class="footerLinks"> Mobiles and Tablets </li>
+						<li class="footerLinks"> Electrical and appliances </li>
+						<li class="footerLinks"> Household and lifestyle </li>
+						<li class="footerLinks"> Others </li>
+					</ul>
 				</div>
 				<div class="col-3">
 					<p class="footerHead"> <span>Pages</span> </p>
+					<ul>
+						<li class="footerLinks">
+							Contact us
+						</li>
+						<li class="footerLinks">
+							Help
+						</li>
+						<li class="footerLinks">
+							Terms of use
+						</li>
+					</ul>
 				</div>
 				<div class="col-3">
 					<p class="footerHead"><span>Connect</span></p>
+					<li class="footerLinks">
+							Join us by signing up
+					</li>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">
+					
+				</div>
+				<div class="col-4">
+					<span>
+						<img src="images/fb.png" width="50px" height="50px">
+					</span>
+					<span>
+						<img src="images/googlePlus.png" width="50px" height="50px">
+					</span>
+					<span>
+						<img src="images/instagram.png" width="50px" height="50px">
+					</span>
+					<span>
+						<img src="images/tweeter.png" width="50px" height="50px">
+					</span>
+				</div>
+				<div class="col-4">
+					
+				</div>	
+			</div>
+			<div class="row">
+				<div class="col-3">
+					
+				</div>
+				<div class="col-4">
+					
+					<center>
+						<p class="footerLinks">COPYRIGHT © 2016 DealPanda </p>
+					
+					</center>
+					
+				</div>
+				<div class="col-4">
+					
 				</div>
 			</div>
 			
