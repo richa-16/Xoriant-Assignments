@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Drag &amp; Drop Images and Preview with localSotorage</title>
+	<style>
+		#dropbox {
+			width: 300px;
+			height: 300px;
+			border: 1px solid #888;
+			margin: 5px;
+		}
+		#imglist img {
+			width: 200px;
+			height: 200px;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div>
+			<button onclick="init()">Clear database</button>
+			<button onclick="location.reload()">Refresh page</button>
+		</div>
+		<div id="dropbox" ondrop="drop(event)" ondragover="dragover(event)" ondragleave="dragleave(event)">
+			Drop Images Here
+		</div>
+		<div id="imglist"></div>
+	</div>
+	
+	<script>
+
+		var imagesArray = [];
+
+		function drop(e){
+			e.preventDefault();
+			var data = e.dataTransfer;
+			var files = data.files;
+
+			if( files ) {
+				for(i=0;i<files.length;i++){
+					if( files[i].type == "image/jpeg" || files[i].type == "image/gif" || files[i].type == "image/png") {
+						addimages(files[i]);
+					}
+				}
+			}
+		}
+
+		function addFile(){
+
+			var reader = new FileReader();
+			reader.addEventListener("load",function(){
+				var tmpimg = "<img src='" + reader.result + "'>";
+				document.getElementById("imglist").innerHTML += tmpimg;
+				imagesArray.push(reader.result);
+				localStorage.setItem("storedImages",JSON.stringify(imagesArray));
+			},false);
+			if( file ) reader.readAsDataURL(file);
+		}	
+		
+
+		function addimages(file){
+			var reader = new FileReader();
+			reader.addEventListener("load",function(){
+				var tmpimg = "<img src='" + reader.result + "'>";
+				document.getElementById("imglist").innerHTML += tmpimg;
+				imagesArray.push(reader.result);
+				localStorage.setItem("storedImages",JSON.stringify(imagesArray));
+			},false);
+			if( file ) reader.readAsDataURL(file);
+		}	
+		function dragover(e){
+			e.preventDefault();
+			var tagetId = e.target.id;	document.getElementById(tagetId).style.background = "pink";
+		}	
+
+		function dragleave(e){
+			e.preventDefault();
+			var tagetId = e.target.id;	document.getElementById(tagetId).style.background = "white";
+		}			
+		
+		window.onunload = function(){
+			//do something
+		}
+		
+		window.onload = function(){
+			var imagesArrayload = localStorage.getItem("storedImages");
+			if( imagesArrayload ) {
+				var imgarr = JSON.parse(imagesArrayload);
+				for( i=0; i<imgarr.length; i++){
+					var tmpimg = "<img src='" + imgarr[i] + "' width=\"200px\">";
+					document.getElementById("imglist").innerHTML += tmpimg;
+					imagesArray.push(imgarr[i]);
+				}
+			}
+		}
+
+		function init(){
+			while (imagesArray.length) { imagesArray.pop(); }
+			localStorage.clear();
+			document.getElementById("imglist").innerHTML = "";
+		}
+
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
