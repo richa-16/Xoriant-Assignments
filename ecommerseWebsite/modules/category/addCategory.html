@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="js/category.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body onload="initialization()">
+	<div class="container" id="addCategory">
+			<p>Add Category:</p>
+		<form role="form" onSubmit="addCat()" >
+			<div class="form-group" id="id">
+      		<label for="categoryId">Id:</label>
+      		<input type="text" class="form-control" id="categoryId" disabled>
+    		</div>
+		
+			<div class="form-group">
+      		<label for="categoryName">Name:</label>
+      		<input type="text" class="form-control" id="categoryName" placeholder="Enter Name" required="required">
+    		</div>
+    		
+    		<div class="form-group">
+      		<label for="categoryDescription">Description:</label>
+      		<input type="text" class="form-control" id="categoryDescription" placeholder="Enter Description" required>
+    		</div>
+			
+			<div class="form-group">
+      		<label for="categoryURL">URL:</label>
+      		<input type="text" class="form-control" id="categoryURL" placeholder="Enter URL" required>
+    		</div>
+    		
+    		<button type="submit" class="btn btn-default" >Add Category</button>
+			
+		</form>
+		
+	<button type="button" class="btn btn-default" onclick="showCat()">Show Category</button>
+	</div>
+	</body>
+</html>

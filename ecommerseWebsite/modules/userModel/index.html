@@ -23,45 +23,27 @@
 		</center>
 	</div>
 	<div class="row">
-			<h3><u>Registration Details</u></h3>
-			<label>Name</label>
-			<input id="uname" type="text" placeholder="FirstName LastName (For ex. Abhay Suryawanshi)" > 
+			<label>Title</label>
+			<input id="title" name="title" type="text" placeholder="FirstName LastName (For ex. Abhay Suryawanshi)" > 
 			<label>Email</label>
-			<input id="uEmail" type="email" placeholder="Ex. abc.mnq@xyz.com">
+			<input id="pEmail" type="email" placeholder="Ex. abc.mnq@xyz.com">
 			<label>Contact</label>
-			<input id="uContact" type="tel" placeholder="Only digits" > 
-			<label>Username</label>
-			<input id="rusername" type="text" placeholder="Username with no spaces and special characters" > <br><br>
-			<label>Password</label>
-			<input id="rpassword" class="" type="password"  >
-			<label>Confirm Password</label><input id="uConfirmPass" class="" type="password">
-			<center>
-				<button type="button"  onclick="main(1)">Sign Up</button>
-			<hr width=100% align="left">
-			<button type="button" style="background-color:red;" onclick="closeTab('signUp')">Cancel</button>
-			<hr width=100% align="left">
-			</center>			
-	</div>
-	<br>
-	<br>
-	<div class="row">
-		<label><b>Username</b></label>
-	      <input type="text" placeholder="Enter Username" name="username" id="username" required>
-	
-	      <label><b>Password</b></label>
-	      <input type="password" placeholder="Enter Password" name="password" id="password" required>
-	        
-	      <button type="button" onclick="main(0)">Login</button>
-	    <!--   
-	      <input type="checkbox" checked="checked"> Remember me
-	    -->
-	    </div>
-	    <div class="container" style="background-color:#f1f1f1">
-	      <button type="button" onclick="closeModals('login')" class="cancelbtn">Cancel</button>
-	      <span class="psw">Forgot <a href="#">password?</a></span>
-	    </div>					
-	</div>
+			<input id="pContact" type="tel" placeholder="Contact Number">
 
+			<label>Product Name</label>
+			<input id="productName" type="text" placeholder="Product Name" >
+			
+			<label>Select category</label>
+			<select id="selectCategory"></select><br><br>
+			<label>Selling price</label>
+			<input id="sellingPrice" type="number" placeholder="Selling Price">
+			<label> Image </label>
+			<input type="file" id="image">
+			
+			<center>
+				<button type="button" value="Post" onclick="postAdd()">Post ads</button>
+			</center>	
+	</div>
 </div>
 </body>
 </html>

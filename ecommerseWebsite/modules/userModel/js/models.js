@@ -226,6 +226,7 @@ User.prototype.registerUser = function(){
 
 	var userUniqueId = "u"+count;
 	localStorage.setItem(userUniqueId , JSON.stringify(userObj));
+	// now increment the count
 	localStorage.setItem("userCount", count);
 	
 	console.log("User is registered ");
@@ -251,6 +252,7 @@ User.prototype.isUserLoggedIn = function(){
 // by checking it's email address 
 User.prototype.isUserPresent = function(){
 	
+	
 }
 
 // logout the user 
@@ -275,6 +277,117 @@ User.prototype.changeUserSettings = function(){
 
 // User class ends here 
 
+// Post class starts here 
+function Post(){
+	this.id = "";
+	this.catId = "";
+	this.postImage = "";
+	this.title = "";
+	this.userId = "";
+	this.price = "";
+	this.description = "";
+	this.postAddDate = "";
+	this.postStatus = "";
+}
+
+// Write getters and setters for this class
+Post.prototype.setId = function(id){
+	this.id = id;
+}
+
+Post.prototype.setCatId = function(id){
+	this.catId = id;
+}
+
+Post.prototype.setUserId = function(id){
+	this.userId = id;
+}
+
+Post.prototype.setPostImage = function(postImage){
+	this.postImage = postImage;
+}
+
+Post.prototype.setTitle = function(title){
+	this.title = title;
+}
+
+Post.prototype.setDescription = function(description){
+	this.description = description;
+}
+
+Post.prototype.setPostStatus = function(postStatus){
+	this.postStatus = postStatus;
+}
+
+Post.prototype.setPostAddDate = function(postAddDate){
+	this.postAddDate = postAddDate;
+}
+
+Post.prototype.setPostPrice = function(postPrice){
+	this.price = postPrice;
+}
+
+Post.prototype.addPost = function(){
+	// get Variables 
+	var id = DB.getPostCount();
+	// as of now it is static
+	var catId = 1; // getCategoryId
+	var userId = sessionStorage.userId;
+	var postImage = "";// write function to get image
+	var title = document.getElementById('').value;
+	var price = document.getElementById('').value;
+	var description = document.getElementById('').value;
+	var postDate = ""; // getCurrent Date
+	var postStatus = "available"; 
+	
+	var postObject = new Post();
+	postObject.setId(id);
+	postObject.setCatId(catId);
+	postObject.setUserId(userId);
+	postObject.setTitle(title);
+	postObject.setPostImage(postImage);
+	postObject.setPostPrice(price);
+	postObject.setDescription(description);
+	postObject.setPostAddDate(postDate);
+	postObject.setPostStatus(postStatus);
+	
+	var newPostId = "p"+id;
+	// Write this in different method 
+	// or in DB class
+	localStorage.setItem(newPost, JSON.stringify(postObject));
+	console.log("Entery has been added successfully into the local storage");
+	
+	var getPostObject = JSON.parse(localStorage.getItem(newPostId));
+	console.log(getPostObject.setTitle);
+	
+	// now add incremented post count
+	localStorage.setItem("postCount",id);
+}
+
+Post.prototype.deletePost = function(id){
+	
+}
+
+Post.prototype.updatePost = function(id){
+	
+}
+
+Post.prototype.getSinglePost = function(id){
+	
+}
+
+Post.prototype.getAllUserPosts = function(id){
+	
+}
+
+Post.prototype.getAllPostsByAllUsers = function(id){
+	
+}
+
+
+// Post class ends here 
+
+
 
 // LocalStorage class 
 function Database(){
@@ -290,6 +403,17 @@ Database.prototype.getUserCount = function(){
 	userCount++;
 	console.log("User count" + userCount);
 	return userCount;
+}
+
+Database.prototype.getPostCount = function(){
+	var count = localStorage.getItem("postCount");
+	var postCount = Number(count);
+	// increment userCount
+	postCount++;
+	console.log("Post count" + postCount);
+	console.log("Post count has been returned");
+	return postCount;
+	
 }
 
 // functions for post class starts here 
