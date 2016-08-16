@@ -118,6 +118,7 @@ User.prototype.getUserCount = function (){
 User.prototype.login = function(){
 	
 	var userName = document.getElementById('username').value;
+	console.log("Username " + userName);
 	var userPassword = document.getElementById('password').value;
 	// write logic for login 
 
@@ -130,21 +131,22 @@ User.prototype.login = function(){
 		var login = 0;
 		// store userId in sessionStorage as well 
 		var userId = 0;
-		var userName = 0;
+		//var userName = 0;
 		for(x = 1; x <count ; x++){
+			
 			var userIdString = "u"+x;
 			console.log("UserId " + userIdString);
 			var user = JSON.parse(localStorage.getItem(userIdString));
-			console.log(" User "+user);
-			console.log(" User name "+user.userName);
+			//console.log(" User "+user);
+			//console.log(" User name "+user.userName);
 			var uName = String(user.userName);
 			var uPass = String(user.password);
 			
-			console.log("DB name " +uName);
-			console.log("DB password " +uPass);
-			console.log(" Input name "+ userName);
-			console.log(" Input password " + userPassword);
-			if(username == uName && password == uPass) {
+			console.log("DB name " + typeof(uName));
+			console.log("DB password " + typeof(uPass));
+			console.log(" Input name "+ typeof(userName));
+			console.log(" Input password " + typeof(userPassword));
+			if(userName == uName && userPassword == uPass) {
 				// if password and username is matching then break 
 				console.log("LoggedIN");
 				login = 1;
@@ -156,6 +158,7 @@ User.prototype.login = function(){
 		if(login == 1){
 			// store as many variables as we want to store 
 			// in session storage 
+			console.log("User is loggedIn");
 			sessionStorage.loggeIn = 1;
 			sessionStorage.userId = userId;
 			sessionStorage.userName = userName;
@@ -180,8 +183,8 @@ User.prototype.registerUser = function(){
 	var email = document.getElementById('uEmail').value;
 	var contact = parseInt(document.getElementById('uContact').value);
 	var username = document.getElementById('rusername').value;
-	console.log("Username "+username);
 	
+	console.log("Username "+username);
 	var password = document.getElementById('rpassword').value;
 	var confirmPass = document.getElementById('uConfirmPass').value;
 	
@@ -211,6 +214,8 @@ User.prototype.registerUser = function(){
 	var count = DB.getUserCount();
 	
 	console.log("Count "+count);
+	
+	// add in user 
 	var userObj = new User();
 	userObj.setId(count);
 	userObj.setEmail(email);
@@ -218,15 +223,7 @@ User.prototype.registerUser = function(){
 	userObj.setUserName(username);
 	userObj.setPassword(password);
 	userObj.setPhone(contact);
-	/*
-	var userArray = [{
-		name: name,
-		email: email,
-		contact: contact,
-		username: username,
-		password: password
-	}];
-	*/
+
 	var userUniqueId = "u"+count;
 	localStorage.setItem(userUniqueId , JSON.stringify(userObj));
 	localStorage.setItem("userCount", count);
@@ -234,7 +231,7 @@ User.prototype.registerUser = function(){
 	console.log("User is registered ");
 	
 	// close current modal 
-	document.getElementById('signUp').style.display='none';
+	//document.getElementById('signUp').style.display='none';
 	
 	var userTestObject = JSON.parse(localStorage.getItem(userUniqueId));
 	console.log("output the object " + userTestObject.getUserName());
