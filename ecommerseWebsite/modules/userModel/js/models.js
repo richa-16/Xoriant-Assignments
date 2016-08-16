@@ -135,13 +135,16 @@ User.prototype.login = function(){
 			var userIdString = "u"+x;
 			console.log("UserId " + userIdString);
 			var user = JSON.parse(localStorage.getItem(userIdString));
-			var uName = user.getUsername();
-			var uPass = user.getPassword();
+			console.log(" User "+user);
+			console.log(" User name "+user.userName);
+			var uName = String(user.userName);
+			var uPass = String(user.password);
 			
-			console.log("User name " +uName);
-			console.log("User password " +uPass);
-			
-			if(username==uName && password==uPass) {
+			console.log("DB name " +uName);
+			console.log("DB password " +uPass);
+			console.log(" Input name "+ userName);
+			console.log(" Input password " + userPassword);
+			if(username == uName && password == uPass) {
 				// if password and username is matching then break 
 				console.log("LoggedIN");
 				login = 1;
@@ -209,7 +212,7 @@ User.prototype.registerUser = function(){
 	
 	console.log("Count "+count);
 	var userObj = new User();
-	userObj.setId(id);
+	userObj.setId(count);
 	userObj.setEmail(email);
 	userObj.setName(name);
 	userObj.setUserName(username);
@@ -298,4 +301,17 @@ Database.prototype.getUserCount = function(){
 // Page redirections 
 function refreshPage(){
 	location.reload();
+}
+
+
+// test this application 
+
+function main(parameter){
+	var user = new User();
+	if(parameter == 1){
+		user.registerUser();
+	}
+	if(parameter == 0){
+		user.login();
+	}
 }
