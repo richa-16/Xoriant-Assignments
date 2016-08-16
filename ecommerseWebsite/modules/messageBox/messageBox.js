@@ -1,5 +1,3 @@
-
-
 function sendMsg(){
 	//var div = document.getElementById("main_msg_holder").innerHTML;
 	var msg = document.getElementById("txtMsg").value ;

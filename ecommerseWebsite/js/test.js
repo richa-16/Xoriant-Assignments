@@ -1,4 +1,5 @@
 function loadTest(){
+	
 	console.log("Reached here ");
 	var para = document.getElementById('ans');
 	// localstorage 

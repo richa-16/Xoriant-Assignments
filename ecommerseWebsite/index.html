@@ -9,7 +9,6 @@
 	<script src="js/search.js"></script>
 	<script src="js/localStorage.js"></script>
 	<script src="js/chatApplication.js"></script>
-	
 	</head>
 	<body onload="renderUi();fillCategory('category')">
 		<!-- Header starts here  -->
@@ -199,19 +198,21 @@
 							
 							    <div class="container">
 							      <label><b>Username</b></label>
-							      <input type="text" placeholder="Enter Username" name="uname" id="username" required>
+							      <input type="text" placeholder="Enter Username" name="username" id="username" required>
 							
 							      <label><b>Password</b></label>
-							      <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+							      <input type="password" placeholder="Enter Password" name="password" id="password" required>
 							        
 							      <button type="button" onclick="loginUser()">Login</button>
+							    <!--   
 							      <input type="checkbox" checked="checked"> Remember me
+							    -->
 							    </div>
 							    <div class="container" style="background-color:#f1f1f1">
 							      <button type="button" onclick="closeModals('login')" class="cancelbtn">Cancel</button>
 							      <span class="psw">Forgot <a href="#">password?</a></span>
 							    </div>
-							  </form>
+							  </form>	
 								
 			  			</div>
 						<div class="col-3">
