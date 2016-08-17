@@ -26,7 +26,7 @@ function fillCategory(idName){
 	    sel.appendChild(opt);
 	}
 	console.log("Calling ");
-	renderUiFromSearch();
+	//renderUiFromSearch();
 }
 function searching(){
 	

@@ -506,16 +506,11 @@ function dragleave(e){
 
 function main(parameter){
 	
-	if(parameter == 3){
-		console.log("Reached in 4");
-		var post new Post();
-		post.DisplayAllPosts();
-	}
 	// cumpulsoryFunctions 
-	
+	console.log("Reached in " + parameter);
 	if(parameter == 0){
-		//var user = new User();
-		//user.login();
+		var user = new User();
+		user.login();
 		
 	}
 	if(parameter == 1){
@@ -527,7 +522,11 @@ function main(parameter){
 		var post = new Post();
 		post.addPost();
 	}
-	
+	if(parameter == 3){
+		console.log("Reached in 3");
+		var post new Post();
+		post.DisplayAllPosts();
+	}
 }
 
 function displaySomething(){

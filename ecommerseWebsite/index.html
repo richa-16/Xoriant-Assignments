@@ -9,8 +9,9 @@
 	<script src="js/search.js"></script>
 	<script src="js/localStorage.js"></script>
 	<script src="js/chatApplication.js"></script>
+	<script src="js/models.js"></script>
 	</head>
-	<body onload="renderUi();fillCategory('category')">
+	<body onload="renderUi();fillCategory('category');">
 		<!-- Header starts here  -->
 		<div class="navigationBar">
 			<ul class="topnav" id="myTopnav">
@@ -23,8 +24,9 @@
 			  		
 			  	</div>
 			  	<div class="col-2">
-			  		<li><a type="button" name="Post add" onclick="openModal('postAdd');fillCategory('selectCategory');" class="postButton">
-			  		Post</a><li>
+			  		<div class="showPost" id="showPost">
+			  			
+			  		</div>	
 			  	</div>
 			  	<div class="col-3" id="profileInfo">
 			  		<!-- Write login function on onclick -->
@@ -52,7 +54,8 @@
 					<option value="HighesttoLowest" class="filterBox">Highest to Lowest</option>
 				</select>
 				<input type="button" value="Search" name="Search" onclick="searching()" class="searchButton">
-				
+		
+				<button type="button" value="" onclick="displaySomething()">Post ads</button>
 			</div>
 			<div class="col-2">
 			</div>
@@ -130,6 +133,10 @@
 		</div>
 		<br>
 		<br>
+		<!-- Display Post -->
+		<div class="displayPost" id="displayPost" >
+		</div>
+		<!-- Display Post -->
 		<!-- Navigation bar for category ends here -->
 		<hr>
 		<!-- Trending  -->
@@ -203,7 +210,7 @@
 							      <label><b>Password</b></label>
 							      <input type="password" placeholder="Enter Password" name="password" id="password" required>
 							        
-							      <button type="button" onclick="loginUser()">Login</button>
+							      <button type="button" onclick="main(0)">Login</button>
 							    <!--   
 							      <input type="checkbox" checked="checked"> Remember me
 							    -->
@@ -250,7 +257,7 @@
 								<input id="rpassword" class="" type="password"  >
 								<label>Confirm Password</label><input id="uConfirmPass" class="" type="password">
 								<center>
-									<button type="button"  onclick="registerUser()">Sign Up</button>
+									<button type="button"  onclick="main(1)">Sign Up</button>
 								<hr width=100% align="left">
 								<button type="button" style="background-color:red;" onclick="closeTab('signUp')">Cancel</button>
 								<hr width=100% align="left">
@@ -301,27 +308,29 @@
 								<center>
 									<h3><u>Post Free Add</u></h3>	
 								</center>
-								
 								<span onclick="closeModals('postAdd')" class="close" title="Close Modal">&times;</span>
-								<label>Name</label>
-								<input id="pName" type="text" placeholder="FirstName LastName (For ex. Abhay Suryawanshi)" > 
-								<label>Email</label>
-								<input id="pEmail" type="email" placeholder="Ex. abc.mnq@xyz.com">
-								<label>Contact</label>
-								<input id="pContact" type="tel" placeholder="Contact Number">
-
-								<label>Product Name</label>
-								<input id="productName" type="text" placeholder="Product Name" >
+								<label>Title</label>
+								<input id="postTitle" name="postTitle" type="text" placeholder="Enter the title" > 
 								<label>Select category</label>
-								<select id="selectCategory"></select><br><br>
-
-								<label>Selling price</label>
-								<input id="sellingPrice" type="number" placeholder="Selling Price">
-								<label> Image </label>
-								<input type="file" id="image">
+								<select id="postCategory" name="postCategory" class="filterBox">
+									
+								</select>
+								<input id="postCategory" name="postCategory" type="text" placeholder="Post category">
 								
+								<br>
+								<label>Price</label>
+								<input id="postPrice" name="postPrice" type="number" placeholder="Enter price">
+								<label>Product description </label>
+								<input id="postDescription" name="postDescription" type="text" placeholder="Enter product description here" >
+								<!-- Change this file to file -->
+								<label> Image </label>
 								<center>
-									<button type="button" value="Post" onclick="postAdd()">Post ads</button>
+								<div id="postImage" name="postImage" ondrop="drop(event)" ondragover="dragover(event)" ondragleave="dragleave(event)">
+									Drop Image Here
+								</div>
+								</center>
+								<center>
+									<button type="button" value="Post" onclick="main(2)">Post ads</button>
 								</center>
 							</div>
 						</form>
