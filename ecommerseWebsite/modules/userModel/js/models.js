@@ -331,12 +331,13 @@ Post.prototype.addPost = function(){
 	// get Variables 
 	var id = DB.getPostCount();
 	// as of now it is static
-	var catId = 1; // getCategoryId
+	var catId = document.getElementById('postCategory').value;;
 	var userId = sessionStorage.userId;
 	var postImage = "";// write function to get image
-	var title = document.getElementById('').value;
-	var price = document.getElementById('').value;
-	var description = document.getElementById('').value;
+	var title = document.getElementById('postTitle').value;
+	var price = document.getElementById('postPrice').value;
+	price = Number(price);
+	var description = document.getElementById('postDescription').value;
 	var postDate = ""; // getCurrent Date
 	var postStatus = "available"; 
 	
@@ -354,11 +355,11 @@ Post.prototype.addPost = function(){
 	var newPostId = "p"+id;
 	// Write this in different method 
 	// or in DB class
-	localStorage.setItem(newPost, JSON.stringify(postObject));
+	localStorage.setItem(newPostId, JSON.stringify(postObject));
 	console.log("Entery has been added successfully into the local storage");
 	
 	var getPostObject = JSON.parse(localStorage.getItem(newPostId));
-	console.log(getPostObject.setTitle);
+	console.log(getPostObject.title);
 	
 	// now add incremented post count
 	localStorage.setItem("postCount",id);
@@ -429,10 +430,16 @@ function refreshPage(){
 
 function main(parameter){
 	var user = new User();
+	
 	if(parameter == 1){
 		user.registerUser();
 	}
 	if(parameter == 0){
 		user.login();
+	}
+	if(parameter == 2){
+		console.log("Reached in post");
+		var post = new Post();
+		post.addPost();
 	}
 }

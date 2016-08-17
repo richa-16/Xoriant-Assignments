@@ -24,24 +24,19 @@
 	</div>
 	<div class="row">
 			<label>Title</label>
-			<input id="title" name="title" type="text" placeholder="FirstName LastName (For ex. Abhay Suryawanshi)" > 
-			<label>Email</label>
-			<input id="pEmail" type="email" placeholder="Ex. abc.mnq@xyz.com">
-			<label>Contact</label>
-			<input id="pContact" type="tel" placeholder="Contact Number">
-
-			<label>Product Name</label>
-			<input id="productName" type="text" placeholder="Product Name" >
-			
+			<input id="postTitle" name="postTitle" type="text" placeholder="Enter the title" > 
 			<label>Select category</label>
-			<select id="selectCategory"></select><br><br>
-			<label>Selling price</label>
-			<input id="sellingPrice" type="number" placeholder="Selling Price">
-			<label> Image </label>
-			<input type="file" id="image">
+			<input id="postCategory" name="postCategory" type="postCategory" placeholder="Post category">
+			<label>Price</label>
+			<input id="postPrice" name="postPrice" type="number" placeholder="Enter price">
 			
+			<label>Product description </label>
+			<input id="postDescription" name="postDescription" type="text" placeholder="Enter product description here" >
+			<!-- Change this file to file -->
+			<label> Image </label>
+			<input id="postImage" name="postImage" type="file">
 			<center>
-				<button type="button" value="Post" onclick="postAdd()">Post ads</button>
+				<button type="button" value="Post" onclick="main(2)">Post ads</button>
 			</center>	
 	</div>
 </div>
