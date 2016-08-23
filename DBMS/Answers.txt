@@ -69,4 +69,9 @@ select e.id , e.name , e.role , e.salary , e.DEPT_NO , e.HIRED_DATE , d.NAME fro
 (SELECT SALARY FROM EMP WHERE NAME = 'Steve');
 6)select d.id , d.NAME , e.NAME from EMP e join dept d on e.DEPT_NO = d.ID ORDER BY d.id,d.name ;
 7)
+8)
+9)
+SELECT  e.NAME, e.ROLE , e.DEPT_NO, e.SALARY , d.NAME FROM EMP  e JOIN DEPT d on e.DEPT_NO = d.ID WHERE e.SALARY = (select min(SALARY) FROM  EMP M WHERE M.DEPT_NO = e.DEPT_NO) ORDER BY e.SALARY;
+10)
+SELECT  e.NAME, e.ROLE , e.DEPT_NO, e.SALARY , d.NAME FROM EMP  e JOIN DEPT d on e.DEPT_NO = d.ID WHERE e.SALARY = (select max(SALARY) FROM  EMP M WHERE M.DEPT_NO = e.DEPT_NO) ORDER BY e.SALARY;
 
