@@ -55,3 +55,18 @@ UPDATE EMP SET HIRED_DATE = sysdate;
 54) select NAME || ' joined on ' || TO_CHAR (TO_DATE (to_char(HIRED_DATE,'DD'), 'j'), 'jsp') || ' '||to_char(HIRED_DATE,'month')|| '  ' ||TO_CHAR (TO_DATE (to_char(HIRED_DATE,'yyyy'), 'j'), 'jsp') from EMP;
 55) SELECT NAME FROM EMP ORDER BY NAME;
 61) SELECT * FROM EMP ORDER BY HIRED_DATE;
+
+-------------------------------------
+Complex qyeries 
+1) SELECT e.NAME , e.SALARY, d.NAME FROM EMP e JOIN DEPT d ON e.DEPT_NO = d.ID WHERE e.SALARY = (select min(SALARY) FROM EMP); 
+2) SELECT  e.NAME, e.ROLE , e.DEPT_NO, e.SALARY FROM EMP  e WHERE e.SALARY = (select min(SALARY) FROM  EMP d WHERE d.DEPT_NO = e.DEPT_NO) ORDER BY e.SALARY;
+3) 
+SELECT e.ID , e.NAME, e.ROLE, e.SALARY, e.DEPT_NO, d.NAME  FROM EMP e JOIN DEPT d on e.DEPT_NO = d.ID WHERE e.ROLE = 'Clerk';
+4) 
+select e.id , e.name , e.role , e.salary , e.DEPT_NO , e.HIRED_DATE , d.NAME from emp e join dept d on e.DEPT_NO = d.ID WHERE d.NAME ='RnD';
+5) 
+select e.id , e.name , e.role , e.salary , e.DEPT_NO , e.HIRED_DATE , d.NAME from emp e join dept d on e.DEPT_NO = d.ID WHERE d.NAME ='RnD' AND e.SALARY > 
+(SELECT SALARY FROM EMP WHERE NAME = 'Steve');
+6)select d.id , d.NAME , e.NAME from EMP e join dept d on e.DEPT_NO = d.ID ORDER BY d.id,d.name ;
+7)
+
