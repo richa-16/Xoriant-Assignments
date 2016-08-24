@@ -476,4 +476,74 @@ db.employees.find().forEach(function(data){
 
  46)
 
+ db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    var flag = 0;
+    for(var i = 0 ; i< length ; i++){
+        var singleChar = names.charAt(i);
+        if(singleChar == 'a' && flag != 1){
+            flag = 1;
+        }else{            
+            if(flag == 1 && singleChar == 'r'){
+                print(data);
+                flag = 0;
+            }else{
+                flag = 0;
+            }
+        }
+    }
+    print(ans);
+ })
  
+
+47)
+
+db.employees.find().forEach(function(data){
+    var salary = data.salary;
+    var ans = Math.round((salary / 1000))*1000;
+    print(ans);
+ })
+ 
+48)
+
+db.employees.find().forEach(function(data){
+    var salary = data.salary;
+    var ans = parseInt(salary/30); 
+    print(ans);
+ })
+ 
+
+49)
+db.employees.find().forEach(function(data){
+    var salary = data.salary;
+    var names = data.name;
+    var bonus = salary*0.2;
+    if(bonus >501){
+        print(names +" " + (salary+500));
+    }else{
+        print(names +" " + (salary+bonus));
+    }
+ })
+ 
+50)
+db.employees.find().forEach(function(data){
+    var salary = data.salary;
+    var names = data.name;
+    var bonus = salary*0.2;
+    if(bonus >201){
+        print(names +" " + (salary+200));
+    }else{
+        print(names +" " + (salary+bonus));
+    }
+ })
+
+ 51)
+ 
+ 
+
+
+
+
