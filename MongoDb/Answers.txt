@@ -48,3 +48,49 @@ db.employees.find({$where : function(){
         }
      }
     }} ,{ name: 1 , salary: 1 ,"department.id":1 , role:1})
+
+11) 
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    if(x == "Clerk" || x == "Coder"){
+        return true;
+    }
+}})
+
+12)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    if(x == "Managers" && y == 3){
+        return true;
+    }
+}})
+
+13)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    if((x == "Managers" || x == "Clerk") && y == 1){
+        return true;
+    }
+}})
+
+14)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    if((x == "Managers" )|| (x == "Clerk" && y == 1)){
+        return true;
+    }
+}})
+
+15)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    if((x == "Managers" && y == 1 )|| (x == "Clerk" && y == 2)){
+        return true;
+    }
+}})
+
+16)
