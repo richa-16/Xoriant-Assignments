@@ -5,3 +5,46 @@ MongoDb Assignement Answers
 db.employees.find()
 3) db.employees.find({"department.id":1})
 4)
+db.employees.find({role:"Clerk"},{name:1 , number:1 , "department.id":1 })
+5)
+db.employees.find({"department.id":{$gt:1}},{name:1 , number:1 , "department.id":1 })
+6)
+db.employees.find({$where : function(){ return this.salary > this.commision}})
+// or 
+db.employees.find({$where : function(){ 
+    var x = this.salary;
+    var y = this.commision;
+    return x > y}})
+
+7) 
+db.employees.find({$where : function(){ return this.commision > (this.salary*0.6) }})
+8)
+db.employees.find({$where : function(){ return this.commision > (this.salary*0.5) }})
+9)
+db.employees.find({$where : function(){ 
+    var x = this.salary;
+    var m = 10;
+    var y = NumberInt(this.department.id);
+    if(y == 1){
+        if(this.salary > 2000){
+            return true;
+        }else{
+            return false;
+          }
+     }
+    }} ,{ name: 1 , salary: 1 ,"department.id":1 , role:1})
+10)
+db.employees.find({$where : function(){ 
+    var x = this.salary;
+    var y = NumberInt(this.department.id);
+    //
+    if(y == 1){
+        if(this.role ="Clerk"){
+            if(this.salary >= 1500){
+                return true;
+            }else{
+                return false;
+            }
+        }
+     }
+    }} ,{ name: 1 , salary: 1 ,"department.id":1 , role:1})
