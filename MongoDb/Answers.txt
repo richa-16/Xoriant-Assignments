@@ -407,3 +407,73 @@ db.employees.find().forEach(function(data){
  })
 
 41)
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    if(names.charAt(0) != 'a'){
+        print(data);
+    }
+ })
+
+42)
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    if(names.charAt(length-1) != 'r'){
+        print(data);
+    }
+ })
+
+43)
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    for(var i = 0; i< 3; i++){
+        ans += names.charAt(i);
+    }
+    print(ans);
+ })
+
+44)
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    print(names);
+    var ans = "";
+    
+    for(var i = (length-1); i> (length-4); i--){
+        ans += names.charAt(i);
+    }
+    // reverse order 
+    print("Reverse order " +ans);
+    var trueAns = "";
+    for(var i = 2 ; i>=0 ; i--){
+        trueAns += ans.charAt(i); 
+    }
+    print("Actual order "+trueAns);
+ })
+45)
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    for(var i = 0 ; i< length ; i++){
+        var singleChar = names.charAt(i);
+        if(singleChar == 'a'){
+            ans += 'e';
+        }else{
+            ans += singleChar; 
+        }
+    }
+    print(ans);
+ })
+
+ 46)
+
+ 
