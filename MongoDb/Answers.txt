@@ -586,10 +586,40 @@ db.employees.find().forEach(function(data){
 3) Ordering by queries 
 -----------------------
 54)
-
-
+db.employees.find().sort({name:1});
  
+55)
+db.employees.find().sort({hired_date:1});
+ 
+56)
+db.employees.find().sort({name:1 , role:1, salary:1 } );
+ 
+57)
+db.employees.find().sort({role:1, salary:-1 } );
+ 
+58)
+db.employees.find().sort({role:-1, salary:-1 } );
+59)
+db.employees.find().toArray().sort(function(doc1, doc2) { 
+    var month1 = doc1.hired_date.getMonth();
+    var month2 = doc2.hired_date.getMonth();
+    return month1 - month2; 
+});
 
+60)
+db.employees.find().toArray().sort(function(doc1, doc2) { 
+    var month1 = doc1.hired_date.getMonth();
+    var month2 = doc2.hired_date.getMonth();
+    var year1 = doc1.hired_date.getFullYear();
+    var year2 = doc2.hired_date.getFullYear();
+    
+    if(year1 == year2){
+        return month1 - month2; 
+    }else{
+        return year2- year1;
+    }
+    
+});
 
 
 
