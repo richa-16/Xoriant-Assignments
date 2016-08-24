@@ -257,4 +257,72 @@ db.employees.find({$where : function(){
     }
 }})
 
+Numeric , character and date function
+-------------------------------------
 
+31) 
+db.employees.find({$where : function(){
+        var hireDate = this.hired_date;
+        var month = hireDate.getMonth();
+        // 0 is january 
+        if(month == 1){
+            return true;
+        }
+        
+    }})
+32) 
+
+db.employees.find({$where : function(){
+        /* Code to get last and first date of particular month */
+        var date = new Date();
+        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    
+        /* Code to get last and first date of particular month */
+    
+        var hireDate = this.hired_date;
+        var day = hireDate.getDate();
+    
+        // 0 is january 
+        if(day == lastDay.getDate()){
+            return true;
+        }
+        
+    }})
+33)
+db.employees.find({$where : function(){
+        var date = new Date();
+        var currentYear = date.getFullYear();
+        
+        var hireDate = this.hired_date;
+        var hiredYear = hireDate.getFullYear();
+    
+        // 0 is january 
+        if((currentYear - hiredYear)>=12){
+            return true;
+        }
+    
+    }})
+34)
+
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var role = data.role;
+    var hiredDate = data.hired_date;
+    hiredYear = hiredDate.getFullYear();
+    if(role == "Manager" && hiredYear == 2007){
+        print(data);
+    }
+ })
+
+35)
+
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var role = data.role;
+    var names = data.name;
+    print(names +", "+ role);
+    
+ })
