@@ -3,4 +3,5 @@ MongoDb Assignement Answers
 1) db.employees.find({},{department:1})
 2)
 db.employees.find()
-3) 
+3) db.employees.find({"department.id":1})
+4)
