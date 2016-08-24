@@ -326,3 +326,84 @@ db.employees.find().forEach(function(data){
     print(names +", "+ role);
     
  })
+
+ 36)
+
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    // 
+    print(names.charAt(0).toUpperCase() + names.slice(1));
+ })
+ 
+37)
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    for(var i = 0; i< 15 - length; i++){
+        ans += " ";
+    }
+    ans += names;
+    print(ans);
+ })
+ 
+38)
+
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    for(var i = 0; i< 15 - length; i++){
+        ans += "_";
+    }
+    ans += names;
+    print(ans);
+ })
+ 
+39)
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    print(length);
+ })
+40)
+
+// little logic problem 
+// solve later 
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var max = 20;
+    var length = names.length;
+    var leftSpace = 0;
+    var rightSpace = 0;
+    var remain = max - length;
+    if(remain % 2 == 0){
+        leftSpace = remain /2;
+        rightSpace = remain /2;
+    }else{
+        leftSpace = remain /2;
+        rightSpace = leftSpace + 1 ;
+    }
+    
+    
+    var ans = "";
+    for(var i = 0; i< leftSpace; i++){
+        ans += "_";
+    }
+    ans += names;
+    for(var i = 0; i< rightSpace; i++){
+        ans += "_";
+    }
+    print(ans);
+ })
+
+41)
