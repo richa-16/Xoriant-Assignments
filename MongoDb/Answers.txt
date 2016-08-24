@@ -94,3 +94,59 @@ db.employees.find({$where : function(){
 }})
 
 16)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    var salary = this.salary;
+    if((x != "Managers")&&(x != "Clerk") &&(salary >=2000)){
+        
+        return true;
+    }
+}})
+
+17)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    var salary = this.salary;
+    if((salary >=1200) && (salary <=1400)){
+        
+        return true;
+    }
+}})
+
+    
+18)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    var salary = this.salary;
+    if(x == "Clerk" || x == "Analyst" || x == "Coder"){
+        return true;
+    }
+}})
+
+
+19)
+
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    var salary = this.salary;
+    if(x != "Clerk" && x != "Analyst" && x != "Salesman"){
+        return true;
+    }
+}})
+
+20)
+db.employees.find({$where : function(){ 
+    var role = this.role;
+    var deptId = this.department.id;
+    var salary = this.salary;
+    var commision = this.commision;
+    if(commision == "" || commision == null){
+        return true;
+    }
+}})
+
+21)
