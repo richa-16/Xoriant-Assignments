@@ -23,5 +23,47 @@ Complex querries :
 	db.accounts.find({balance : 10000}).explain("executionStats")
 3)
 
-	
+	db.employees.aggregate([
+		{$project : {"Name" :"$name" , "Salary" :"$salary" , "Department Name ": "$department.name"}},
+		{$sort : {Salary : 1}},
+		{$limit : 1}
+	])
+4)
 
+	db.employees.aggregate([
+		//{$project : {"Name" :"$name" , "Salary" :"$salary" , "DepartmentName ": "$department.name" , "Role" : "$role"} },
+		{$group : {_id: "$department.name" , minSalary :{$min : "$salary"}}}
+	])
+5)
+	db.employees.aggregate([
+	    {$project : {"name" :"$name" , "salary" :"$salary" , "dpName": "$department.name" , "dpId" :"$department._id","role" : "$role"} },
+	    {$match : {role : "Clerk"}},
+	    {$sort : {salary : 1}}
+	])
+
+6)	// projection is skipped here 
+	db.employees.aggregate([
+   		{$match : { "department.name" : "Sales"}}
+	])
+
+7) 
+8)
+9)
+10)
+11)
+12)
+13)
+14)
+15)
+16)
+	db.employees.aggregate(
+	    {$sort: {salary : 1}},
+	    {$limit : 2},
+	    {$skip : 1}
+	)
+17)
+	db.employees.aggregate(
+	    {$sort: {salary : -1}},
+	    {$limit : 3}
+	)
+18)
