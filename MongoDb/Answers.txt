@@ -612,11 +612,17 @@ db.employees.find().toArray().sort(function(doc1, doc2) {
     var month2 = doc2.hired_date.getMonth();
     var year1 = doc1.hired_date.getFullYear();
     var year2 = doc2.hired_date.getFullYear();
-    
+    /*
     if(year1 == year2){
         return month1 - month2; 
     }else{
         return year2- year1;
+    }
+    */
+    if(month1 == month2){
+    	return year2 - year1;
+    }else{
+    	month1 - month2;
     }
     
 });
