@@ -620,9 +620,9 @@ db.employees.find().toArray().sort(function(doc1, doc2) {
     }
     */
     if(month1 == month2){
-    	return year2 - year1;
+    	return year1 - year2;
     }else{
-    	month1 - month2;
+    	return month1 - month2;
     }
     
 });
