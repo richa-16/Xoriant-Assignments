@@ -1,0 +1,27 @@
+Complex querries :
+------------------------
+
+1) 
+	1) db.audit.insert({x:1,y:2})
+	2) db.audit.insert({x:1,y:2})
+	3) db.audit.update({x:6},{$set : {x: 7}})
+	4) db.audit.remove({x:7})
+	5) db.audit.find().pretty().sort({$natural:-1})
+
+2)	
+	// insert records 
+	for( var i = 1 ; i < 10000 ; i++){
+    		db.accounts.insert({balance: i*10});
+	}
+	// search record
+	db.accounts.find({balance : 10000}).explain()
+
+	// create index 
+	db.accounts.createIndex({balance:1})
+
+	//to get execution stats
+	db.accounts.find({balance : 10000}).explain("executionStats")
+3)
+
+	
+
