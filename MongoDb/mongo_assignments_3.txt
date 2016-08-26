@@ -1,0 +1,7 @@
+1) Create 3 collections. Export first collection to bson format, second collection to json format & third collection to csv format. Start another mongod instance on different port & import these files into new mongod instance.
+
+2) Store couple of files into mongo & notice how it divides your files into chunks.
+
+3) Create mongo replica set having one primary & three secondary nodes(two secondary nodes should handle read operations & one should be backup node & hence to be kept hidden).
+
+4) Create 2 collections. First collection should be sharded based upon range based partitioning & second should be sharded hash based partitioning. Observe the chunk distribution across the shards.

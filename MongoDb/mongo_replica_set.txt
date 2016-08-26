@@ -1,0 +1,48 @@
+Steps to create mongo replica sets:
+
+Refer link: https://docs.mongodb.org/v2.6/tutorial/deploy-replica-set-for-testing/
+
+mkdir c:\data\node1
+mkdir c:\data\node2
+mkdir c:\data\node3
+
+cd C:\MongoDB\Server\3.2\bin
+
+start mongod --replSet myRS --logpath "1.log" --dbpath c:\data\node1 --port 27017
+start mongod --replSet myRS --logpath "2.log" --dbpath c:\data\node2 --port 27018
+start mongod --replSet myRS --logpath "3.log" --dbpath c:\data\node3 --port 27019
+
+mongo --port 27017
+
+rsconf = {
+           _id: "myRS",
+           members: [
+                      {
+                       _id: 0,
+                       host: "Anand-KU:27017"
+                      }
+                    ]
+         }
+
+rs.initiate(rsconf)
+rs.conf()
+
+rs.add("Anand-KU:27018")
+rs.add("Anand-KU:27019")
+
+Testing whether data is replicated or not:
+Open cmd for "mongo --port 27018"
+Run command "db.getMongo().setReadPref('secondary')"	//primary, primaryPreferred, secondary, secondaryPreferred, nearest
+
+Confirm there is nothing in "contact" collection:
+db.contact.find().pretty()
+
+Now, Go to mongo --port 27017 and insert a document inside contact collection:
+db.contact.insert({name: "Anand", phone: 11111})
+
+Now switch to "mongo --port 27018" & list down all documents inside "contact":
+db.contact.find().pretty()
+You should find the same document inserted inside primary node i.e. 27017
+It proves that data is being replicated from 27017 to 27018.
+You can also try for 27019.
+
