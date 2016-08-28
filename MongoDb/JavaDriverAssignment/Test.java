@@ -1,8 +1,12 @@
+import java.util.Arrays;
+
 import org.bson.BSONObject;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 
 public class Test {
@@ -29,6 +33,15 @@ public class Test {
 	}
 
 	public static void solutionA() {
+		System.out.println("Solution A");
+		Iterable<DBObject> output = coll
+				.aggregate(Arrays.asList((DBObject) new BasicDBObject("$group",
+						new BasicDBObject("_id", "$location").append(
+								"countOrders", new BasicDBObject("$sum", 1)))))
+				.results();
+		for (DBObject dbObject : output) {
+			System.out.println(dbObject);
+		}
 
 	}
 
@@ -59,6 +72,33 @@ public class Test {
 	}
 
 	public static void solutionD() {
+		System.out.println("Solution D");
+		Iterable<DBObject> output = coll.aggregate(Arrays.asList(
+				(DBObject) new BasicDBObject("$match",
+						new BasicDBObject("status", "Open")),
+				(DBObject) new BasicDBObject("$sort",
+						new BasicDBObject("price", 1))))
+				.results();
+		for (DBObject dbObject : output) {
+			System.out.println(dbObject);
+		}
+	}
+
+	public static void samples() {
+		Iterable<DBObject> output = coll.aggregate(Arrays.asList(
+
+				(DBObject) new BasicDBObject("$unwind", "$views"),
+				(DBObject) new BasicDBObject("$match",
+						new BasicDBObject("views.isActive", true)),
+				(DBObject) new BasicDBObject("$sort",
+						new BasicDBObject("views.date", 1)),
+				(DBObject) new BasicDBObject("$limit", 200),
+				(DBObject) new BasicDBObject("$project",
+						new BasicDBObject("_id", 0)
+								.append("directKey", "$views.directKey")
+								.append("url", "$views.url")
+								.append("date", "$views.date"))))
+				.results();
 
 	}
 }
