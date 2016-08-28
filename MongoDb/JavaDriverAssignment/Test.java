@@ -46,7 +46,18 @@ public class Test {
 	}
 
 	public static void solutionB() {
-
+		System.out.println("Solution B");
+		Iterable<DBObject> output = coll
+				.aggregate(Arrays.asList(
+						(DBObject) new BasicDBObject("$unwind", "$items"),
+						(DBObject) new BasicDBObject("$group",
+								new BasicDBObject("_id", "$items").append(
+										"countPerFruit",
+										new BasicDBObject("$sum", 1)))))
+				.results();
+		for (DBObject dbObject : output) {
+			System.out.println(dbObject);
+		}
 	}
 
 	public static void solutionC() {
