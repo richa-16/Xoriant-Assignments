@@ -1,0 +1,631 @@
+MongoDb Assignement Answers
+----------------------------
+1) db.employees.find({},{department:1})
+2)
+db.employees.find()
+3) db.employees.find({"department.id":1})
+4)
+db.employees.find({role:"Clerk"},{name:1 , number:1 , "department.id":1 })
+5)
+db.employees.find({"department.id":{$gt:1}},{name:1 , number:1 , "department.id":1 })
+6)
+db.employees.find({$where : function(){ return this.salary > this.commision}})
+// or 
+db.employees.find({$where : function(){ 
+    var x = this.salary;
+    var y = this.commision;
+    return x > y}})
+
+7) 
+db.employees.find({$where : function(){ return this.commision > (this.salary*0.6) }})
+8)
+db.employees.find({$where : function(){ return this.commision > (this.salary*0.5) }})
+9)
+db.employees.find({$where : function(){ 
+    var x = this.salary;
+    var m = 10;
+    var y = NumberInt(this.department.id);
+    if(y == 1){
+        if(this.salary > 2000){
+            return true;
+        }else{
+            return false;
+          }
+     }
+    }} ,{ name: 1 , salary: 1 ,"department.id":1 , role:1})
+10)
+db.employees.find({$where : function(){ 
+    var x = this.salary;
+    var y = NumberInt(this.department.id);
+    //
+    if(y == 1){
+        if(this.role ="Clerk"){
+            if(this.salary >= 1500){
+                return true;
+            }else{
+                return false;
+            }
+        }
+     }
+    }} ,{ name: 1 , salary: 1 ,"department.id":1 , role:1})
+
+11) 
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    if(x == "Clerk" || x == "Coder"){
+        return true;
+    }
+}})
+
+12)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    if(x == "Managers" && y == 3){
+        return true;
+    }
+}})
+
+13)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    if((x == "Managers" || x == "Clerk") && y == 1){
+        return true;
+    }
+}})
+
+14)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    if((x == "Managers" )|| (x == "Clerk" && y == 1)){
+        return true;
+    }
+}})
+
+15)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    if((x == "Managers" && y == 1 )|| (x == "Clerk" && y == 2)){
+        return true;
+    }
+}})
+
+16)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    var salary = this.salary;
+    if((x != "Managers")&&(x != "Clerk") &&(salary >=2000)){
+        
+        return true;
+    }
+}})
+
+17)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    var salary = this.salary;
+    if((salary >=1200) && (salary <=1400)){
+        
+        return true;
+    }
+}})
+
+    
+18)
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    var salary = this.salary;
+    if(x == "Clerk" || x == "Analyst" || x == "Coder"){
+        return true;
+    }
+}})
+
+
+19)
+
+db.employees.find({$where : function(){ 
+    var x = this.role;
+    var y = this.department.id;
+    var salary = this.salary;
+    if(x != "Clerk" && x != "Analyst" && x != "Salesman"){
+        return true;
+    }
+}})
+
+20)
+db.employees.find({$where : function(){ 
+    var role = this.role;
+    var deptId = this.department.id;
+    var salary = this.salary;
+    var commision = this.commision;
+    if(commision == "" || commision == null){
+        return true;
+    }
+}})
+
+21)
+db.employees.find({$where : function(){ 
+    var role = this.role;
+    var deptId = this.department.id;
+    var salary = this.salary;
+    var commision = this.commision;
+    if(commision == 0 ){
+        return true;
+    }
+}})
+
+22)
+db.employees.distinct("role")
+
+23)
+db.employees.find({$where : function(){ 
+    var role = this.role;
+    var deptId = this.department.id;
+    var salary = this.salary;
+    var commision = this.commision;
+    if(commision == 0 || commision <100 || commision == null || commision ==""){
+        return true;
+    }
+}})
+
+24)
+db.employees.find().forEach(function(doc){
+    //print(doc);
+    var x = 0;
+    if( doc.commision == 0 || doc.commision == null || doc.commision == "" ){
+        x = doc.salary + 250;
+        
+    }else{
+        x = doc.salary + doc.commision;
+    }
+    print("Salary " + x);
+    
+ })
+25) 
+db.employees.find({$where : function(){ 
+    var role = this.role;
+    var deptId = this.department.id;
+    var salary = this.salary;
+    var commision = this.commision;
+    if(salary >2000){
+        return true;
+    }
+}})
+
+26)
+
+db.employees.find({"name": /^m/})
+
+// or 
+db.employees.find({$where : function(){ 
+    var name = this.name;
+    //var length = name.length();
+    if(name.charAt(0) == "T"){
+        return true;
+    }
+    //return true;
+}})
+
+
+
+
+27)
+db.employees.find({$where : function(){ 
+    var name = this.name;
+    var length = name.length;
+    if(name.charAt(length-1) == "m"){
+        return true;
+    }
+    //return true;
+}})
+
+28)
+db.employees.find({$where : function(){ 
+    var name = this.name;
+    var length = name.length;
+    var i = 0;
+    for( i = 0 ; i< length ; i++){
+        if(name.charAt(i) == "m"){
+            return true;
+        }
+    }
+}})
+
+
+29)
+db.employees.find({$where : function(){ 
+    var name = this.name;
+    var length = name.length;
+    if(length == 5 && name.charAt(length - 1) == "n"){
+        return true;
+    }
+}})
+
+30)
+
+db.employees.find({$where : function(){ 
+    var name = this.name;
+    var length = name.length;
+    if(length >2 && name.charAt(2) == "J"){
+        return true;
+    }
+}})
+
+Numeric , character and date function
+-------------------------------------
+
+31) 
+db.employees.find({$where : function(){
+        var hireDate = this.hired_date;
+        var month = hireDate.getMonth();
+        // 0 is january 
+        if(month == 1){
+            return true;
+        }
+        
+    }})
+32) 
+
+db.employees.find({$where : function(){
+        /* Code to get last and first date of particular month */
+        var date = new Date();
+        var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    
+        /* Code to get last and first date of particular month */
+    
+        var hireDate = this.hired_date;
+        var day = hireDate.getDate();
+    
+        // 0 is january 
+        if(day == lastDay.getDate()){
+            return true;
+        }
+        
+    }})
+33)
+db.employees.find({$where : function(){
+        var date = new Date();
+        var currentYear = date.getFullYear();
+        
+        var hireDate = this.hired_date;
+        var hiredYear = hireDate.getFullYear();
+    
+        // 0 is january 
+        if((currentYear - hiredYear)>=12){
+            return true;
+        }
+    
+    }})
+34)
+
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var role = data.role;
+    var hiredDate = data.hired_date;
+    hiredYear = hiredDate.getFullYear();
+    if(role == "Manager" && hiredYear == 2007){
+        print(data);
+    }
+ })
+
+35)
+
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var role = data.role;
+    var names = data.name;
+    print(names +", "+ role);
+    
+ })
+
+ 36)
+
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    // 
+    print(names.charAt(0).toUpperCase() + names.slice(1));
+ })
+ 
+37)
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    for(var i = 0; i< 15 - length; i++){
+        ans += " ";
+    }
+    ans += names;
+    print(ans);
+ })
+ 
+38)
+
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    for(var i = 0; i< 15 - length; i++){
+        ans += "_";
+    }
+    ans += names;
+    print(ans);
+ })
+ 
+39)
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    print(length);
+ })
+40)
+
+// little logic problem 
+// solve later 
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var max = 20;
+    var length = names.length;
+    var leftSpace = 0;
+    var rightSpace = 0;
+    var remain = max - length;
+    if(remain % 2 == 0){
+        leftSpace = remain /2;
+        rightSpace = remain /2;
+    }else{
+        leftSpace = remain /2;
+        rightSpace = leftSpace + 1 ;
+    }
+    
+    
+    var ans = "";
+    for(var i = 0; i< leftSpace; i++){
+        ans += "_";
+    }
+    ans += names;
+    for(var i = 0; i< rightSpace; i++){
+        ans += "_";
+    }
+    print(ans);
+ })
+
+41)
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    if(names.charAt(0) != 'a'){
+        print(data);
+    }
+ })
+
+42)
+
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    if(names.charAt(length-1) != 'r'){
+        print(data);
+    }
+ })
+
+43)
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    for(var i = 0; i< 3; i++){
+        ans += names.charAt(i);
+    }
+    print(ans);
+ })
+
+44)
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    print(names);
+    var ans = "";
+    
+    for(var i = (length-1); i> (length-4); i--){
+        ans += names.charAt(i);
+    }
+    // reverse order 
+    print("Reverse order " +ans);
+    var trueAns = "";
+    for(var i = 2 ; i>=0 ; i--){
+        trueAns += ans.charAt(i); 
+    }
+    print("Actual order "+trueAns);
+ })
+45)
+db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    for(var i = 0 ; i< length ; i++){
+        var singleChar = names.charAt(i);
+        if(singleChar == 'a'){
+            ans += 'e';
+        }else{
+            ans += singleChar; 
+        }
+    }
+    print(ans);
+ })
+
+ 46)
+
+ db.employees.find().forEach(function(data){
+    //print(data);
+    var names = data.name;
+    var length = names.length;
+    var ans = "";
+    var flag = 0;
+    for(var i = 0 ; i< length ; i++){
+        var singleChar = names.charAt(i);
+        if(singleChar == 'a' && flag != 1){
+            flag = 1;
+        }else{            
+            if(flag == 1 && singleChar == 'r'){
+                print(data);
+                flag = 0;
+            }else{
+                flag = 0;
+            }
+        }
+    }
+    print(ans);
+ })
+ 
+
+47)
+
+db.employees.find().forEach(function(data){
+    var salary = data.salary;
+    var ans = Math.round((salary / 1000))*1000;
+    print(ans);
+ })
+ 
+48)
+
+db.employees.find().forEach(function(data){
+    var salary = data.salary;
+    var ans = parseInt(salary/30); 
+    print(ans);
+ })
+ 
+
+49)
+db.employees.find().forEach(function(data){
+    var salary = data.salary;
+    var names = data.name;
+    var bonus = salary*0.2;
+    if(bonus >501){
+        print(names +" " + (salary+500));
+    }else{
+        print(names +" " + (salary+bonus));
+    }
+ })
+ 
+50)
+db.employees.find().forEach(function(data){
+    var salary = data.salary;
+    var names = data.name;
+    var bonus = salary*0.2;
+    if(bonus >201){
+        print(names +" " + (salary+200));
+    }else{
+        print(names +" " + (salary+bonus));
+    }
+ })
+
+ 51)
+
+ db.employees.find().forEach(function(data){
+        // hours*minutes*seconds*milliseconds
+        var oneDay = 24*60*60*1000; 
+        var firstDate = new Date();
+        var secondDate = data.hired_date;
+        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+        print(diffDays);
+    
+ })
+ 
+
+52)
+db.employees.find().forEach(function(data){
+        // hours*minutes*seconds*milliseconds
+        var oneDay = 24*60*60*1000; 
+        var firstDate = new Date();
+        var secondDate = data.hired_date;
+        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+        print(parseInt(diffDays/30));
+    
+ })
+ 
+53)
+
+db.employees.find().forEach(function(data){
+        // hours*minutes*seconds*milliseconds
+        var oneDay = 24*60*60*1000; 
+        var firstDate = new Date();
+        var secondDate = data.hired_date;
+        var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+        var year = diffDays / 365;
+        print("Employee ");
+        diffDays = diffDays % 365;
+        var months = diffDays /12;
+        diffDays = diffDays % 12;
+        var days = diffDays % 30;
+        print("Year " + parseInt(year) +" months "+ parseInt(months) +"  days "+ parseInt(days));
+    
+ })
+ 
+
+3) Ordering by queries 
+-----------------------
+54)
+db.employees.find().sort({name:1});
+ 
+55)
+db.employees.find().sort({hired_date:1});
+ 
+56)
+db.employees.find().sort({name:1 , role:1, salary:1 } );
+ 
+57)
+db.employees.find().sort({role:1, salary:-1 } );
+ 
+58)
+db.employees.find().sort({role:-1, salary:-1 } );
+59)
+db.employees.find().toArray().sort(function(doc1, doc2) { 
+    var month1 = doc1.hired_date.getMonth();
+    var month2 = doc2.hired_date.getMonth();
+    return month1 - month2; 
+});
+
+60)
+db.employees.find().toArray().sort(function(doc1, doc2) { 
+    var month1 = doc1.hired_date.getMonth();
+    var month2 = doc2.hired_date.getMonth();
+    var year1 = doc1.hired_date.getFullYear();
+    var year2 = doc2.hired_date.getFullYear();
+    /*
+    if(year1 == year2){
+        return month1 - month2; 
+    }else{
+        return year2- year1;
+    }
+    */
+    if(month1 == month2){
+    	return year1 - year2;
+    }else{
+    	return month1 - month2;
+    }
+    
+});
+
+
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>User model</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Bootstrap links starts here -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<!-- Bootstrap links ends here -->
+	<!-- All modals -->
+	<script src="js/models.js"></script>
+	<!-- All modals -->
+</head>
+<body>  
+<div class="container">
+	<div class="row">
+		<center>
+			<h1>
+				User modal
+			</h1>
+		</center>
+	</div>
+	<div class="row">
+			<label>Title</label>
+			<input id="postTitle" name="postTitle" type="text" placeholder="Enter the title" > 
+			<label>Select category</label>
+			<input id="postCategory" name="postCategory" type="postCategory" placeholder="Post category">
+			<label>Price</label>
+			<input id="postPrice" name="postPrice" type="number" placeholder="Enter price">
+			
+			<label>Product description </label>
+			<input id="postDescription" name="postDescription" type="text" placeholder="Enter product description here" >
+			<!-- Change this file to file -->
+			<label> Image </label>
+			<input id="postImage" name="postImage" type="file">
+			<center>
+				<button type="button" value="Post" onclick="main(2)">Post ads</button>
+			</center>	
+	</div>
+</div>
+</body>
+</html>
+

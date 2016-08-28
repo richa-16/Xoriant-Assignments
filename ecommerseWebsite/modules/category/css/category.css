@@ -1,0 +1,11 @@
+		#dropbox {
+			width: 300px;
+			height: 300px;
+			border: 1px solid #888;
+			margin: 5px;
+		}
+		#imglist img {
+			width: 200px;
+			height: 200px;
+			margin: 5px;
+		}

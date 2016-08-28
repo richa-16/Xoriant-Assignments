@@ -1,0 +1,14 @@
+Suppose we have an 'Orders' collection running inside mongo instance. Write a program in Java to perform following operations:
+a) Find number of orders per order location.
+b) Find out number of orders per fruit.
+c) Display order title along with total order price (price + shipping charges)
+d) List down first 2 orders with status as 'Open' sorted based upon price.
+Use java mongo driver https://mongodb.github.io/mongo-java-driver/
+
+Note: use the following sample data-
+db.orders.insert({title: "Red fruit delivery", price: 1500, shipping_charges: 200, items: ["Apple", "Pomegranate", "Peach"], location: "Pune", status: "Open"})
+db.orders.insert({title: "Fresh fruit delivery", price: 2000, shipping_charges: 100, items: ["Orange", "Peach"], location: "Mumbai", status: "Open"})
+db.orders.insert({title: "Healthy fruit delivery", price: 1000, shipping_charges: 50, items: ["Kiwi", "Orange"], location: "Pune", status: "Open"})
+db.orders.insert({title: "Park street delivery", price: 400, shipping_charges: 700, items: ["Apple", "Chiku"], location: "Pune", status: "Closed"})
+db.orders.insert({title: "Queen's road delivery", price: 700, shipping_charges: 300, items: ["Guava", "Kiwi", "Pomegranate"], location: "Pune", status: "Open"})
+db.orders.insert({title: "New year delivery", price: 3000, shipping_charges: 500, items: ["Apple", "Orange", "Peach"], location: "Mumbai", status: "Closed"})

@@ -1,0 +1,44 @@
+1) Create 3 collections. Export first collection to bson format, second collection to json format & third collection to csv format. 	Start another mongod instance on different port & import these files into new mongod instance.
+
+	1) Backup a particular collection to bson format  
+		mongodump --collection accounts --db xorDb
+	2)
+		Backup a particular collection to json format 
+		mongoexport --db test --collection traffic --out traffic.json
+	3)
+		Backup a particular collection to csv format 
+		mongoexport --db test --collection traffic --out traffic.csv
+	4) New mongo instance on different folder and different port 
+		mongod --dbpath c:\data\db2 --port 27018
+	5)
+		New mongo shell on new port 
+		mongo --port 27018
+	6)
+		Restore the json data to particular collection using mongorestore 
+		Tips: 
+			Collections should be created 
+			Database should be present 
+
+		mongorestore --port 27018 --collection Something --db xor dump/xorDb/accounts.bson
+	7) Now use mongoimport to import the data into 
+		mongodb which is in json format or in csv(comma separated values) format
+
+		mongoimport --port 27018 --db xor --collection collectionName --file dump/xorDb/file.json
+	8) 
+		Now import csv file 
+
+		mongoimport --port 27018 --db xor --collection collectionName --file dump/xorDb/file.csv
+
+2) Store couple of files into mongo & notice how it divides your files into chunks.
+	Steps : 
+		1) mongofiles --port 27018 -d databaseName put fileName
+
+		2) to see the files 
+			db.fs.files.find().pretty()
+		3) To see the chunks
+			db.fs.chunks.find()
+		4)  Fund the number of chunks 
+			db.ds.chunks.count()
+		5)
+3)
+

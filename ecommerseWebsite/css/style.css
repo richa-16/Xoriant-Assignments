@@ -486,3 +486,10 @@ footer .footerHead{
     overflow-y: scroll;
 }
 
+/* iMAGE UPLOAD*/
+#postImage {
+			width: 50%;
+			height: 100px;
+			border: 1px solid #888;
+			margin: 5px;
+		}
