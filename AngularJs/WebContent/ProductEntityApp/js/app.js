@@ -21,17 +21,23 @@ function productController($scope, productService) {
 	
 	$scope.updateProduct = function(){
 		console.log("Reached in update product");
-		var currentObj = {id:$scope.id, name:$scope.name , quantity: $scope.quantity, price: $scope.price};
+		var currentObj = {id:$scope.eid, name:$scope.ename , quantity: $scope.equantity, price: $scope.eprice};
 		console.log(currentObj);
 		productService.updateProduct(currentObj);
 	}
 
 	$scope.getEditItem = productService.getEditItem();
+	
 	$scope.editItem = function(id){
 		console.log("Edit item "+ id);
 		productService.setEditItem(id);
 		$scope.getEditItem = productService.getEditItem();
 	}
+	// hardCoding
+	$scope.eid = $scope.products[$scope.getEditItem].id;
+	$scope.ename = $scope.products[$scope.getEditItem].name ;
+	$scope.equantity = $scope.products[$scope.getEditItem].quantity;
+	$scope.eprice = $scope.products[$scope.getEditItem].price;
 	
 	console.log("Edit element"+$scope.getEditItem);
 }
@@ -63,14 +69,13 @@ myModule.service('productService', function() {
 	  };
 	  
 	  // change logic to update the product 
-	  
 	  var updateProduct = function(newObj){
 		  console.log("Update product "+newObj);
-		  var id = newObj.id ;
+		  var id = newObj.id-1;
 		  console.log("Id update "+ id );
-		  productList[id-1].name = newObj.name;
-		  productList[id-1].quantity = newObj.quantity;
-		  productList[id-1].price = newObj.price;
+		  productList[id].name = newObj.name;
+		  productList[id].quantity = newObj.quantity;
+		  productList[id].price = newObj.price;
 	  };
 	  
 	  var getTotalProducts = function(){
