@@ -25,8 +25,15 @@ function productController($scope, productService) {
 		console.log(currentObj);
 		productService.updateProduct(currentObj);
 	}
+
+	$scope.getEditItem = productService.getEditItem();
+	$scope.editItem = function(id){
+		console.log("Edit item "+ id);
+		productService.setEditItem(id);
+		$scope.getEditItem = productService.getEditItem();
+	}
 	
-	
+	console.log("Edit element"+$scope.getEditItem);
 }
 
 myModule.controller('ProductController', productController);
@@ -34,7 +41,7 @@ myModule.controller('ProductController', productController);
 myModule.service('productService', function() {
 	  var productList = [{id: 1, name: 'Table', quantity: 25 , price: 2000},
 		                   {id: 2,name: 'Charis', quantity: 100, price: 800}];
-		
+	  var editItem = 0;
 	  var addProduct = function(newObj) {
 	      productList.push(newObj);
 	  };
@@ -45,7 +52,6 @@ myModule.service('productService', function() {
 	  
 	  var deleteProduct = function(id){
 		console.log("Delete product "+id);
-		
 		for( i = productList.length-1 ; i>=0; i--) {
 			console.log("Reached inside loop");
 	    	var num = Number(productList[i].id);
@@ -54,8 +60,9 @@ myModule.service('productService', function() {
 		    	productList.splice(i,1);
 		    }
 		}
-		
 	  };
+	  
+	  // change logic to update the product 
 	  
 	  var updateProduct = function(newObj){
 		  console.log("Update product "+newObj);
@@ -71,16 +78,24 @@ myModule.service('productService', function() {
 		  return num;
 	  };
 	  
+	  var setEditItem = function(id){
+		  editItem = id-1;
+	  };
+	  var getEditItem = function(){
+		 return editItem ;
+	  };
+	  
 	  return {
 	    addProduct: addProduct,
 	    getProducts: getProducts,
 	    deleteProduct: deleteProduct,
 	    updateProduct: updateProduct,
-	    getTotalProducts : getTotalProducts
+	    getTotalProducts : getTotalProducts,
+	    setEditItem: setEditItem,
+	    getEditItem: getEditItem
 	  };
 
 	});
-
 
 myModule.config(function($routeProvider){
 	$routeProvider

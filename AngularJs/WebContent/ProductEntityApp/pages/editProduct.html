@@ -4,15 +4,20 @@
 	</h1>
 </center>
 <br><br>
-
-Id: <input type="text" ng-model="id">
+{{products[getEditItem].id}}
+Id: <input type="text" ng-model="id" >
 <br><br>
 
-Name: <input type="text" ng-model="name">
+{{products[getEditItem].name}}
+Name: <input type="text" ng-model="name" >
 <br><br>
-Quantity: <input type="text" ng-model="quantity">
+
+{{products[getEditItem].quantity}}
+Quantity: <input type="text" ng-model="quantity" >
 <br><br>
-Price: <input type="text" ng-model="price">
+
+{{products[getEditItem].price}}
+Price: <input type="text" ng-model="price" >
 <br><br>
 <button ng-click="updateProduct()">Update</button>
 
