@@ -1,0 +1,19 @@
+<center>
+	<h1>
+		Product Application
+	</h1>
+</center>
+<br><br>
+Name : <input type="text" ng-model="name">
+<br><br>
+Quantity : <input type="text" ng-model="quantity">
+<br><br>
+Price : <input type="text" ng-model="price">
+<br><br>
+<input type="button" ng-click="addProduct()" value="ADD PRODUCT"/>
+
+<ul ng-repeat="product in products">
+	<li> {{product.name}} - {{product.quantity}} - {{product.price}} </li>
+</ul>
+
+<a href="#/editProduct">Edit product</a>
