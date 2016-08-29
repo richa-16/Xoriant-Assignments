@@ -88,7 +88,9 @@ public class Test {
 				(DBObject) new BasicDBObject("$match",
 						new BasicDBObject("status", "Open")),
 				(DBObject) new BasicDBObject("$sort",
-						new BasicDBObject("price", 1))))
+						new BasicDBObject("price", 1)),
+				(DBObject) new BasicDBObject("$limit", 2)
+				))
 				.results();
 		for (DBObject dbObject : output) {
 			System.out.println(dbObject);
