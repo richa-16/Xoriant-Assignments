@@ -15,5 +15,45 @@ Price : <input type="text" ng-model="price">
 <ul ng-repeat="product in products">
 	<li> {{product.name}} - {{product.quantity}} - {{product.price}} </li>
 </ul>
-
-<a href="#/editProduct">Edit product</a>
+<table>
+	<thead>
+		<th>
+			Id
+		</th>
+		
+		<th>
+			Name
+		</th>
+		
+		<th>
+			Quantity
+		</th>
+		
+		<th>
+			Price
+		</th>
+		
+		<th>
+			Action
+		</th>
+	</thead>
+	<tr ng-repeat="product in products">
+		<th>
+			{{product.id}}
+		</th>
+		<th>
+			{{product.name}}
+		</th>
+		<th>
+			{{product.quantity}}
+		</th>
+		<th>
+			{{product.price}}
+		</th>
+		<th>
+			<a href="#/editProduct">Edit</a>
+			
+			<a type="button" ng-click="deleteProduct(product.id)">Delete</a>			
+		</th>
+	<tr>
+</table>
