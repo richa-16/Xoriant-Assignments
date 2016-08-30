@@ -1,13 +1,17 @@
 /bin/
-/build/*
+*/build
 /.classpath
 /.project
 .metadata/
-/.metadata/
+*/.metadata
 /RemoteSystemsTempFiles/
 /Servers/
 
 .project/
+*/.project
 .setting/
+*/.setting
 /settings/*
 .classpath
+*/.classpath
+
