@@ -1,5 +1,6 @@
-/bin/
+*/bin
 */build
+*/build/*
 /.classpath
 /.project
 .metadata/
@@ -10,7 +11,7 @@
 .project/
 */.project
 .setting/
-*/.setting
+*/.settings
 /settings/*
 .classpath
 */.classpath
