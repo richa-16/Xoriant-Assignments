@@ -51,9 +51,12 @@ Price : <input type="text" ng-model="price">
 			{{product.price}}
 		</th>
 		<th>
-			<a href="#/editProduct" ng-click="editItem(product.id)">Edit</a>
+			<button  ng-click="editItem(product.id)">Edit</button>
+			
 			
 			<a type="button" ng-click="deleteProduct(product.id)">Delete</a>			
 		</th>
 	<tr>
 </table>
+
+<button ng-click="passParameters()">Pass parameters to url  </button>

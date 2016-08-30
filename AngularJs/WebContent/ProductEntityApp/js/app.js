@@ -136,9 +136,11 @@ function productService(){
 myModule.service('productService',productService);
 
 
-function productController($scope, productService, productFactory , $location) {
+// product controller
+function productController($scope, productFactory , productService, $location) {
 	
 	$scope.products = productFactory.getProducts();
+	
 	// code to add product
 	$scope.addProduct = function() {
 		var ids = productFactory.getTotalProducts()+1;
@@ -148,6 +150,7 @@ function productController($scope, productService, productFactory , $location) {
 		productFactory.addProduct(currentObj);
 		// show some message that product has been added succefully 
 	}
+	
 	// code to delete the product
 	$scope.deleteProduct = function(id) {
 		console.log("Delete product "+id);
@@ -155,8 +158,8 @@ function productController($scope, productService, productFactory , $location) {
 		// show some message that product has been added succefully 
 		// redirect to homePage
 	}
-	// code to update the product 
 	
+	// code to update the product 
 	$scope.updateProduct = function(){
 		console.log("Reached in update product");
 		var currentObj = {id:$scope.eid, name:$scope.ename , quantity: $scope.equantity, price: $scope.eprice};
@@ -165,20 +168,42 @@ function productController($scope, productService, productFactory , $location) {
 
 		$location.path('/');
 	}
-
-	$scope.getEditItem = productFactory.getEditItem();
+	//console.log("Edit element"+$scope.getEditItem);
+	console.log("Path " + $location.search());
+	var searchQuery = $location.search();
+	console.log('Co'+searchQuery);
+	
+	$scope.getEditItem = parseInt(searchQuery['result']);
+	
+	if(!isNaN($scope.getEditItem)){
+		// hardCoding
+		$scope.eid = $scope.products[$scope.getEditItem-1].id;
+		$scope.ename = $scope.products[$scope.getEditItem-1].name ;
+		$scope.equantity = $scope.products[$scope.getEditItem-1].quantity;
+		$scope.eprice = $scope.products[$scope.getEditItem-1].price;
+		console.log("Edit element"+$scope.getEditItem-1);
+		console.log("Path " + $location.search());
+	}
 	
 	$scope.editItem = function(id){
-		console.log("Edit item "+ id);
-		productFactory.setEditItem(id);
-		$scope.getEditItem = productFactory.getEditItem();
+		console.log("inside editItem " + id);
+		$location.path('/editProduct/').search('result',''+id);
+		
+		//console.log("Edit item "+ id);
+		//productFactory.setEditItem(id);
+		//$scope.getEditItem = productFactory.getEditItem();
+	
 	}
-	// hardCoding
-	$scope.eid = $scope.products[$scope.getEditItem].id;
-	$scope.ename = $scope.products[$scope.getEditItem].name ;
-	$scope.equantity = $scope.products[$scope.getEditItem].quantity;
-	$scope.eprice = $scope.products[$scope.getEditItem].price;
-	console.log("Edit element"+$scope.getEditItem);
+	$scope.passParameters = function(){
+		console.log("inside paramters");
+		$location.path('/editProduct/').search('result','s');
+		//console.log("Hey"+k);
+	}
+	
+	$scope.getParameters = function(){
+		var x = $location.search();
+		console.log(x['result']);
+	}
 }
 
 myModule.controller('ProductController', productController);
