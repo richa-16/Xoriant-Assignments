@@ -51,6 +51,22 @@ function productFactory($http){
 				console.log("Server is busy , please try latter");
 			});
 		}
+		productFactory.deleteProduct = function(id){
+			$http({
+				method : 'DELETE',
+				url : hostName+'/product/'+id,
+				headers : {
+					'Content-Type' : 'application/json',
+					'Access-Control-Allow-Origin': hostName
+				}
+			}).then(function successCallback(response) {
+				console.log("Response "+response);		
+			}, function errorCallback(response) {
+				alert("Server Error. Try After Some time: " + response);
+				console.log("Server is busy , please try latter");
+			});
+		}
+
 	  return productFactory;
 }
 // Factory code ends here
@@ -92,10 +108,14 @@ function productController($scope, productFactory, $location ,$http) {
 	
 	// code to delete the product
 	$scope.deleteProduct = function(id) {
+		console.log("Delete Id "+ id);
+		productFactory.deleteProduct(id);
 	}
 	
 	// code to update the product 
 	$scope.updateProduct = function(){
+		console.log("Update function ");
+		
 	}
 	
 	
@@ -105,14 +125,16 @@ function productController($scope, productFactory, $location ,$http) {
 	console.log('Co'+searchQuery);
 	
 	$scope.getEditItem = parseInt(searchQuery['result']);
+	console.log("Get edit Item " + $scope.getEditItem);
 	
 	if(!isNaN($scope.getEditItem)){
 		// hardCoding
-		$scope.eid = $scope.products[$scope.getEditItem-1].id;
-		$scope.ename = $scope.products[$scope.getEditItem-1].name ;
-		$scope.equantity = $scope.products[$scope.getEditItem-1].quantity;
-		$scope.eprice = $scope.products[$scope.getEditItem-1].price;
-		console.log("Edit element"+$scope.getEditItem-1);
+		console.log("In edit Item");
+		$scope.eid = $scope.products[$scope.getEditItem].id;
+		$scope.ename = $scope.products[$scope.getEditItem].name ;
+		$scope.equantity = $scope.products[$scope.getEditItem].quantity;
+		$scope.eprice = $scope.products[$scope.getEditItem].price;
+		console.log("Edit element"+$scope.getEditItem);
 		console.log("Path " + $location.search());
 	}
 	
@@ -120,6 +142,7 @@ function productController($scope, productFactory, $location ,$http) {
 		console.log("inside editItem " + id);
 		$location.path('/editProduct/').search('result',''+id);	
 	}
+	
 	$scope.passParameters = function(){
 		console.log("inside paramters");
 		$location.path('/editProduct/').search('result','s');

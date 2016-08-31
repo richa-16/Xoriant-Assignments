@@ -11,7 +11,9 @@ Quantity : <input type="text" ng-model="quantity">
 Price : <input type="text" ng-model="price">
 <br><br>
 <input type="button" ng-click="addProduct()" value="ADD PRODUCT"/>
+<!-- 
 <input type="button" ng-click="getProduct()" value="GET PRODUCTS"/>
+ -->
 <!-- 
 <ul ng-repeat="product in products">
 	<li> {{product.name}} - {{product.quantity}} - {{product.price}} </li>
@@ -49,9 +51,10 @@ Price : <input type="text" ng-model="price">
 			{{product.price}}
 		</th>
 		<th>
+			<!--  
 			<button  ng-click="editItem(product.id)">Edit</button>
-			
-			
+			-->
+			<button  ng-click="editItem($index)">Edit</button>
 			<a type="button" ng-click="deleteProduct(product.id)">Delete</a>			
 		</th>
 	<tr>
