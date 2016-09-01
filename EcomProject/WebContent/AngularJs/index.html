@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html ng-app="ecomProject">
+	<head>
+		<meta http-equiv="Content-Type"  content="text/html; charset=utf-8">
+		<title>Home</title>
+		<meta name="description" content="" />
+        <meta name="Author" content="Pratik Upacharya" />
+
+        <!-- mobile settings -->
+        <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+        <!-- 
+        <link rel="shortcut icon" href="images/favicon.png" />
+         -->
+        <!-- Favicon -->
+
+        <!-- Bootstrap CSS -->
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+		
+		<!-- Bootstrap Js -->
+		<script src="js/libs/jquery.min.js"></script>
+		<script src="js/libs/bootstrap.min.js"> </script>
+		
+		<!-- Jquery for bootstrap -->
+        <!-- Core angular Js  -->
+		<script src="js/libs/angular.min.js"> </script>
+		<script src="js/libs/angular-route.min.js"> </script>
+		
+		<!-- Custom angular scripts -->
+		<!-- Factories -->
+		<script src="js/factory/restApi.js"></script>
+		
+		<!-- Filters -->
+		<!-- Services -->
+		<!-- Controllers -->
+		<script src="js/controllers/homeController.js"></script>
+		<script src="js/controllers/loginController.js"></script>
+		<script src="js/controllers/testController.js"></script>
+		
+		<!-- Main app script -->
+		<script src="js/app.js"></script>
+		
+	</head>
+	<body>
+		<!-- Header -->
+		<div ng-include = "'pages/common/header.html'"></div>
+ 
+		<!-- Header -->
+		<!-- Container -->
+		<div class="container-fluid">			
+			<div>
+				<div ng-view=""></div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div ng-include = "'pages/common/footer.html'"></div>
+		<!-- Footer -->
+	</body>
+</html>
