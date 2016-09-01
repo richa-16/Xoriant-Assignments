@@ -35,6 +35,7 @@ function productFactory($http){
 				headers : {
 					'Content-Type' : 'application/json',
 					'Access-Control-Allow-Origin': hostName
+					
 				},
 				data : {
 					name : productName,

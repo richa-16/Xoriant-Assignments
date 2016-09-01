@@ -45,4 +45,18 @@ function testController($scope, restApi) {
 		});		
 		console.log("Out of login");
 	}
+	
+	// get all the categories
+	
+	$scope.getAllCategories = function(){
+		console.log("Clicked get all categories");
+		
+		restApi.getAllCategories().then(function(result) {
+			console.log("Product loading is successful");
+			console.log(JSON.stringify(result, null ,4));
+		}, function(err) {
+			console.log("Product loading is unsucceful");
+		});
+	}
+	
 }

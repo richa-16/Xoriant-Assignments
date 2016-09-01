@@ -45,11 +45,11 @@ function restApi( $q , $rootScope){
 	        dataType: "json",
 	        async:true,
 	        success: function(data, textStatus, xhr){
-	            console.log("User loggedIn");
+	            console.log("User registered succesfully");
 	            defer.resolve(data);
 	        },
 	        error: function(data, textStatus, xhr){
-	        	console.log("User is not loggedOut, some error");
+	        	console.log("User is not registered, some error");
 	            defer.reject(data);
 	        },
 	        timeout: 15000 
@@ -57,7 +57,32 @@ function restApi( $q , $rootScope){
 	    
 		return defer.promise;
 	};
-
+	
+	// getAllCategories
+	restApi.getAllCategories = function(){
+	    
+		var defer = $q.defer();
+	    
+		$.ajax({
+	        type: "GET",
+	        url: 'http://10.20.14.83:9000/categories',
+	        contentType: "application/json",
+	        async:true,
+	        success: function(data, textStatus, xhr){
+	            console.log("Got all the categories");
+	            defer.resolve(data);
+	        },
+	        error: function(data, textStatus, xhr){
+	        	console.log("Problem in getting cateogies");
+	            defer.reject(data);
+	        },
+	        timeout: 15000 
+	    });
+		return defer.promise;
+	};
+	
+	
+	
 	return restApi;
 	
 }
