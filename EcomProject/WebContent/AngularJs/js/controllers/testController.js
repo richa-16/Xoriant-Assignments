@@ -13,14 +13,12 @@ function testController($scope, restApi) {
 			console.log("User is loggedIn");
 			console.log("Response is " +result);
 			console.log(result.data.userId);
-			
 			$scope.userLoggedIn = "Request successful and user is loggedIn";
 			
 		},function(err){
 			console.log("There is problem in login");
 			$scope.userLoggedIn = "Request unsuccefull and user is not log";
 		});	
-		
 		console.log("Out of login");
 	}
 	
