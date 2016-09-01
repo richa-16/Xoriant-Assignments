@@ -3,25 +3,31 @@ var hostName = 'http://10.20.14.83:9000';
 
 // Factory code starts here 
 function productFactory($http){
-	  console.log("Run factory");
+	  
+	console.log("Run factory");
 	  // factory object
 	  var productFactory = {};
 	  productFactory.productData = [];
+	  
+	  // make this file as a singleton pattern 
 	  // load all products 
 	  productFactory.getAllProducts = function() {
+		    //productFactory.productData = [];
 			var url = hostName+'/product';
 			$http.get(url).success(function(data, status) {
 				console.log("Inside rest call");
 				//console.log(data);
 				angular.forEach(data, function(value, key){
 					angular.forEach(data.Products, function(value, key) {
-						var tempData = {id: value.id , name: value.name , quantity: value.quantity, price: value.price};
-						console.log("Hey "+tempData);
+						var tempData = { id: value.id, name: value.name, quantity: value.quantity, price: value.price};
+						console.log("Hey " + tempData.id);
 						productFactory.productData.push(tempData);
 					});
-				})
+				});
 			});
 		};
+		
+		// add product 
 		productFactory.addProduct = function(productName,productPrice,productQuantity) {
 			$http({
 				method : 'POST',
@@ -51,6 +57,7 @@ function productFactory($http){
 				console.log("Server is busy , please try latter");
 			});
 		}
+		// delete product 
 		productFactory.deleteProduct = function(id){
 			$http({
 				method : 'DELETE',
@@ -58,6 +65,28 @@ function productFactory($http){
 				headers : {
 					'Content-Type' : 'application/json',
 					'Access-Control-Allow-Origin': hostName
+				},
+				
+			}).then(function successCallback(response) {
+				console.log("Response "+response);		
+			}, function errorCallback(response) {
+				alert("Server Error. Try After Some time: " + response);
+				console.log("Server is busy , please try latter");
+			});
+		}
+		
+		productFactory.updateProduct = function(id,name,price,quantity){
+			$http({
+				method : 'PUT',
+				url : hostName+'/product/'+id,
+				headers : {
+					'Content-Type' : 'application/json',
+					'Access-Control-Allow-Origin': hostName
+				},
+				data : {
+					name : name,
+					price : price,
+					quantity : quantity
 				}
 			}).then(function successCallback(response) {
 				console.log("Response "+response);		
@@ -66,7 +95,6 @@ function productFactory($http){
 				console.log("Server is busy , please try latter");
 			});
 		}
-
 	  return productFactory;
 }
 // Factory code ends here
@@ -78,18 +106,17 @@ productFactory.$inject = ['$http'];
 
 // product controller
 function productController($scope, productFactory, $location ,$http) {
-	
-	console.log("Product controller");
-	
+	console.log("Product controller started");
 	// To load the data at initial load 
-	productFactory.getAllProducts(); // Optimization , don't load data everytime we go to a particular controller
+	console.log("Get all the products first");
 	
+	// should run only when the data is changed starts here
+	productFactory.getAllProducts(); // Optimization , don't load data everytime we go to a particular controller
 	// to load data onClick button 
 	//$scope.getProduct = productFactory.getAllProducts;
-	
 	console.log("Reached outside");
 	$scope.products = productFactory.productData;//[{id:1 , name:"Pratik" , quantity: 90 , price: 90}];
-	
+	// should run only when the data is changed starts ends
 	// productFactory.getProducts();
 	console.log("Something "+$scope.products);
 	// code to add product
@@ -113,8 +140,10 @@ function productController($scope, productFactory, $location ,$http) {
 	}
 	
 	// code to update the product 
-	$scope.updateProduct = function(){
-		console.log("Update function ");
+	$scope.updateProduct = function(id){
+		console.log("Update function "+ id);
+		// update request 
+		productFactory.updateProduct($scope.eid, $scope.ename, $scope.eprice , $scope.equantity);
 		
 	}
 	
@@ -159,6 +188,7 @@ myModule.controller('ProductController', productController);
 
 // page controllers 
 myModule.config(function($routeProvider){
+	console.log("Run first Time");
 	$routeProvider
 		.when('/', {
 			controller: 'ProductController',
