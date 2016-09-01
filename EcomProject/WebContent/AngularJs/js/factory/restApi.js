@@ -58,6 +58,31 @@ function restApi( $q , $rootScope){
 		return defer.promise;
 	};
 	
+	// logout (untested)
+	restApi.logout = function(authToken){
+	    // get authToken using local storage of windows.localstorage api
+		var defer=$q.defer();
+	
+		$.ajax({
+	        type: "DELETE",
+	        url: 'http://10.20.14.83:9000/logout',
+	        contentType: "application/json",
+	        headers: { 'authToken': authToken },
+	        dataType: "json",
+	        async:true,
+	        success: function(data, textStatus, xhr){
+	            console.log("User logout successfully");
+	            defer.resolve(data);
+	        },
+	        error: function(data, textStatus, xhr){
+	        	console.log("User logout unsuccsefull");
+	            defer.reject(data);
+	        },
+	        timeout: 15000 
+	    });
+		return defer.promise;
+	};
+	
 	// getAllCategories
 	restApi.getAllCategories = function(){
 	    
@@ -81,7 +106,7 @@ function restApi( $q , $rootScope){
 		return defer.promise;
 	};
 	
-	
+	// getProduct by par
 	
 	return restApi;
 	
