@@ -74,7 +74,11 @@ function testController($scope, restApi,fileReader) {
 	$scope.getAllProducts = function(){
 		console.log("Clicked Get all products");
 		restApi.getAllProducts().then(function(results){
-			console.log(JSON.stringify(results, null, 4));
+			//console.log(JSON.stringify(results, null, 4));
+			//console.log("Actual content "+results.data.advertiseList[2].photos[0]);
+			console.log("Display");
+			$scope.imageSrc = 'data:image\/(jpeg);base64,'+results.data.advertiseList[5].photos[0];
+			
 		}, function(err){
 			console.log("error " + JSON.stringify(err, null, 4));
 		});	
@@ -99,6 +103,7 @@ function testController($scope, restApi,fileReader) {
 		restApi.postAds(postAdsModel).then(function(result){
 			console.log("Post added succesfully");
 			console.log(JSON.stringify(result));
+			//$scope.imageSrc = result.
 		}, function(err){
 			console.log("Error in adding post");
 		});
@@ -112,11 +117,11 @@ function testController($scope, restApi,fileReader) {
 		console.log("Output "+$scope.postImage);
 		fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
-                    	  $scope.postImage = result.replace(/^data:image\/(jpeg);base64,/, "");
-                    	  
+                    	  $scope.postImage = result.replace(/^data:image\/(jpeg);base64,/, "") ||  result.replace(/^data:image\/(jpg);base64,/, "") ;
+                    
                     	  //alert(result);
                           
-                          $scope.imageSrc = result;
+                          //$scope.imageSrc = result;
 
                       });
         

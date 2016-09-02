@@ -110,6 +110,7 @@ function restApi( $q , $rootScope){
 	
 	// get all products
 	restApi.getAllProducts = function(){
+		console.log("Inside the getAll Product");
 		var defer = $q.defer();
 		$.ajax({
 			type:"GET",
