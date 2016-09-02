@@ -47,7 +47,6 @@ function testController($scope, restApi) {
 	}
 	
 	// get all the categories
-	
 	$scope.getAllCategories = function(){
 		console.log("Clicked get all categories");
 		
@@ -56,6 +55,49 @@ function testController($scope, restApi) {
 			console.log(JSON.stringify(result, null ,4));
 		}, function(err) {
 			console.log("Product loading is unsucceful");
+		});
+	}
+	
+	// logout 
+	$scope.logout = function(){
+		console.log("logout button clicked");
+		var authToken = $scope.authToken;
+		restApi.logout(authToken).then(function(result){
+			console.log("Logged out succefully");
+		},function(err){
+			console.log("User logout unsuccessful");
+		});
+		console.log("Logged out succefully");
+	}
+	
+	// get all products
+	$scope.getAllProducts = function(){
+		console.log("Clicked Get all products");
+		restApi.getAllProducts().then(function(results){
+			console.log(JSON.stringify(results, null, 4));
+		}, function(err){
+			console.log("error " + JSON.stringify(err, null, 4));
+		});	
+	}
+	
+	$scope.postAds = function(){
+		console.log("Post add clicked");
+		var postAdsModel = {
+					 title : $scope.postTitle,
+					 userName : $scope.postUser,
+				     category : $scope.postCategory,
+				     description : $scope.postDescription,
+				     photoCount: $scope.postPhotoCount,
+				     photo1: $scope.postPhoto1,
+				     photo2: $scope.postPhoto2,
+				     photo3: $scope.postPhoto3
+				};
+		// rest call 
+		restApi.postAds(postAdsModel).then(function(result){
+			console.log("Post added succesfully");
+			console.log(JSON.stringify(result));
+		}, function(err){
+			console.log("Error in adding post");
 		});
 	}
 	

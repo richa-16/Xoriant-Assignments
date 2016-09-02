@@ -66,13 +66,15 @@ function restApi( $q , $rootScope){
 		$.ajax({
 	        type: "DELETE",
 	        url: 'http://10.20.14.83:9000/logout',
-	        contentType: "application/json",
-	        headers: { 'authToken': authToken },
-	        dataType: "json",
+	        headers: { 'auth-token': authToken },
 	        async:true,
 	        success: function(data, textStatus, xhr){
 	            console.log("User logout successfully");
+	            console.log("data" + data);
+	            console.log("textStatus" + textStatus);
+	            console.log("xhr" + JSON.stringify(xhr,null,4));
 	            defer.resolve(data);
+	            
 	        },
 	        error: function(data, textStatus, xhr){
 	        	console.log("User logout unsuccsefull");
@@ -106,7 +108,60 @@ function restApi( $q , $rootScope){
 		return defer.promise;
 	};
 	
-	// getProduct by par
+	// get all products
+	restApi.getAllProducts = function(){
+		var defer = $q.defer();
+		$.ajax({
+			type:"GET",
+			url: 'http://10.20.14.83:9000/posts/search',
+			async:true,
+			success:function(data,textStatus,xhr){
+				console.log("Get all the products");
+				defer.resolve(data);
+			},
+			errr: function(data,textStatus,xhr){
+				console.log("Error in getting all products");
+				defer.reject(data);
+			},
+			timeout: 15000
+		});
+		return defer.promise;
+	}
+	
+	// post ads for particular user 
+	
+	restApi.postAds = function(postAdsModdel){
+		var defer=$q.defer();
+	    
+		$.ajax({
+	        type: "POST",
+	        url: 'http://10.20.14.83:9000/postAd',
+	        contentType: "application/json",
+	        headers: { 'auth-token': postAdsModdel.authToken },
+	        data : JSON.stringify({"title": postAdsModdel.title,
+	        					    "name": postAdsModdel.userName,
+	        					    "category" : postAdsModdel.category,
+	        					    "description": postAdsModdel.description,
+	        					    "photoCount": postAdsModdel.photoCount,
+	        					    "photo1": postAdsModdel.photo1,
+	        					    "photo2": postAdsModdel.photo2,
+	        					    "photo3": postAdsModdel.photo3}),
+	        dataType: "json",
+	        async:true,
+	        success: function(data, textStatus, xhr){
+	            console.log("Post added succefully into database");
+	            defer.resolve(data);
+	        },
+	        error: function(data, textStatus, xhr){
+	        	console.log("Error in adding post into database");
+	            defer.reject(data);
+	        },
+	        timeout: 15000 
+	    });
+	    
+		return defer.promise;
+	}
+	
 	
 	return restApi;
 	
