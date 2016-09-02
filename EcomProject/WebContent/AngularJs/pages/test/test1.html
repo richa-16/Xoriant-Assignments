@@ -79,7 +79,10 @@
 <input type="text" ng-model="postCategory">
 <input type="text" ng-model="postDescription">
 <input type="text" ng-model="postPhotoCount">
-<input type="file"  ng-file-select="onFileSelect($files)">
+
+<input type="file" ng-file-select="onFileSelect($files)"> 
+ 
+
 <input type="text" ng-model="postPhoto2">
 <input type="text" ng-model="postPhoto3">
 <br>
@@ -87,11 +90,11 @@
 <button class="btn" ng-click="postAds()"> Post ads</button>
 <!-- Post an add ends here  -->
 
-<b>Preview:</b><br />
-   <i ng-hide="imageSrc">No image choosed</i>
-   <img ng-src="{{imageSrc}}" /><br/>
-   <b>Progress:</b>
-  <progress value="{{progress}}"></progress>
+    <b>Preview:</b><br />
+    <i ng-hide="imageSrc">No image choosed</i>
+    <img ng-src="{{imageSrc}}" /><br/>
+    <b>Progress:</b>
+  	<progress value="{{progress}}"></progress>
    
 
 {{userLoggedIn}}

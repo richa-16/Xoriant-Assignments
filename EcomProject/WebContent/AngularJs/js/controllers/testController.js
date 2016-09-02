@@ -1,7 +1,7 @@
 function testController($scope, restApi,fileReader) {
 	console.log("In test controller");
 	$scope.userLoggedIn = "not requested";
-	
+	$scope.postImage = "";
 	// userLogin 
 	$scope.login = function(){
 		console.log("Clicked login");
@@ -81,45 +81,49 @@ function testController($scope, restApi,fileReader) {
 	}
 	
 	$scope.postAds = function(){
-		
-		console.log("Post add clicked");
+		console.log("Post add clicked ");
+		console.log($scope.postImage);
 		//alert($scope.userLoggedIn);
 		var postAdsModel = {
 					authToken : "57c9051c0272287e33b06de0",//$scope.authToken,
-					title : "Something",//$scope.postTitle,
+					title : "Image with string",//$scope.postTitle,
 					userName : "pratik",//$scope.postUser,
 				    category : "Hardware",//$scope.postCategory,
-				    description : "Something"//$scope.postDescription,
-				   // photoCount: $scope.postPhotoCount,
-				   // photo1: $scope.postPhoto1,
+				    description : "Something",//$scope.postDescription,
+				    photoCount: 1,//$scope.postPhotoCount,
+				    photo1: $scope.postImage
 				   // photo2: $scope.postPhoto2,
 				   // photo3: $scope.postPhoto3
 				};
 		// rest call 
-		/*
 		restApi.postAds(postAdsModel).then(function(result){
 			console.log("Post added succesfully");
 			console.log(JSON.stringify(result));
 		}, function(err){
 			console.log("Error in adding post");
 		});
-		*/
+		
 		
 	}
 	$scope.getFile = function () {
         console.log("Get file function got called");
 		$scope.progress = 0;
+		
+		console.log("Output "+$scope.postImage);
 		fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
-                    	  $scope.userLoggedIn = result;
+                    	  $scope.postImage = result.replace(/^data:image\/(jpeg);base64,/, "");
+                    	  
                     	  //alert(result);
-                          //$scope.imageSrc = result;
+                          
+                          $scope.imageSrc = result;
+
                       });
+        
     };
  
     $scope.$on("fileProgress", function(e, progress) {
         $scope.progress = progress.loaded / progress.total;
     });
  
-	
 }

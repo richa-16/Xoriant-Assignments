@@ -36,15 +36,27 @@ var fileReader = function ($q, $log) {
  
         var readAsDataURL = function (file, scope) {
             var deferred = $q.defer();
-             
             var reader = getReader(deferred, scope);         
             reader.readAsDataURL(file);
-             
             return deferred.promise;
         };
+        var getBase64Image = function(img) {
+    	    var canvas = document.createElement("canvas");
+    	    canvas.width = img.width;
+    	    canvas.height = img.height;
+
+    	    var ctx = canvas.getContext("2d");
+    	    var imgObj = new Image();
+    	  ctx.drawImage(img, 0, 0);
+
+    	    var dataURL = canvas.toDataURL("image/png");
+
+    	    return dataURL.replace(/^data:image\/(jpg);base64,/, "");
+    	}
  
         return {
-            readAsDataUrl: readAsDataURL  
+            readAsDataUrl: readAsDataURL,
+            getBase64Image: getBase64Image
         };
 }
  

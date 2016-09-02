@@ -131,19 +131,24 @@ function restApi( $q , $rootScope){
 	// post ads for particular user 
 	
 	restApi.postAds = function(postAdsModdel){
+		
 		var defer=$q.defer();
-	    
+		console.log( "Base 64" +postAdsModdel.photo1);
 		$.ajax({
 	        type: "POST",
 	        url: 'http://10.20.14.83:9000/postAd',
 	        contentType: "application/json",
-	        headers: { 'auth-token': postAdsModdel.authToken },
+	        headers: {
+	        		'Content-Type' : 'application/json',
+	        		'Access-Control-Allow-Origin': 'http://10.20.14.83:9000',
+	        		'auth-token': postAdsModdel.authToken 
+	        	},
 	        data : JSON.stringify({"title": postAdsModdel.title,
 	        					    "name": postAdsModdel.userName,
 	        					    "category" : postAdsModdel.category,
-	        					    "description": postAdsModdel.description
-	        					    //"photoCount": postAdsModdel.photoCount,
-	        					    //"photo1": postAdsModdel.photo1,
+	        					    "description": postAdsModdel.description,
+	        					    "photoCount": postAdsModdel.photoCount,
+	        					    "photo1": postAdsModdel.photo1
 	        					    //"photo2": postAdsModdel.photo2,
 	        					    //"photo3": postAdsModdel.photo3
 	        					}),
