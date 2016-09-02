@@ -18,7 +18,13 @@ ecomApp.config(function($routeProvider){
 		})
 		.otherwise({redirectTo: '/'})
 });
+// Custome directives
 
+ecomApp.directive('fileModel', imageDirective);
+ecomApp.directive('ngFileSelect', ngFileSelect);
+
+
+//
 // Register all the controllers 
 ecomApp.controller('homeController', homeController);
 ecomApp.controller('loginController', loginController);
@@ -31,6 +37,8 @@ ecomApp.controller('testController', testController);
 // Register all the factories 
 //ecomApp.factory('productFactory', productFactory);
 ecomApp.factory('restApi', restApi);
+ecomApp.factory("fileReader",["$q", "$log", fileReader]);
+
 
 // Register all the states
 

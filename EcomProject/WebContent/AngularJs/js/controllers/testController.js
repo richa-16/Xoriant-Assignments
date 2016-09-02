@@ -1,4 +1,4 @@
-function testController($scope, restApi) {
+function testController($scope, restApi,fileReader) {
 	console.log("In test controller");
 	$scope.userLoggedIn = "not requested";
 	
@@ -81,24 +81,45 @@ function testController($scope, restApi) {
 	}
 	
 	$scope.postAds = function(){
+		
 		console.log("Post add clicked");
+		//alert($scope.userLoggedIn);
 		var postAdsModel = {
-					 title : $scope.postTitle,
-					 userName : $scope.postUser,
-				     category : $scope.postCategory,
-				     description : $scope.postDescription,
-				     photoCount: $scope.postPhotoCount,
-				     photo1: $scope.postPhoto1,
-				     photo2: $scope.postPhoto2,
-				     photo3: $scope.postPhoto3
+					authToken : "57c9051c0272287e33b06de0",//$scope.authToken,
+					title : "Something",//$scope.postTitle,
+					userName : "pratik",//$scope.postUser,
+				    category : "Hardware",//$scope.postCategory,
+				    description : "Something"//$scope.postDescription,
+				   // photoCount: $scope.postPhotoCount,
+				   // photo1: $scope.postPhoto1,
+				   // photo2: $scope.postPhoto2,
+				   // photo3: $scope.postPhoto3
 				};
 		// rest call 
+		/*
 		restApi.postAds(postAdsModel).then(function(result){
 			console.log("Post added succesfully");
 			console.log(JSON.stringify(result));
 		}, function(err){
 			console.log("Error in adding post");
 		});
+		*/
+		
 	}
+	$scope.getFile = function () {
+        console.log("Get file function got called");
+		$scope.progress = 0;
+		fileReader.readAsDataUrl($scope.file, $scope)
+                      .then(function(result) {
+                    	  $scope.userLoggedIn = result;
+                    	  //alert(result);
+                          //$scope.imageSrc = result;
+                      });
+    };
+ 
+    $scope.$on("fileProgress", function(e, progress) {
+        $scope.progress = progress.loaded / progress.total;
+    });
+ 
 	
 }

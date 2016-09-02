@@ -141,11 +141,12 @@ function restApi( $q , $rootScope){
 	        data : JSON.stringify({"title": postAdsModdel.title,
 	        					    "name": postAdsModdel.userName,
 	        					    "category" : postAdsModdel.category,
-	        					    "description": postAdsModdel.description,
-	        					    "photoCount": postAdsModdel.photoCount,
-	        					    "photo1": postAdsModdel.photo1,
-	        					    "photo2": postAdsModdel.photo2,
-	        					    "photo3": postAdsModdel.photo3}),
+	        					    "description": postAdsModdel.description
+	        					    //"photoCount": postAdsModdel.photoCount,
+	        					    //"photo1": postAdsModdel.photo1,
+	        					    //"photo2": postAdsModdel.photo2,
+	        					    //"photo3": postAdsModdel.photo3
+	        					}),
 	        dataType: "json",
 	        async:true,
 	        success: function(data, textStatus, xhr){
