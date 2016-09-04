@@ -16,6 +16,10 @@ ecomApp.config(function($routeProvider){
 			controller: 'testController',
 			templateUrl: 'pages/test/test1.html'
 		})
+		.when('/register', {
+			controller:'loginController',
+			templateUrl:'pages/login/register.html'
+		})
 		.otherwise({redirectTo: '/'})
 });
 // Custome directives

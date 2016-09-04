@@ -1,14 +1,13 @@
 function restApi( $q , $rootScope){
+	var baseUrl = "http://124.124.83.165:9000"; //'http://10.20.14.83:9000'
 	console.log("Rest api Initiated");
 	var restApi = {};
 
 	restApi.login=function(key, password){
-		
 			var defer=$q.defer();
-		
 			$.ajax({
 		        type: "POST",
-		        url: 'http://10.20.14.83:9000/login',
+		        url: baseUrl +'/login',
 		        contentType: "application/json",
 		        data : JSON.stringify({"userName":key , "password" : password}),
 		        dataType: "json",
@@ -34,7 +33,7 @@ function restApi( $q , $rootScope){
 	    
 		$.ajax({
 	        type: "POST",
-	        url: 'http://10.20.14.83:9000/register',
+	        url: baseUrl +'/register',
 	        contentType: "application/json",
 	        data : JSON.stringify({"firstName": regUser.regFirstName,
 	        					    "lastName": regUser.regLastName,
@@ -65,7 +64,7 @@ function restApi( $q , $rootScope){
 	
 		$.ajax({
 	        type: "DELETE",
-	        url: 'http://10.20.14.83:9000/logout',
+	        url: baseUrl +'/logout',
 	        headers: { 'auth-token': authToken },
 	        async:true,
 	        success: function(data, textStatus, xhr){
@@ -92,7 +91,7 @@ function restApi( $q , $rootScope){
 	    
 		$.ajax({
 	        type: "GET",
-	        url: 'http://10.20.14.83:9000/categories',
+	        url: baseUrl +'/categories',
 	        contentType: "application/json",
 	        async:true,
 	        success: function(data, textStatus, xhr){
@@ -114,7 +113,7 @@ function restApi( $q , $rootScope){
 		var defer = $q.defer();
 		$.ajax({
 			type:"GET",
-			url: 'http://10.20.14.83:9000/posts/search',
+			url: baseUrl +'/posts/search',
 			async:true,
 			success:function(data,textStatus,xhr){
 				console.log("Get all the products");
@@ -137,11 +136,11 @@ function restApi( $q , $rootScope){
 		console.log( "Base 64" +postAdsModdel.photo1);
 		$.ajax({
 	        type: "POST",
-	        url: 'http://10.20.14.83:9000/postAd',
+	        url: baseUrl +'/postAd',
 	        contentType: "application/json",
 	        headers: {
 	        		'Content-Type' : 'application/json',
-	        		'Access-Control-Allow-Origin': 'http://10.20.14.83:9000',
+	        		'Access-Control-Allow-Origin': baseUrl ,
 	        		'auth-token': postAdsModdel.authToken 
 	        	},
 	        data : JSON.stringify({"title": postAdsModdel.title,

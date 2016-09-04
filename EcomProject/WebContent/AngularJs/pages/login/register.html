@@ -1,1 +1,42 @@
-<h1>Register</h1>
+<div class="row">
+	<div class="col-4">	
+	</div>
+	<div class="col-4">
+		<form class="form">
+		      <div class="input-group input-group-lg">
+				  <label for="regFirstName"><b>Firstname</b></label>
+				  <input type="text" placeholder="Enter Firstname" ng-model="regFirstName" name="regFirstName" id="regFirstName" class="form-control"  aria-describedby="sizing-addon1" required>
+			  </div>
+		      <div class="input-group input-group-lg">
+			  	  	<label for="regLastName"><b>Lastname</b></label>
+		      	  	<input type="text" placeholder="Enter lastname" ng-model="regLastName" name="regLastName" id="regLastName" class="form-control"  aria-describedby="sizing-addon1" required>
+			  </div>
+			  <div class="input-group input-group-lg">
+			  	  	<label for="regUserName"><b>Username</b></label>
+		      	  	<input type="text" placeholder="Enter Username" ng-model="regUserName" name="regUserName" id="regUserName"  class="form-control"  aria-describedby="sizing-addon1" required>		      
+			  </div>		      
+		      <div class="input-group input-group-lg">
+			  		<label for="regEmail"><b>Email</b></label>
+		      		<input type="email" placeholder="Enter email" ng-model="regEmail" name="regEmail" id="regEmail" class="form-control"  aria-describedby="sizing-addon1" required>
+			  </div>
+		      <div class="input-group input-group-lg">
+			  		<label for="regPhone"><b>Phone</b></label>
+		      		<input type="number" placeholder="Enter Phone" ng-model="regPhone" name="regPhone" id="regPhone" class="form-control"  aria-describedby="sizing-addon1" required>
+			  </div>
+		      <div class="input-group input-group-lg">
+			  		<label for="regPass"><b>Password</b></label>
+		      		<input type="password" placeholder="Enter the password" ng-model="regPass" name="regPass" id="regPass" class="form-control"  aria-describedby="sizing-addon1" required>
+			  </div>
+		      <div class="input-group input-group-lg">
+			  		<label for="regConfirmPass"><b>Confirm Password</b></label>
+		      		<input type="password" placeholder="Re-enter the password" ng-model="regConfirmPass" name="regConfirmPass" id="regConfirmPass" class="form-control"  aria-describedby="sizing-addon1" required>
+			  </div>
+		      <div class="input-group input-group-lg">
+		      		<button type="button" class="btn btn-default btn-lg" aria-haspopup="true" aria-expanded="true" ng-click="register()">Login</button>
+			  </div>
+		   
+		</form>	
+	</div>
+	<div class="col-4">		
+	</div>			  		
+</div>
