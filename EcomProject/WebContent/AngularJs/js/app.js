@@ -24,8 +24,15 @@ ecomApp.config(function($routeProvider){
 });
 // Custome directives
 
-ecomApp.directive('fileModel', imageDirective);
-ecomApp.directive('ngFileSelect', ngFileSelect);
+// Register all the services 
+//myModule.service('productService',productService);
+
+
+// Register all the factories 
+//ecomApp.factory('productFactory', productFactory);
+ecomApp.factory('appFactory', appFactory);
+ecomApp.factory('restApi', restApi);
+ecomApp.factory("fileReader",["$q", "$log", fileReader]);
 
 
 //
@@ -34,14 +41,8 @@ ecomApp.controller('homeController', homeController);
 ecomApp.controller('loginController', loginController);
 ecomApp.controller('testController', testController);
 
-// Register all the services 
-//myModule.service('productService',productService);
-
-
-// Register all the factories 
-//ecomApp.factory('productFactory', productFactory);
-ecomApp.factory('restApi', restApi);
-ecomApp.factory("fileReader",["$q", "$log", fileReader]);
+ecomApp.directive('ngFileSelect', ngFileSelect);
+ecomApp.directive('ngHeader', ngHeader);
 
 
 // Register all the states

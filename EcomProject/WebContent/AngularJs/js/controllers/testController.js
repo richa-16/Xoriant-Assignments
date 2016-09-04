@@ -1,4 +1,4 @@
-function testController($scope, restApi,fileReader) {
+function testController($scope, appFactory,restApi,fileReader,$rootScope) {
 	console.log("In test controller");
 	$scope.userLoggedIn = "not requested";
 	$scope.postImage = "";
