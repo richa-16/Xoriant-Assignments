@@ -78,7 +78,7 @@ function userProfileController($scope, $rootScope, restApi,appFactory , fileRead
 	$scope.getFile = function () {
         console.log("Get file function got called");
 		$scope.progress = 0;		
-		console.log("Output "+$scope.postImage);
+		//console.log("Output "+$scope.postImage);
 		fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
                     	  //$scope.postImage = result.replace(/^data:image\/(jpeg);base64,/, "") ||  result.replace(/^data:image\/(jpg);base64,/, "") ;
@@ -87,7 +87,6 @@ function userProfileController($scope, $rootScope, restApi,appFactory , fileRead
                           //alert(result);
                     	  $scope.imageSrc = 'data:image/jpeg;base64,'+$scope.postImage ;
                           //$scope.imageSrc = result;
-
                       });
         
     };
