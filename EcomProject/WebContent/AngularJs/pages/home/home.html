@@ -26,19 +26,19 @@
 <!-- Add slider here  -->
 
 <!-- Now display all the products here  -->
+
+
 <div class="row">
 	<div class="col-sm-2">
 	</div>
 	<div class="col-sm-8">
 		<div class="row" ng-repeat="product in productData">
 			<div class="col-sm-4">
-			
-					<img alt="Product Image" ng-src="{{product.photos[0]}}" class="img-thumbnail" width="304" height="236">
-			
+					<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail" width="304" height="236">
 			</div>
 			<div class="col-sm-4">
 				<p>{{product.title}}</p>
-				<p>{{product.category}}</p>
+				<p>{{product.categoryName}}</p>
 				<p>{{product.price}}</p>
 			</div>
 		</div>
@@ -46,5 +46,7 @@
 	<div class="col-sm-2">
 	</div>
 </div>
+
+
 <!-- Now display all the products here  -->
 <!-- {{testData}} -->

@@ -3,7 +3,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	// get all the categories
 	$scope.testData= '';
 	$rootScope.categoryData = []; // scope for categoryList
-	$scope.productData = '';
+	$scope.productData = [];
 	// Avoid calling this activity multiple times 
 	restApi.getAllCategories().then(function(result){
 		  //console.log(JSON.stringify(result,null,4));
@@ -27,7 +27,37 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	// We could accept this data in object model from models.js 
 	restApi.getAllProducts().then(function(result){
 		$scope.testData = result;//JSON.stringify(result,null,4); // to print Json in pretty format
-		$scope.productData = result.data.advertiseList;
+		var productLoop = result.data.advertiseList;
+		var tempArray = [];
+		angular.forEach(productLoop, function(value, key){	
+			// Hard coding
+			var imageName = '';//'data:image/jpeg;base64,' + value.photos[0];
+			
+			if(value.photos != null){
+				 imageName = 'data:image/jpeg;base64,' + value.photos[0];
+			}
+			
+			var categoryName = value.category;
+			var price = value.price;
+			var title = value.title;
+			var postId = value.id;
+			var description = value.description;
+			var status = value.status;
+			// extra field like created date , lastUpdateDate etc
+			var tempData = {
+					'imageName': imageName,
+					'categoryName': categoryName,
+					'price': price,
+					'title':title,
+					'postId':postId,
+					'description':description,
+					'status':status
+			}
+			tempArray.push(tempData);
+		});
+		
+		angular.extend($scope.productData, tempArray);
+		
 	}, function(err){
 		// handle all ther erro
 		

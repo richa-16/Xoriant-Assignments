@@ -1,5 +1,6 @@
 function restApi( $q , $rootScope) {
 	var baseUrl = "http://124.124.83.165:9000"; //'http://10.20.14.83:9000'
+	var limitRecords = '?records=5';
 	console.log("Rest api Initiated");
 	var restApi = {};
 
@@ -113,7 +114,7 @@ function restApi( $q , $rootScope) {
 		var defer = $q.defer();
 		$.ajax({
 			type:"GET",
-			url: baseUrl +'/posts/search',
+			url: baseUrl +'/posts/search'+limitRecords,
 			async:true,
 			success:function(data,textStatus,xhr){
 				console.log("Get all the products");
@@ -174,7 +175,7 @@ function restApi( $q , $rootScope) {
 		var defer=$q.defer();
 		$.ajax({
 	        type: "GET",
-	        url: baseUrl +'/posts',
+	        url: baseUrl +'/posts'+limitRecords,
 	        contentType: "application/json",
 	        headers: {
 	        		'Content-Type' : 'application/json',
@@ -193,6 +194,33 @@ function restApi( $q , $rootScope) {
 	    });
 		return defer.promise;
 	}
+	
+	restApi.deleteUserPost = function(postId){
+		console.log("Auth token "+$rootScope.authToken);
+		var defer=$q.defer();
+		$.ajax({
+	        type: "DELETE",
+	        url: baseUrl +'/post?postId='+postId,
+	        headers: {
+	        		'Access-Control-Allow-Origin': baseUrl ,
+	        		'auth-token': $rootScope.authToken 
+	        	},
+	        dataType: "json",
+	        async:true,
+	        success: function(data, textStatus, xhr){
+	        	console.log("Post has been deleted ");
+	            defer.resolve(data);
+	        },
+	        error: function(data, textStatus, xhr){
+	        	console.log("Error in deleting post ");
+	            defer.reject(data);
+	        },
+	        timeout: 15000 
+	    });
+		return defer.promise;
+	}
+	
+	
 
 	
 	

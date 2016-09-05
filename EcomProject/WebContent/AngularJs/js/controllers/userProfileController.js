@@ -62,6 +62,18 @@ function userProfileController($scope, $rootScope, restApi,appFactory , fileRead
 			console.log("Error in adding post");
 		});
 	}
+	//Delete post 
+	$scope.deletePost = function(postId){
+		console.log("Delete button clicked");
+		console.log("Delete id "+postId);
+		restApi.deleteUserPost(postId).then(function(result){
+			console.log("Post has been deleted");
+			console.log(JSON.stringify(result, null,4));
+		}, function(err){
+			console.log("Error in deleting post ");
+		});
+	}
+	
 	
 	$scope.getFile = function () {
         console.log("Get file function got called");
