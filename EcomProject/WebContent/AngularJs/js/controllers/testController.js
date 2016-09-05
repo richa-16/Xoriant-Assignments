@@ -89,7 +89,7 @@ function testController($scope, appFactory,restApi,fileReader,$rootScope) {
 		console.log($scope.postImage);
 		//alert($scope.userLoggedIn);
 		var postAdsModel = {
-					authToken : "57c9051c0272287e33b06de0",//$scope.authToken,
+					authToken : $rootScope.authToken, //"57c9051c0272287e33b06de0",//$scope.authToken,
 					title : "Image with string",//$scope.postTitle,
 					userName : "pratik",//$scope.postUser,
 				    category : "Hardware",//$scope.postCategory,
@@ -117,10 +117,11 @@ function testController($scope, appFactory,restApi,fileReader,$rootScope) {
 		console.log("Output "+$scope.postImage);
 		fileReader.readAsDataUrl($scope.file, $scope)
                       .then(function(result) {
-                    	  $scope.postImage = result.replace(/^data:image\/(jpeg);base64,/, "") ||  result.replace(/^data:image\/(jpg);base64,/, "") ;
-                    
-                    	  //alert(result);
-                          
+                    	  //$scope.postImage = result.replace(/^data:image\/(jpeg);base64,/, "") ||  result.replace(/^data:image\/(jpg);base64,/, "") ;
+                    	  $scope.postImage = result.replace(/^data:image\/(png);base64,/, "") ||  result.replace(/^data:image\/(jpg);base64,/, "") || result.replace(/^data:image\/(jpeg);base64,/, "") ||  result.replace(/^data:image\/(jpeg);base64,/, "");
+                    	  alert($scope.postImage);
+                          alert(result);
+                    	  $scope.imageSrc = 'data:image/jpeg;base64,'+$scope.postImage ;
                           //$scope.imageSrc = result;
 
                       });

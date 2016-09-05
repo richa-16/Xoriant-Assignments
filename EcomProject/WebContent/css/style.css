@@ -1,5 +1,5 @@
 /* For all elements */
-* {
+{
     box-sizing: border-box;
 }
 
@@ -22,8 +22,6 @@ footer{
 	color: #FFFFFF;
 	margin-left: 80px;
 }
-
-
 
 /* Website name */
 .sansserif {

@@ -8,10 +8,10 @@
 				<option ng-repeat="option in categoryData" value="{{categoryData[$index].name}}">{{categoryData[$index].name}}</option>
 				<!-- Get categories -->
 			</select>		
-			<select  id="filter" class="filterBox" ng-model="filterBy">
+			<select  id="filter" class="filterBox" ng-model="filterBy" >
+				<option value="LowesttoHighest" class="filterBox" >Low to high</option>
+				<option value="HighesttoLowest" class="filterBox">High to Low</option>
 				<option value="ByDate" class="filterBox">By Date</option>
-				<option value="LowesttoHighest" class="filterBox">Lowest to highest</option>
-				<option value="HighesttoLowest" class="filterBox">Highest to Lowest</option>
 			</select>
 			<input type="button" value="Search" name="Search" ng-click="searchProduct()" class="searchButton">
 			<!-- 
@@ -26,6 +26,25 @@
 <!-- Add slider here  -->
 
 <!-- Now display all the products here  -->
-
+<div class="row">
+	<div class="col-sm-2">
+	</div>
+	<div class="col-sm-8">
+		<div class="row" ng-repeat="product in productData">
+			<div class="col-sm-4">
+				<!-- 
+					<img alt="Product Image" src="product.photos[0]" class="img-thumbnail" width="304" height="236">
+			 	-->
+			</div>
+			<div class="col-sm-4">
+				<p>{{product.title}}</p>
+				<p>{{product.category}}</p>
+				<p>{{product.price}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-2">
+	</div>
+</div>
 <!-- Now display all the products here  -->
 <!-- {{testData}} -->

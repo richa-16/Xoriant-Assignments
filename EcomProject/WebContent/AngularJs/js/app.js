@@ -20,6 +20,10 @@ ecomApp.config(function($routeProvider){
 			controller:'loginController',
 			templateUrl:'pages/login/register.html'
 		})
+		.when('/userProfile', {
+			controller:'userProfileController',
+			templateUrl:'pages/userProfile/userProfile.html'
+		})
 		.otherwise({redirectTo: '/'})
 });
 // Custome directives
@@ -41,6 +45,7 @@ ecomApp.factory("fileReader",["$q", "$log", fileReader]);
 ecomApp.controller('homeController', homeController);
 ecomApp.controller('loginController', loginController);
 ecomApp.controller('testController', testController);
+ecomApp.controller('userProfileController', userProfileController);
 
 
 ecomApp.directive('ngFileSelect', ngFileSelect);

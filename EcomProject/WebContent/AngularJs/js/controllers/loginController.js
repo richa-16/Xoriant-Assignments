@@ -8,8 +8,9 @@ function loginController($scope,restApi,$location, $window,$rootScope) {
 		var password = $scope.password;
 		// calling rest api
 		restApi.login(userName,password).then(function(result){
+			
 			//console.log("User is loggedIn");
-			//console.log("Response is " + JSON.stringify(result, null,4));
+			console.log("Response is " + JSON.stringify(result, null,4));
 			//console.log(result.data.userId);
 			//$scope.userLoggedIn = "Request successful and user is loggedIn";
 			// Store userInformation in localStorage of angularJS $window service 
@@ -62,7 +63,7 @@ function loginController($scope,restApi,$location, $window,$rootScope) {
 			$window.localStorage.clear();
 			$rootScope.userLoggedIn = false;
 			$rootScope.userId = null;
-			
+			$location.path("/");
 		},function(err){
 			//console.log("User logout unsuccessful");
 		});

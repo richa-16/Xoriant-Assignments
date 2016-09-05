@@ -3,7 +3,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	// get all the categories
 	$scope.testData= '';
 	$scope.categoryData = []; // scope for categoryList
-	
+	$scope.productData = '';
 	// Avoid calling this activity multiple times 
 	restApi.getAllCategories().then(function(result){
 		  //console.log(JSON.stringify(result,null,4));
@@ -23,13 +23,15 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 		// Handle the server errors
 	});
 	
-	// Get the latest product from server 
+	// Get the latest product from server
+	// We could accept this data in object model from models.js 
 	restApi.getAllProducts().then(function(result){
-		$scope.testData = JSON.stringify(result,null,4);
+		$scope.testData = result;//JSON.stringify(result,null,4); // to print Json in pretty format
+		$scope.productData = result.data.advertiseList;
 	}, function(err){
+		// handle all ther erro
 		
 	});
-	
 	
 	$scope.searchProduct = function(){
 		console.log("Clicked Search button");

@@ -168,6 +168,33 @@ function restApi( $q , $rootScope) {
 		return defer.promise;
 	}
 	
+	// read all the advertisement posted by loggedIn user
+	restApi.getUserAds = function(){
+		
+		var defer=$q.defer();
+		$.ajax({
+	        type: "GET",
+	        url: baseUrl +'/posts',
+	        contentType: "application/json",
+	        headers: {
+	        		'Content-Type' : 'application/json',
+	        		'Access-Control-Allow-Origin': baseUrl ,
+	        		'auth-token': $rootScope.authToken 
+	        	},
+	        dataType: "json",
+	        async:true,
+	        success: function(data, textStatus, xhr){
+	            defer.resolve(data);
+	        },
+	        error: function(data, textStatus, xhr){
+	            defer.reject(data);
+	        },
+	        timeout: 15000 
+	    });
+		return defer.promise;
+	}
+
+	
 	
 	return restApi;
 	
