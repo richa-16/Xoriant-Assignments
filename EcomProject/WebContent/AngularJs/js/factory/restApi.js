@@ -244,6 +244,32 @@ function restApi( $q , $rootScope) {
 	    });
 		return defer.promise;
 	}
+	restApi.searchByText = function(searchText){
+		console.log("Search by text clicked");
+		var defer=$q.defer();
+		$.ajax({
+	        type: "GET",
+	        url: baseUrl +'/posts/search/text?searchText='+searchText,
+	        headers: {
+	        		'Access-Control-Allow-Origin': baseUrl ,
+	        	},
+	        dataType: "json",
+	        async:true,
+	        success: function(data, textStatus, xhr){
+	        	console.log("Get data by category successful");
+	            defer.resolve(data);
+	        },
+	        error: function(data, textStatus, xhr){
+	        	console.log("Getting data by category is unsuccesful");
+	        	defer.reject(data);
+	        },
+	        timeout: 15000 
+	    });
+		return defer.promise;
+	}
+	
+	
+	
 
 	return restApi;
 	

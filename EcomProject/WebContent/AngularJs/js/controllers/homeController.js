@@ -70,8 +70,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 		var getFilter = $scope.filterBy;
 		if(getSearchText == "" || getSearchText == null ){
 			if(getCategory != null){
-				restApi.searchByCategory(getCategory).then(function(result){
-					
+				restApi.searchByCategory(getCategory).then(function(result){					
 					// redundant function
 					$scope.testData = result;//JSON.stringify(result,null,4); // to print Json in pretty format
 					var productLoop = result.data.advertiseList;
@@ -109,6 +108,46 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 					
 				});
 			}
+		}else{
+			// redundant function 
+			restApi.searchByText(getSearchText).then(function(result){					
+				// redundant function
+				$scope.testData = result;//JSON.stringify(result,null,4); // to print Json in pretty format
+				var productLoop = result.data.advertiseList;
+				var tempArray = [];
+				angular.forEach(productLoop, function(value, key){	
+					// Hard coding
+					var imageName = '';//'data:image/jpeg;base64,' + value.photos[0];
+					
+					if(value.photos != null){
+						 imageName = 'data:image/jpeg;base64,' + value.photos[0];
+					}
+					
+					var categoryName = value.category;
+					var price = value.price;
+					var title = value.title;
+					var postId = value.id;
+					var description = value.description;
+					var status = value.status;
+					// extra field like created date , lastUpdateDate etc
+					var tempData = {
+							'imageName': imageName,
+							'categoryName': categoryName,
+							'price': price,
+							'title':title,
+							'postId':postId,
+							'description':description,
+							'status':status
+					}
+					tempArray.push(tempData);
+				});
+				
+				angular.extend($scope.productData, tempArray);
+				
+			}, function(error){
+				
+			});
+
 		}
 		
 		// now as per the requirement , search the products 
