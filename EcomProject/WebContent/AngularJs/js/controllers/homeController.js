@@ -2,7 +2,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	//console.log("In home controller");
 	// get all the categories
 	$scope.testData= '';
-	$scope.categoryData = []; // scope for categoryList
+	$rootScope.categoryData = []; // scope for categoryList
 	$scope.productData = '';
 	// Avoid calling this activity multiple times 
 	restApi.getAllCategories().then(function(result){
@@ -18,7 +18,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 			  //$scope.categoryData.push(catObj);
 		  });
 		  // AngularJs method to match the data and replace content if any change
-		  angular.extend($scope.categoryData,tempData);
+		  angular.extend($rootScope.categoryData,tempData);
 	}, function(error){
 		// Handle the server errors
 	});

@@ -32,9 +32,9 @@
 	<div class="col-sm-8">
 		<div class="row" ng-repeat="product in productData">
 			<div class="col-sm-4">
-				<!-- 
-					<img alt="Product Image" src="product.photos[0]" class="img-thumbnail" width="304" height="236">
-			 	-->
+			
+					<img alt="Product Image" ng-src="{{product.photos[0]}}" class="img-thumbnail" width="304" height="236">
+			
 			</div>
 			<div class="col-sm-4">
 				<p>{{product.title}}</p>

@@ -24,6 +24,10 @@ ecomApp.config(function($routeProvider){
 			controller:'userProfileController',
 			templateUrl:'pages/userProfile/userProfile.html'
 		})
+		.when('/postAdd' , {
+			controller:'userProfileController',
+			templateUrl:'pages/userProfile/postAdd.html'
+		})
 		.otherwise({redirectTo: '/'})
 });
 // Custome directives

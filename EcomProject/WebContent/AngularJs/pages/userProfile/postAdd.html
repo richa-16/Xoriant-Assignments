@@ -1,0 +1,48 @@
+
+<center>
+		<h1>Post Advertisement</h1>
+</center>
+<br>
+<div class="row">
+	<div class="col-sm-1">	
+	</div>
+	<div class="col-sm-4">
+		<form class="form">
+		      <div class="input-group input-group-lg">
+				  <input type="text" placeholder="Enter Post Title" ng-model="postTitle" name="postTitle" id="postTitle" class="form-control"  aria-describedby="sizing-addon1" required>
+			  </div>
+			  <br>
+			  <div class="input-group input-group-lg">
+			  	<label for="category"> Select category</label>
+			  	<select id="category" class="form-control" ng-model="categorySelected">		
+					<!-- Get categories -->
+					<option ng-repeat="option in categoryData" value="{{categoryData[$index].name}}">{{categoryData[$index].name}}</option>
+					<!-- Get categories -->
+			  	</select>
+			  </div>
+			  <br>			  		  
+			  <div class="input-group input-group-lg">
+			  	<label for="imageSelector"> Select image </label>
+			  	<input type="file" id="imageSelector" name="imageSelector" ng-file-select="onFileSelect($files)"  required> 
+			  </div>
+			  <br>			  
+		      <div class="input-group input-group-lg">
+		      	<label for="postDescription">Post Description</label>
+		      	<textarea  row="5" class="form-control" ng-model="postDescription" name="postDescription" id="postDescription" placeholder="Enter postDescription" aria-describedby="sizing-addon1" required></textarea>
+		      </div>
+		      <br>
+		      <center>
+		      	<button type="button" class="btn btn-default btn-lg" ng-click="addPost()" aria-haspopup="true" aria-expanded="false">Add post</button>
+		  	  </center>
+		  </form>
+	</div>
+	<div class="col-sm-2">
+	</div>
+	<div class="col-sm-5">
+		<b>Preview:</b><br />
+	    <i ng-hide="imageSrc">No image choosed</i>
+	    <img ng-src="{{imageSrc}}" /><br/>
+	    <b>Progress:</b>
+	  	<progress value="{{progress}}"></progress>	
+	</div>			  		
+</div>

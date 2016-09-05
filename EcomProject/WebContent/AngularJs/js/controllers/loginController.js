@@ -23,6 +23,8 @@ function loginController($scope,restApi,$location, $window,$rootScope) {
 			
 			$rootScope.userLoggedIn = true;
 			$rootScope.userId = userId;
+			$rootScope.authToken = authToken;
+			
 			$location.path("/");
 		},function(err){
 			//console.log("There is problem in login");

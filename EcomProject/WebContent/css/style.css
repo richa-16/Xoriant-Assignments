@@ -11,9 +11,10 @@ header{
 	position: fixed;
 	background-color: #000000;
 }
-
 footer{
-	width: 100%;
+	
+ 	position: absolute;
+  	width: 100%;
     bottom: 0;
  	background-color: #000000;
 }

@@ -107,8 +107,6 @@ function testController($scope, appFactory,restApi,fileReader,$rootScope) {
 		}, function(err){
 			console.log("Error in adding post");
 		});
-		
-		
 	}
 	$scope.getFile = function () {
         console.log("Get file function got called");
