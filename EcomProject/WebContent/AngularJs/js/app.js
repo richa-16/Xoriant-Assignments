@@ -37,9 +37,11 @@ ecomApp.factory("fileReader",["$q", "$log", fileReader]);
 
 //
 // Register all the controllers 
+
 ecomApp.controller('homeController', homeController);
 ecomApp.controller('loginController', loginController);
 ecomApp.controller('testController', testController);
+
 
 ecomApp.directive('ngFileSelect', ngFileSelect);
 ecomApp.directive('ngHeader', ngHeader);

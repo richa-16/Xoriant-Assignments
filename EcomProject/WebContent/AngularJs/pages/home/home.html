@@ -1,1 +1,31 @@
-<h1>Home</h1>
+<div class="row">
+		<div class="col-sm-2">
+		</div>
+		<div class="col-sm-10">		
+			<input type="text" id="search" name="search" class="searchBox" ng-model="searchText" placeholder="Search">	 
+			<select id="category" class="filterBox" ng-model="categorySelected">		
+				<!-- Get categories -->
+				<option ng-repeat="option in categoryData" value="{{categoryData[$index].name}}">{{categoryData[$index].name}}</option>
+				<!-- Get categories -->
+			</select>		
+			<select  id="filter" class="filterBox" ng-model="filterBy">
+				<option value="ByDate" class="filterBox">By Date</option>
+				<option value="LowesttoHighest" class="filterBox">Lowest to highest</option>
+				<option value="HighesttoLowest" class="filterBox">Highest to Lowest</option>
+			</select>
+			<input type="button" value="Search" name="Search" ng-click="searchProduct()" class="searchButton">
+			<!-- 
+				<button type="button" value="" onclick="displaySomething()">Post ads</button>
+			 -->
+		</div>
+		<div class="col-sm-2">
+		</div>
+</div>
+<!-- Add slider here  -->
+
+<!-- Add slider here  -->
+
+<!-- Now display all the products here  -->
+
+<!-- Now display all the products here  -->
+<!-- {{testData}} -->
