@@ -54,6 +54,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 		var getSearchText = $scope.searchText;
 		var getCategory = $scope.categorySelected;
 		var getFilter = $scope.filterBy;
+		
 		// logic for search 
 		if(getSearchText == "" || getSearchText == null ){
 			if(getCategory != null){
