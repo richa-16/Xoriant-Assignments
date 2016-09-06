@@ -4,6 +4,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	$scope.previous = false;
 	$scope.next = true;
 	$scope.startIndex = 0;
+	$scope.showSlider = true;
 	
 	$scope.testData= '';
 	$rootScope.categoryData = []; // scope for categoryList
@@ -50,6 +51,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	}
 	// advanced search functionality 
 	$scope.searchProduct = function(){
+		$scope.showSlider = false;
 		$scope.startIndex = 0;
 		console.log("Clicked Search button");
 		getAllProductsForPagination($scope.startIndex);
