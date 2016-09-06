@@ -5,10 +5,14 @@
 			<input type="text" id="search" name="search" class="searchBox" ng-model="searchText" placeholder="Search">	 
 			<select id="category" class="filterBox" ng-model="categorySelected">		
 				<!-- Get categories -->
+				<option value="" class="filterBox" >All</option>
+
 				<option ng-repeat="option in categoryData" value="{{categoryData[$index].name}}">{{categoryData[$index].name}}</option>
 				<!-- Get categories -->
 			</select>		
-			<select  id="filter" class="filterBox" ng-model="filterBy" >
+			<select  id="filter" class="filterBox" ng-model="filterBy">
+			
+				<option value="" class="filterBox" >None</option>
 				<option value="Title" class="filterBox" >Title</option>
 				<option value="Posted%20Date" class="filterBox">Post Date</option>
 				<option value="Posted%20By" class="filterBox">Post By</option>
@@ -42,6 +46,9 @@
 					<h3> {{product.title}} </h3>
 					
 					<h5> {{product.categoryName}} </h5>
+					<h6>{{product.userPostedName}}</h6>
+					<h6>{{product.userPostedId}}</h6>
+					
 				</center>
 				
 			</div>

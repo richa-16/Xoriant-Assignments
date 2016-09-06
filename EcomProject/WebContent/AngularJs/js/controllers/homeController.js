@@ -81,6 +81,8 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 			var replies = value.replies;
 			var isOwnerOfAd = value.isOwnerOfAd;
 			var replyCount = value.replyCount;
+			var postedUsername = value.name;
+			var postedUserId = value.userId;
 			
 			// extra field like created date , lastUpdateDate etc
 			var tempData = {
@@ -95,7 +97,9 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 					'lastUpdatedDate':lastUpdatedDate,
 					'replies':replies,
 					'isOwnerOfAd':isOwnerOfAd,
-					'replyCount':replyCount
+					'replyCount':replyCount,
+					'userPostedName': postedUsername,
+					'userPostedId': postedUserId
 			}
 			tempArray.push(tempData);
 		});
