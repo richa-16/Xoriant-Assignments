@@ -1,5 +1,8 @@
 <br>
 <br>
+<center>
+	{{errorMessage}}
+</center>
 <div class="row">
 	<div class="col-sm-4">	
 	</div>
@@ -11,6 +14,7 @@
 				  <input type="text" placeholder="Enter Username" ng-model="username" name="username" id="username" class="form-control" ng-minlength="3" ng-maxlength="8" aria-describedby="sizing-addon1" required>
 			  	   -->
 			  	  <input type="text" name="username" class="form-control" placeholder="Enter Username" ng-model="username"  ng-required="true" ng-minlength="3" ng-maxlength="15" aria-describedby="sizing-addon1">
+			  	    
 			  	    <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
   					<p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
 			  	  	<p ng-show="userForm.username.$error.required" class="danger">*required</p>
