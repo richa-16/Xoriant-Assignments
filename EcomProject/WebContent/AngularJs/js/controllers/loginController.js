@@ -1,4 +1,4 @@
-function loginController($scope,restApi,$location, $window,$rootScope) {
+function loginController($scope,restApi,$location, $window,$rootScope,appFactory) {
 	//console.log("In login controller");
 	//$scope.userLoggedIn = "";
 	// userLogin 

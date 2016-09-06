@@ -1,19 +1,39 @@
+<br>
+<br>
 <div class="row">
 	<div class="col-sm-4">	
 	</div>
 	<div class="col-sm-4">
-		<form class="form">
+		<form class="form" name="userForm"  novalidate>
 		      <div class="input-group input-group-lg">
 				  <label for="username"><b>Username</b></label>
-				  <input type="text" placeholder="Enter Username" ng-model="username" name="username" id="username" class="form-control"  aria-describedby="sizing-addon1" required>
+				  <!-- 
+				  <input type="text" placeholder="Enter Username" ng-model="username" name="username" id="username" class="form-control" ng-minlength="3" ng-maxlength="8" aria-describedby="sizing-addon1" required>
+			  	   -->
+			  	  <input type="text" name="username" class="form-control" placeholder="Enter Username" ng-model="username"  ng-required="true" ng-minlength="3" ng-maxlength="15" aria-describedby="sizing-addon1">
+			  	    <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
+  					<p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
+			  	  	<p ng-show="userForm.username.$error.required" class="danger">*required</p>
+			  	  	
+			  	  <!-- $dirty is set to true if a user interacts with a element and then we check if the elements required field is true -->
 			  </div>
+			  <br>
 		      <div class="input-group input-group-lg">
 		      	<label for="password"><b>Password</b></label>
-		      	<input type="password" placeholder="Enter Password" class="form-control" ng-model="password" name="password" id="password" aria-describedby="sizing-addon1" required>
+		      	<input type="password" placeholder="Enter Password" class="form-control" ng-model="password" name="password" id="password" ng-required="true" ng-minlength="3" ng-maxlength="15" aria-describedby="sizing-addon1" required>
+		      	<p ng-show="userForm.password.$error.minlength" class="help-block">Password is too short.</p>
+  				<p ng-show="userForm.password.$error.maxlength" class="help-block">Password is too long.</p>
+			  	<p ng-show="userForm.password.$error.required" class="help-block">*required</p>
+			  	  	  	
 		      </div>
-		      <button type="button" class="btn btn-default btn-lg" ng-click="login()" aria-haspopup="true" aria-expanded="false">Login</button>
-		  </form>
+		      <br>
+		      <center>
+		      	<button type="button" ng-disabled="userForm.$invalid" class="btn btn-default btn-lg" ng-click="login()" aria-haspopup="true" aria-expanded="false">Login</button>
+		      </center>
+		</form>
 	</div>
 	<div class="col-sm-4">		
 	</div>			  		
 </div>
+
+

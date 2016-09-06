@@ -1,5 +1,5 @@
 function restApi( $q , $rootScope) {
-	var baseUrl = "http://124.124.83.165:9000"; //'http://10.20.14.83:9000'
+	var baseUrl = "http://10.20.14.83:9000";//"http://124.124.83.165:9000"; 
 	var limitRecords = '?records=5';
 	console.log("Rest api Initiated");
 	var restApi = {};
@@ -10,6 +10,9 @@ function restApi( $q , $rootScope) {
 		        type: "POST",
 		        url: baseUrl +'/login',
 		        contentType: "application/json",
+		        headers: {
+	        		'Access-Control-Allow-Origin': baseUrl 
+		        },
 		        data : JSON.stringify({"userName":key , "password" : password}),
 		        dataType: "json",
 		        async:true,
@@ -36,6 +39,9 @@ function restApi( $q , $rootScope) {
 	        type: "POST",
 	        url: baseUrl +'/register',
 	        contentType: "application/json",
+	        headers: {
+        		'Access-Control-Allow-Origin': baseUrl 
+	        },
 	        data : JSON.stringify({"firstName": regUser.regFirstName,
 	        					    "lastName": regUser.regLastName,
 	        					    "userName" : regUser.regUserName,
@@ -66,7 +72,11 @@ function restApi( $q , $rootScope) {
 		$.ajax({
 	        type: "DELETE",
 	        url: baseUrl +'/logout',
-	        headers: { 'auth-token': authToken },
+	        headers: { 
+	        	'Access-Control-Allow-Origin': baseUrl,
+	        	'auth-token': authToken 
+	        },
+	        
 	        async:true,
 	        success: function(data, textStatus, xhr){
 	            console.log("User logout successfully");
@@ -95,6 +105,9 @@ function restApi( $q , $rootScope) {
 	        url: baseUrl +'/categories',
 	        contentType: "application/json",
 	        async:true,
+	        headers: {
+        		'Access-Control-Allow-Origin': baseUrl 
+	        },
 	        success: function(data, textStatus, xhr){
 	            console.log("Got all the categories");
 	            defer.resolve(data);
@@ -116,6 +129,9 @@ function restApi( $q , $rootScope) {
 			type:"GET",
 			url: baseUrl +'/posts/search'+limitRecords,
 			async:true,
+			headers: {
+        		'Access-Control-Allow-Origin': baseUrl 
+	        },
 			success:function(data,textStatus,xhr){
 				console.log("Get all the products");
 				defer.resolve(data);
