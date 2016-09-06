@@ -2,6 +2,8 @@ function userProfileController($scope, $rootScope, restApi,appFactory , fileRead
 	console.log("User Profile controller started");
 	//var userId = $rootScope.userId;
 //	/var authToken = $rootScope.authToken;
+	$scope.categoryData = appFactory.categoryData;
+	console.log("Category data " + $scope.categoryData);
 	$scope.productData =[];
 	// get ads of the user
 	restApi.getUserAds().then(function(result){
@@ -94,7 +96,5 @@ function userProfileController($scope, $rootScope, restApi,appFactory , fileRead
     };
     $scope.$on("fileProgress", function(e, progress) {
         $scope.progress = progress.loaded / progress.total;
-    });
- 
-	
+    });	
 }

@@ -1,6 +1,6 @@
 function restApi( $q , $rootScope) {
 	var baseUrl = "http://10.20.14.83:9000";//"http://124.124.83.165:9000"; 
-	var limitRecords = '?records=5';
+	var limitRecords = 'records=5';
 	console.log("Rest api Initiated");
 	var restApi = {};
 
@@ -122,12 +122,12 @@ function restApi( $q , $rootScope) {
 	};
 	
 	// get all products
-	restApi.getAllProducts = function(){
+	restApi.getAllProducts = function(pageIndex){
 		console.log("Inside the getAll Product");
 		var defer = $q.defer();
 		$.ajax({
 			type:"GET",
-			url: baseUrl +'/posts/search'+limitRecords,
+			url: baseUrl +'/posts/search?startIndex='+pageIndex+'&&'+limitRecords,
 			async:true,
 			headers: {
         		'Access-Control-Allow-Origin': baseUrl 
@@ -192,7 +192,7 @@ function restApi( $q , $rootScope) {
 		var defer=$q.defer();
 		$.ajax({
 	        type: "GET",
-	        url: baseUrl +'/posts'+limitRecords,
+	        url: baseUrl +'/posts?'+limitRecords,
 	        contentType: "application/json",
 	        headers: {
 	        		'Content-Type' : 'application/json',
@@ -285,9 +285,6 @@ function restApi( $q , $rootScope) {
 		return defer.promise;
 	}
 	
-	
-	
-
 	return restApi;
 	
 }
