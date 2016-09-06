@@ -1,5 +1,5 @@
 function restApi( $q , $rootScope) {
-	var baseUrl =  'http://10.20.14.83:9000';//"http://124.124.83.165:9000";
+	var baseUrl =  "http://124.124.83.165:9000";//'http://10.20.14.83:9000';
 	var limitRecords = '?records=5';
 	console.log("Rest api Initiated");
 	var restApi = {};
@@ -10,6 +10,9 @@ function restApi( $q , $rootScope) {
 		        type: "POST",
 		        url: baseUrl +'/login',
 		        contentType: "application/json",
+		        headers: {
+	        		'Access-Control-Allow-Origin': baseUrl 
+		        },
 		        data : JSON.stringify({"userName":key , "password" : password}),
 		        dataType: "json",
 		        async:true,
@@ -36,6 +39,9 @@ function restApi( $q , $rootScope) {
 	        type: "POST",
 	        url: baseUrl +'/register',
 	        contentType: "application/json",
+	        headers: {
+        		'Access-Control-Allow-Origin': baseUrl 
+	        },
 	        data : JSON.stringify({"firstName": regUser.regFirstName,
 	        					    "lastName": regUser.regLastName,
 	        					    "userName" : regUser.regUserName,
@@ -66,7 +72,11 @@ function restApi( $q , $rootScope) {
 		$.ajax({
 	        type: "DELETE",
 	        url: baseUrl +'/logout',
-	        headers: { 'auth-token': authToken },
+	        headers: { 
+	        	'Access-Control-Allow-Origin': baseUrl,
+	        	'auth-token': authToken 
+	        },
+	        
 	        async:true,
 	        success: function(data, textStatus, xhr){
 	            console.log("User logout successfully");
@@ -95,6 +105,9 @@ function restApi( $q , $rootScope) {
 	        url: baseUrl +'/categories',
 	        contentType: "application/json",
 	        async:true,
+	        headers: {
+        		'Access-Control-Allow-Origin': baseUrl 
+	        },
 	        success: function(data, textStatus, xhr){
 	            console.log("Got all the categories");
 	            defer.resolve(data);
@@ -109,13 +122,16 @@ function restApi( $q , $rootScope) {
 	};
 	
 	// get all products
-	restApi.getAllProducts = function(){
+	restApi.getAllProducts = function(pageIndex){
 		console.log("Inside the getAll Product");
 		var defer = $q.defer();
 		$.ajax({
 			type:"GET",
-			url: baseUrl +'/posts/search'+limitRecords,
+			url: baseUrl +'/posts/search?startIndex='+pageIndex+'&&'+limitRecords,
 			async:true,
+			headers: {
+        		'Access-Control-Allow-Origin': baseUrl 
+	        },
 			success:function(data,textStatus,xhr){
 				console.log("Get all the products");
 				defer.resolve(data);
@@ -134,7 +150,7 @@ function restApi( $q , $rootScope) {
 	restApi.postAds = function(postAdsModdel){
 		
 		var defer=$q.defer();
-		console.log( "Base 64" +postAdsModdel.photo1);
+		//console.log( "Base 64" +postAdsModdel.photo1);
 		$.ajax({
 	        type: "POST",
 	        url: baseUrl +'/postAd',
@@ -149,7 +165,8 @@ function restApi( $q , $rootScope) {
 	        					    "category" : postAdsModdel.category,
 	        					    "description": postAdsModdel.description,
 	        					    "photoCount": postAdsModdel.photoCount,
-	        					    "photo1": postAdsModdel.photo1
+	        					    "photo1": postAdsModdel.photo1,
+	        					    "price": postAdsModdel.price
 	        					    //"photo2": postAdsModdel.photo2,
 	        					    //"photo3": postAdsModdel.photo3
 	        					}),
@@ -175,7 +192,7 @@ function restApi( $q , $rootScope) {
 		var defer=$q.defer();
 		$.ajax({
 	        type: "GET",
-	        url: baseUrl +'/posts'+limitRecords,
+	        url: baseUrl +'/posts?'+limitRecords,
 	        contentType: "application/json",
 	        headers: {
 	        		'Content-Type' : 'application/json',
@@ -220,36 +237,12 @@ function restApi( $q , $rootScope) {
 		return defer.promise;
 	}
 	
-	// search functionality
-	restApi.searchByCategory = function(categoryName){
-		console.log("Search by category clicked");
+	restApi.masterSearch = function(searchQuery){
+		console.log("Master clicked");
 		var defer=$q.defer();
 		$.ajax({
 	        type: "GET",
-	        url: baseUrl +'/posts/search?category='+categoryName+'&&records='+5,
-	        headers: {
-	        		'Access-Control-Allow-Origin': baseUrl ,
-	        	},
-	        dataType: "json",
-	        async:true,
-	        success: function(data, textStatus, xhr){
-	        	console.log("Get data by category successful");
-	            defer.resolve(data);
-	        },
-	        error: function(data, textStatus, xhr){
-	        	console.log("Getting data by category is unsuccesful");
-	        	defer.reject(data);
-	        },
-	        timeout: 15000 
-	    });
-		return defer.promise;
-	}
-	restApi.searchByText = function(searchText){
-		console.log("Search by text clicked");
-		var defer=$q.defer();
-		$.ajax({
-	        type: "GET",
-	        url: baseUrl +'/posts/search/text?searchText='+searchText,
+	        url: baseUrl +'/posts/search'+searchQuery+'&'+limitRecords,
 	        headers: {
 	        		'Access-Control-Allow-Origin': baseUrl ,
 	        	},
@@ -268,9 +261,6 @@ function restApi( $q , $rootScope) {
 		return defer.promise;
 	}
 	
-	
-	
-
 	return restApi;
 	
 }

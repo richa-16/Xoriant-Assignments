@@ -5,13 +5,17 @@
 			<input type="text" id="search" name="search" class="searchBox" ng-model="searchText" placeholder="Search">	 
 			<select id="category" class="filterBox" ng-model="categorySelected">		
 				<!-- Get categories -->
+				<option value="" class="filterBox" >Category</option>
+
 				<option ng-repeat="option in categoryData" value="{{categoryData[$index].name}}">{{categoryData[$index].name}}</option>
 				<!-- Get categories -->
 			</select>		
-			<select  id="filter" class="filterBox" ng-model="filterBy" >
-				<option value="LowesttoHighest" class="filterBox" >Low to high</option>
-				<option value="HighesttoLowest" class="filterBox">High to Low</option>
-				<option value="ByDate" class="filterBox">By Date</option>
+			<select  id="filter" class="filterBox" ng-model="filterBy">
+				<option value="" class="filterBox" >SortBy</option>
+				<option value="Title" class="filterBox" >Title</option>
+				<option value="Posted%20Date" class="filterBox">Post Date</option>
+				<option value="Posted%20By" class="filterBox">Post By</option>
+				<option value="Price" class="filterBox">Price</option>
 			</select>
 			<input type="button" value="Search" name="Search" ng-click="searchProduct()" class="searchButton">
 			<!-- 
@@ -22,29 +26,92 @@
 		</div>
 </div>
 <!-- Add slider here  -->
-
+<div ng-show="showSlider" ng-include="'pages/common/slider.html'"></div>
 <!-- Add slider here  -->
-
+<br>
+<br>
+<!-- Display view details -->
+<div ng-show="viewDetails" ng-include="'pages/userProfile/postDetails.html'"></div>
+<!-- Display view details -->
 <!-- Now display all the products here  -->
-<div class="row">
+
+<div class="row" ng-show="showResult" >
 	<div class="col-sm-2">
 	</div>
 	<div class="col-sm-8">
-		<div class="row" ng-repeat="product in productData">
-			<div class="col-sm-4">
-					<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail" width="304" height="236">
+		<div class="row" ng-repeat="product in productData" style="border: 1px solid grey; outline: 2px solid grey; ">
+			
+			<div class="col-sm-3">
+					<br><br>
+					<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail img-responsive" width="150" height="100">
+					<br>
+					<center>
+						<h5> {{product.categoryName}} </h5>
+					</center>
 			</div>
-			<div class="col-sm-4">
-				<p>{{product.title}}</p>
-				<p>{{product.categoryName}}</p>
-				<p>{{product.price}}</p>
+			<div class="col-sm-3">
+				<br>
+				<center>
+					<h3> {{product.title}} </h3>
+					<h6>{{product.userPostedName}}</h6>
+					<h6>{{product.userPostedId}}</h6>
+					<h6>{{product.createdDate}}</h6>
+					
+				</center>				
 			</div>
+			<div class="col-sm-5">
+				<br>	
+				<center>
+					<div class="bs-example">
+					    <div class="panel panel-default">
+					        <div class="panel-body">
+								<center>
+									<h2>&#8377 {{product.price}}</h2>
+								</center>
+							</div> 
+					        <div class="panel-footer clearfix">
+					            <div class="pull-right">
+					            	<br>
+					            	<!-- Store the state of previous page -->
+					                <a class="btn btn-primary" ng-click="openViewPage(productData[$index])">View Details</a>					
+									<a class="btn btn-info">Contact owner</a>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+					<br>
+				</center>
+			</div>
+			<br>
+			
 		</div>
 	</div>
 	<div class="col-sm-2">
 	</div>
 </div>
 
-
+<br>
+<br>
+<!-- Pagination -->
+<div class="row" ng-show="showPagination">
+	<div class="col-sm-2">
+	</div>
+	<div class="col-sm-8">
+		<div class="row">
+			<div class="col-sm-6">
+				<button ng-show="previous" ng-click="previousPage()" class="btn btn-default"> Previous </button>
+			</div>
+			<div class="col-sm-6">
+				<center>
+					<button ng-show="next" ng-click="nextPage()" class="btn btn-default"> Next </button>
+				</center>
+				
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-2">
+	</div>
+</div>
+<!-- Pagination -->
 <!-- Now display all the products here  -->
 <!-- {{testData}} -->
