@@ -31,7 +31,7 @@
 		      	<textarea  row="5" class="form-control" ng-model="postDescription" name="postDescription" id="postDescription" placeholder="Enter postDescription" aria-describedby="sizing-addon1" required></textarea>
 		      </div>  
 		      <div class="input-group input-group-lg">
-		      	<label for="postPrice">Post Description</label>
+		      	<label for="postPrice">Price</label>
 		      	<input type="number" class="form-control" ng-model="postPrice" name="postPrice" id="postPrice" placeholder="Enter price" aria-describedby="sizing-addon1" >
 		      </div>
 		      <br>
@@ -43,10 +43,15 @@
 	<div class="col-sm-2">
 	</div>
 	<div class="col-sm-5">
-		<b>Preview:</b><br />
+		<b>Preview:</b>
+		<h3>{{postTitle}}</h3>
 	    <i ng-hide="imageSrc">No image choosed</i>
 	    <img ng-src="{{imageSrc}}" width="200" height="200"/><br/>
+	    
+	    	<h5>{{categorySelected}}</h5>
 	    <b>Progress:</b>
-	  	<progress value="{{progress}}"></progress>	
+	  	<progress value="{{progress}}"></progress>
+	  	<h3>&#8377 {{postPrice}}<h3>	
+	  	<h5>{{postDescription}}</h5>
 	</div>			  		
 </div>

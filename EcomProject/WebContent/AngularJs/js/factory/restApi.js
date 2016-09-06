@@ -1,6 +1,6 @@
 function restApi( $q , $rootScope) {
 	var baseUrl =  "http://124.124.83.165:9000";//'http://10.20.14.83:9000';
-	var limitRecords = '?records=5';
+	var limitRecords = 'records=2';
 	console.log("Rest api Initiated");
 	var restApi = {};
 
