@@ -11,7 +11,6 @@
 				<!-- Get categories -->
 			</select>		
 			<select  id="filter" class="filterBox" ng-model="filterBy">
-			
 				<option value="" class="filterBox" >SortBy</option>
 				<option value="Title" class="filterBox" >Title</option>
 				<option value="Posted%20Date" class="filterBox">Post Date</option>
@@ -43,14 +42,18 @@
 			<div class="col-sm-3">
 					<br><br>
 					<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail img-responsive" width="150" height="100">
+					<br>
+					<center>
+						<h5> {{product.categoryName}} </h5>
+					</center>
 			</div>
 			<div class="col-sm-3">
 				<br>
 				<center>
 					<h3> {{product.title}} </h3>
-					<h5> {{product.categoryName}} </h5>
 					<h6>{{product.userPostedName}}</h6>
 					<h6>{{product.userPostedId}}</h6>
+					<h6>{{product.createdDate}}</h6>
 					
 				</center>				
 			</div>
@@ -66,6 +69,7 @@
 							</div> 
 					        <div class="panel-footer clearfix">
 					            <div class="pull-right">
+					            	<br>
 					                <button class="btn btn-primary">View Details</button>					
 									<button class="btn btn-info">Contact owner</button>
 					            </div>

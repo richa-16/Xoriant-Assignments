@@ -78,8 +78,12 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 			var postId = value.id;
 			var description = value.description;
 			var status = value.status;
-			var createdDate = value.createdDate;
-			var lastUpdatedDate = value.lastUpdatedDate;
+			
+			var date = new Date(value.createdDate);
+			var createdDate = date.toUTCString();//value.createdDate;
+			var date = new Date(value.lastUpdatedDate);
+			
+			var lastUpdatedDate = date.toString("MMM dd");
 			var replies = value.replies;
 			var isOwnerOfAd = value.isOwnerOfAd;
 			var replyCount = value.replyCount;
