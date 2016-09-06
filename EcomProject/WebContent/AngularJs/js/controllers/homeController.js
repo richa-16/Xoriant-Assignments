@@ -150,7 +150,8 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 		//showViewDetails(true);
 		// get view data
 		$scope.postDetails = data;
-		console.log(JSON.stringify($scope.postDetails,null,4));
+		$scope.postDetailImage = data.imageName;
+		//console.log(JSON.stringify($scope.postDetails,null,4));
 		console.log($scope.postDetails['price']);
 	}
 	
