@@ -48,13 +48,11 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	}
 	// advanced search functionality 
 	$scope.searchProduct = function(){
-		
+		$scope.startIndex = 0;
 		//console.log("Clicked Search button");
+		getAllProductsForPagination($scope.startIndex);
 		
-		var getSearchText = $scope.searchText;
-		var getCategory = $scope.categorySelected;
-		var getFilter = $scope.filterBy;
-		
+		/*
 		// logic for search 
 		if(getSearchText == "" || getSearchText == null ){
 			if(getCategory != null){
@@ -71,7 +69,8 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 			}, function(error){
 				
 			});
-		}	
+		}
+		*/
 	}
 
 	function displayResults(result){
@@ -123,6 +122,31 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	}
 	
 	function getAllProductsForPagination(startIndex){
+		
+		var getSearchText = $scope.searchText;
+		var getCategory = $scope.categorySelected;
+		var getFilter = $scope.filterBy;
+		
+		var searchString = '?' + (getSearchText ? 'searchText='+getSearchText+'&' : '') + (getCategory ? 'category='+getCategory+'&' : '') + (getFilter ? 'sortBy='+getFilter : '');
+		searchString += 'startIndex='+startIndex;
+		console.log("query is " + searchString);
+		
+		restApi.masterSearch(searchString).then(function(result){
+			// show previous 
+			if($scope.startIndex > 0){
+				$scope.previous = true;
+			}else{
+				$scope.previous = false;
+			}
+			console.log("Search successful");
+			displayResults(result);	
+		},function(error){
+			console.log("Error");
+		});
+		
+		
+		
+		/*
 		restApi.getAllProducts(startIndex).then(function(result){
 			// show previous 
 			if($scope.startIndex > 0){
@@ -134,7 +158,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 		}, function(err){
 			// handle all ther erro
 		});
-		
+		*/
 	}
 	
 }

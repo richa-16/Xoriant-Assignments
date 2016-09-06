@@ -9,9 +9,10 @@
 				<!-- Get categories -->
 			</select>		
 			<select  id="filter" class="filterBox" ng-model="filterBy" >
-				<option value="LowesttoHighest" class="filterBox" >Low to high</option>
-				<option value="HighesttoLowest" class="filterBox">High to Low</option>
-				<option value="ByDate" class="filterBox">By Date</option>
+				<option value="Title" class="filterBox" >Title</option>
+				<option value="Posted%20Date" class="filterBox">Post Date</option>
+				<option value="Posted%20By" class="filterBox">Post By</option>
+				<option value="Price" class="filterBox">Price</option>
 			</select>
 			<input type="button" value="Search" name="Search" ng-click="searchProduct()" class="searchButton">
 			<!-- 
