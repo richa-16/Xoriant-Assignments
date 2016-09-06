@@ -26,14 +26,16 @@
 		</div>
 </div>
 <!-- Add slider here  -->
-<div ng-show = "showSlider" ng-include="'pages/common/slider.html'"></div>
-
+<div ng-show="showSlider" ng-include="'pages/common/slider.html'"></div>
 <!-- Add slider here  -->
 <br>
 <br>
+<!-- Display view details -->
+<div ng-show="viewDetails" ng-include="'pages/userProfile/postDetails.html'"></div>
+<!-- Display view details -->
 <!-- Now display all the products here  -->
 
-<div class="row" >
+<div class="row" ng-show="showResult" >
 	<div class="col-sm-2">
 	</div>
 	<div class="col-sm-8">
@@ -70,8 +72,9 @@
 					        <div class="panel-footer clearfix">
 					            <div class="pull-right">
 					            	<br>
-					                <button class="btn btn-primary">View Details</button>					
-									<button class="btn btn-info">Contact owner</button>
+					            	<!-- Store the state of previous page -->
+					                <a class="btn btn-primary" ng-click="openViewPage(productData[$index])">View Details</a>					
+									<a class="btn btn-info">Contact owner</a>
 					            </div>
 					        </div>
 					    </div>
@@ -90,7 +93,7 @@
 <br>
 <br>
 <!-- Pagination -->
-<div class="row">
+<div class="row" ng-show="showPagination">
 	<div class="col-sm-2">
 	</div>
 	<div class="col-sm-8">

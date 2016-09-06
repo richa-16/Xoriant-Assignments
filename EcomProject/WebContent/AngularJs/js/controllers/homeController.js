@@ -5,6 +5,11 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	$scope.next = true;
 	$scope.startIndex = 0;
 	$scope.showSlider = true;
+	// initially this should be false
+	$scope.viewDetails = false;
+	$scope.showResult = true;
+	$scope.showPagination = true;
+	
 	
 	$scope.testData= '';
 	$rootScope.categoryData = []; // scope for categoryList
@@ -51,6 +56,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	}
 	// advanced search functionality 
 	$scope.searchProduct = function(){
+		hideOtherViews(true);
 		$scope.showSlider = false;
 		$scope.startIndex = 0;
 		console.log("Clicked Search button");
@@ -135,7 +141,27 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 		},function(error){
 			console.log("Error");
 		});
-		
+	}
+	
+	$scope.openViewPage = function(data){
+		console.log("Open view page");
+		//console.log(JSON.stringify(data,null,4));
+		hideOtherViews(false);
+		//showViewDetails(true);
+		// get view data
+		$scope.postDetails = data;
+		console.log(JSON.stringify($scope.postDetails,null,4));
+		console.log($scope.postDetails['price']);
+	}
+	
+	function hideOtherViews(value){
+		$scope.showSlider = value;
+		$scope.showResult = value;
+		$scope.showPagination = value;
+		$scope.viewDetails = !value;
+	}
+	function showViewDetails(value){
+		$scope.viewDetails = value;
 	}
 	
 }

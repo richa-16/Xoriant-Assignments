@@ -19,6 +19,7 @@ function userProfileController($scope, $rootScope, restApi,appFactory , fileRead
 			var postId = value.id;
 			var description = value.description;
 			var status = value.status;
+			//console.log(JSON.stringify(value.replies,null,4));
 			// extra field like created date , lastUpdateDate etc
 			var tempData = {
 					'imageName': imageName,

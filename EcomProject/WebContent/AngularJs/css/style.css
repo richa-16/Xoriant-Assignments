@@ -70,8 +70,6 @@ header{
     border: 1px solid #ccc;	
 }
 
-*/
-
 #postBox {
        outline: 2px solid #CCC;
        border: 1px solid #999;
@@ -86,5 +84,6 @@ header{
     margin: 0 auto; /* Align slide image horizontally center */
 }
 .bs-example{
+	
 	margin: 20px;
 }
