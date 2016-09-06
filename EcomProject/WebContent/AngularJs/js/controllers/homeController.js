@@ -38,39 +38,21 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 		console.log("Clicked next page");
 		$scope.startIndex++;
 		var pageIndex = $scope.startIndex;
+		console.log("page Index "+ pageIndex);
 		getAllProductsForPagination(pageIndex);
 	}
 	$scope.previousPage = function(){
 		console.log("Clicked previous page");
 		var pageIndex = $scope.startIndex;
 		$scope.startIndex--;
+		console.log("page Index "+ pageIndex);
 		getAllProductsForPagination(pageIndex);
 	}
 	// advanced search functionality 
 	$scope.searchProduct = function(){
 		$scope.startIndex = 0;
-		//console.log("Clicked Search button");
+		console.log("Clicked Search button");
 		getAllProductsForPagination($scope.startIndex);
-		
-		/*
-		// logic for search 
-		if(getSearchText == "" || getSearchText == null ){
-			if(getCategory != null){
-				restApi.searchByCategory(getCategory).then(function(result){					
-					displayResults(result);	
-				}, function(error){
-					
-				});
-			}
-		}else{
-			// redundant function 
-			restApi.searchByText(getSearchText).then(function(result){					
-				displayResults(result);
-			}, function(error){
-				
-			});
-		}
-		*/
 	}
 
 	function displayResults(result){
@@ -127,7 +109,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 		var getCategory = $scope.categorySelected;
 		var getFilter = $scope.filterBy;
 		
-		var searchString = '?' + (getSearchText ? 'searchText='+getSearchText+'&' : '') + (getCategory ? 'category='+getCategory+'&' : '') + (getFilter ? 'sortBy='+getFilter : '');
+		var searchString = '?' + (getSearchText ? 'searchText='+getSearchText+'&' : '') + (getCategory ? 'category='+getCategory+'&' : '') + (getFilter ? 'sortBy='+getFilter+'&' : '');
 		searchString += 'startIndex='+startIndex;
 		console.log("query is " + searchString);
 		
@@ -144,21 +126,6 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 			console.log("Error");
 		});
 		
-		
-		
-		/*
-		restApi.getAllProducts(startIndex).then(function(result){
-			// show previous 
-			if($scope.startIndex > 0){
-				$scope.previous = true;
-			}else{
-				$scope.previous = false;
-			}
-			displayResults(result);
-		}, function(err){
-			// handle all ther erro
-		});
-		*/
 	}
 	
 }
