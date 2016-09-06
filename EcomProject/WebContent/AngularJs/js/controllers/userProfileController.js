@@ -48,11 +48,13 @@ function userProfileController($scope, $rootScope, restApi,appFactory , fileRead
 				    category : $scope.categorySelected,
 				    description : $scope.postDescription,
 				    photoCount: 1,//$scope.postPhotoCount,
-				    photo1: $scope.postImage
-				   // photo2: $scope.postPhoto2,
+				    photo1: $scope.postImage,
+				    price: $scope.postPrice
+				    // photo2: $scope.postPhoto2,
 				   // photo3: $scope.postPhoto3
 				};
 		// rest call 
+		console.log("Post add model " + JSON.stringify(postAdsModel,null,4));
 		restApi.postAds(postAdsModel).then(function(result){
 			console.log("Post added succesfully");
 			console.log(JSON.stringify(result));

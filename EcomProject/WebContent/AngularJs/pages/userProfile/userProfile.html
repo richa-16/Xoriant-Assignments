@@ -1,21 +1,57 @@
-<h1>{{userId}}</h1>
-<a class="btn btn-success" href="#/postAdd"> Post add</a>
-<div class="row">
-	<div class="col-sm-2">
+<div class="row" >
+	<div class="col-sm-3">
+		<div class="col-sm-3">
+			<center>
+				<h1>{{userId | uppercase}}</h1>
+			</center>
+			<br>
+			<img ng-src="../img/profile.png" width="250" height="300" >
+		</div>	
 	</div>
 	<div class="col-sm-8">
-		<div class="row" ng-repeat="product in productData">
-			<div class="col-sm-4">
-					<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail" width="304" height="236">
+		<div class="row">
+			<div class="col-sm-10">
 			</div>
-			<div class="col-sm-4">
-				<p>{{product.title}}</p>
-				<p>{{product.categoryName}}</p>
-				<p>{{product.price}}</p>
-				<button class="btn btn-danger" ng-click="deletePost(product.postId)">Delete</button>
+			<div class="col-sm-1">
+				<a class="btn btn-success" href="#/postAdd"> Post add</a>	
+			</div>
+			<div class="col-sm-1">
 			</div>
 		</div>
+		<br>
+		<div class="row" ng-repeat="product in productData" style="border: 1px solid grey">
+			<div class="col-sm-3">
+					<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail" width="250" height="200">
+			</div>
+			<div class="col-sm-4">
+				<br>
+				<center>
+					<h3> {{product.title}} </h3>
+					
+					<h5> {{product.categoryName}} </h5>
+				</center>
+				
+			</div>
+			<div class="col-sm-4">
+				<br>
+				<center>
+					<h2>&#8377 {{product.price}}</h2>
+				</center>
+				<br>
+				<center>
+					<button class="btn btn-primary">View Details</button>
+					<br>
+					<br>
+					<button class="btn btn-danger" ng-click="deletePost(product.postId)">Delete</button>
+					<br>
+				</center>
+			</div>
+			<br>
+			<br>
+			<br>
+		</div>
 	</div>
-	<div class="col-sm-2">
+	<div class="col-sm-1">
 	</div>
 </div>
+

@@ -150,7 +150,7 @@ function restApi( $q , $rootScope) {
 	restApi.postAds = function(postAdsModdel){
 		
 		var defer=$q.defer();
-		console.log( "Base 64" +postAdsModdel.photo1);
+		//console.log( "Base 64" +postAdsModdel.photo1);
 		$.ajax({
 	        type: "POST",
 	        url: baseUrl +'/postAd',
@@ -165,7 +165,8 @@ function restApi( $q , $rootScope) {
 	        					    "category" : postAdsModdel.category,
 	        					    "description": postAdsModdel.description,
 	        					    "photoCount": postAdsModdel.photoCount,
-	        					    "photo1": postAdsModdel.photo1
+	        					    "photo1": postAdsModdel.photo1,
+	        					    "price": postAdsModdel.price
 	        					    //"photo2": postAdsModdel.photo2,
 	        					    //"photo3": postAdsModdel.photo3
 	        					}),
