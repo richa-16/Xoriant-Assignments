@@ -5,6 +5,11 @@
 	<div class="col-sm-4">	
 	</div>
 	<div class="col-sm-4">
+		<div class="alert alert-danger" ng-show="loginMessageShow">
+		    <a ng-click="hideLoginMessage()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    <strong>{{loginMessage}}</strong>
+		 </div>
+		
 		<form class="form" name="registrationForm" novalidate>
 		      <div class="input-group input-group-lg">
 				  <label for="regFirstName"><b>Firstname<sup ng-show="registrationForm.regFirstName.$error.required" class="alert-warning">*</sup></b></label>

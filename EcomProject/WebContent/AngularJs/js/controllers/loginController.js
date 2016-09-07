@@ -49,6 +49,8 @@ function loginController($scope,restApi,$location, $window,$rootScope,appFactory
 	// userSignUp
 	
 	$scope.register = function(){
+		$scope.loginMessageShow = true;
+		
 		console.log("Clicked register");
 		var regUser = {
 				regFirstName : $scope.regFirstName,
@@ -63,9 +65,9 @@ function loginController($scope,restApi,$location, $window,$rootScope,appFactory
 		// calling rest api
 		restApi.register(regUser).then(function(result) {			
 			//$scope.userLoggedIn = "Request successful and user is registered";		
-			$scope.errorMessage = "User is registered !!!";
+			$scope.loginMessage = "User is registered !!!";
 		},function(err) {
-			$scope.errorMessage = err.responseJSON.data.error;//JSON.stringify(err);
+			$scope.loginMessage = err.responseJSON.data.error;//JSON.stringify(err);
 			
 			//console.log("There is problem in login");
 			//$scope.userLoggedIn = "Request unsuccefull and user is not registered";
