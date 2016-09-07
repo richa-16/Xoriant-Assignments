@@ -16,37 +16,60 @@
 			<div class="col-sm-1">
 			</div>
 		</div>
-		<br><br>
-		<div class="row" ng-repeat="product in productData" style="border: 1px solid grey">
-			<div class="col-sm-3">
-					<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail" width="250" height="200">
-			</div>
-			<div class="col-sm-4">
-				<br>
-				<center>
-					<h3> {{product.title}} </h3>
+		<br>
+		<div class="alert alert-success fade in" ng-show="showDeleteAlert">
+    		<a class="close" data-dismiss="alert" aria-label="close" ng-click="hideMessage()">&times;</a>
+    		<strong> {{DeleteMessage}}</strong>
+  		</div>
+		<div class="row" ng-repeat="product in productData" style="border: 1px solid grey;">
+			<div class="row" >
+				<div class="col-sm-3">
+						<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail" width="250" height="200">
+				</div>
+				<div class="col-sm-4">
+					<br>
+					<center>
+						<h3> {{product.title}} </h3>
+						
+						<h5> {{product.categoryName}} </h5>
+					</center>
 					
-					<h5> {{product.categoryName}} </h5>
-				</center>
-				
-			</div>
-			<div class="col-sm-4">
+				</div>
+				<div class="col-sm-4">
+					<br>
+					<center>
+						<h2>&#8377 {{product.price}}</h2>
+					</center>
+					<br>
+					<center>
+						<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#{{product.postId}}">View Details</button>
+						<br>
+						<br>
+						<button class="btn btn-danger" ng-click="deletePost(product.postId,$index)">Delete</button>
+						<br>
+					</center>
+					<br>
+				</div>
 				<br>
-				<center>
-					<h2>&#8377 {{product.price}}</h2>
-				</center>
 				<br>
-				<center>
-					<button class="btn btn-primary">View Details</button>
-					<br>
-					<br>
-					<button class="btn btn-danger" ng-click="deletePost(product.postId)">Delete</button>
-					<br>
-				</center>
 			</div>
-			<br>
-			<br>
-			<br>
+			<div class="row">
+				<div class="col-sm-4">
+					
+				</div>
+				<div class="col-sm-4">		
+					<div id="{{product.postId}}" class="collapse">
+						
+						<p><strong>Post description</strong></p>
+						<h3>{{product.description}}</h3>
+						
+				  	</div>
+				</div>
+			  	<div class="col-sm-2">
+					
+				</div>
+			  	
+			</div>
 		</div>
 	</div>
 	<div class="col-sm-1">
