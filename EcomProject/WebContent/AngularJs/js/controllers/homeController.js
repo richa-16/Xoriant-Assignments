@@ -161,16 +161,23 @@ function homeController($scope,appFactory,restApi,$rootScope , $interval) {
 	
 	$scope.openViewPage = function(data){
 		console.log("Open view page");
-		//console.log(JSON.stringify(data,null,4));
+		console.log(JSON.stringify(data,null,4));
 		hideOtherViews(false);
 		//showViewDetails(true);
 		// get view data
 		$scope.postDetails = data;
 		$scope.postDetailImage = data.imageName;
+		$scope.displayPostTitle = data['title'];
+		$scope.displayPrice = data['price'];
+		$scope.displayDescription = data['description'];
+		
+		console.log(" Title "+$scope.displayPostTitle);
 		//console.log(JSON.stringify($scope.postDetails,null,4));
-		console.log($scope.postDetails['price']);
+		//console.log($scope.postDetails['price']);
 	}
-	
+	$scope.showMainPage = function(){
+		hideOtherViews(true);
+	}
 	function hideOtherViews(value){
 		$scope.showSlider = value;
 		$scope.showResult = value;

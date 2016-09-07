@@ -32,7 +32,77 @@
 <br>
 <br>
 <!-- Display view details -->
-<div ng-show="viewDetails" ng-include="'pages/userProfile/postDetails.html'"></div>
+
+<div ng-show="viewDetails">
+	<!-- Display post details -->
+
+		<div class="row">
+			<div class="col-sm-2">
+				
+			</div>
+			<div class="col-sm-3">
+				 <br>
+				<img alt="Product Image" ng-src="{{postDetailImage}}" class="img-thumbnail img-responsive" width="200" height="350">
+				
+			</div>
+			<div class="col-sm-4">
+				<center>
+					<h1>{{displayPostTitle}}</h1>
+				</center>
+				<br>
+				<br>
+				<center>
+					{{displayDescription + "FNANSJN"}}{{displayDescription + "FNANSJN"}}
+					<br>
+					{{displayDescription + "FNANSJN"}}{{displayDescription + "FNANSJN"}}
+					<br>
+					{{displayDescription + "FNANSJN"}}{{displayDescription + "FNANSJN"}}
+					<br>
+					{{displayDescription + "FNANSJN"}}{{displayDescription + "FNANSJN"}}
+					<br>
+					{{displayDescription + "FNANSJN"}}{{displayDescription + "FNANSJN"}}
+				</center>
+			</div>
+			<div class="col-sm-3">
+				
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-4">
+			
+			</div>
+			<div class="col-sm-4">
+				<center>
+					<div class="bs-example">
+					    <div class="panel panel-default">
+					        <div class="panel-body">
+								<center>
+									<h2>&#8377 {{displayPrice}}</h2>
+								</center>
+							</div> 
+					        <div class="panel-footer clearfix">
+					            <div class="pull-right">
+					            	<center>
+						            	<br>
+						            	<!-- Store the state of previous page -->
+						                <a class="btn btn-danger" ng-click="showMainPage()">Cancle</a>					
+										<a class="btn btn-info">Contact owner</a>
+					            	</center>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+				</center>
+			</div>
+			<div class="col-sm-4">
+			
+			</div>
+		</div>
+		
+	<!-- Display chatbox -->
+			
+</div>
 <!-- Display view details -->
 <!-- Now display all the products here  -->
 
@@ -46,7 +116,7 @@
 		<div class="row" ng-repeat="product in productData" style="border: 1px solid grey; outline: 2px solid grey; ">
 			<div class="col-sm-3">
 					<br><br>
-					<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail img-responsive" width="150" height="100">
+					 	<img alt="Product Image" ng-src="{{product.imageName}}" class="img-thumbnail img-responsive" width="150" height="100">
 					<br>
 					<center>
 						<h5> {{product.categoryName}} </h5>
