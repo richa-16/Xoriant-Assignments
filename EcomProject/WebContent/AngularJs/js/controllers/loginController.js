@@ -3,11 +3,15 @@ function loginController($scope,restApi,$location, $window,$rootScope,appFactory
 	//$scope.userLoggedIn = "";
 	// userLogin 
 	$scope.login = function(){
+		$scope.loginMessageShow = false;
+		
 		//console.log("Clicked login");
 		var userName = $scope.username;
 		var password = $scope.password;
 		// calling rest api
 		restApi.login(userName,password).then(function(result){
+			$scope.loginMessageShow = true;
+			$scope.loginMessage = "Checking credentials...";
 			//console.log("User is loggedIn");
 			console.log("Response is " + JSON.stringify(result, null,4));
 			//console.log(result.data.userId);
@@ -28,16 +32,20 @@ function loginController($scope,restApi,$location, $window,$rootScope,appFactory
 				
 				$location.path("/");
 			}else{
-				$scope.errorMessage = "Wrong username or password !!!";
+				$scope.loginMessage = "Wrong username or password !!!";
 			}
 		},function(err){
 			$scope.errorMessage = JSON.stringify(err, null, 4);
+			$scope.loginMessage = "Something went wrong, please try again... ";
 			//console.log("There is problem in login");
 			//$scope.userLoggedIn = "Request unsuccefull and user is not log";
 		});	
 		//console.log("Out of login");
 	}
 	
+	$scope.hideLoginMessage = function(){
+		loginMessageShow = false;
+	}
 	// userSignUp
 	
 	$scope.register = function(){

@@ -7,28 +7,36 @@
 	<div class="col-sm-4">	
 	</div>
 	<div class="col-sm-4">
+		<div class="alert alert-danger" ng-show="loginMessageShow">
+		    <a ng-click="hideLoginMessage()" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		    <strong>{{loginMessage}}</strong>
+		 </div>
 		<form class="form" name="userForm"  novalidate>
 		      <div class="input-group input-group-lg">
-				  <label for="username"><b>Username</b></label>
+				  <label for="username"><b>Username<sup ng-show="userForm.username.$error.required" class="alert-warning">*</sup></b></label>
 				  <!-- 
 				  <input type="text" placeholder="Enter Username" ng-model="username" name="username" id="username" class="form-control" ng-minlength="3" ng-maxlength="8" aria-describedby="sizing-addon1" required>
 			  	   -->
 			  	  <input type="text" name="username" class="form-control" placeholder="Enter Username" ng-model="username"  ng-required="true" ng-minlength="3" ng-maxlength="15" aria-describedby="sizing-addon1">
-			  	    
-			  	    <p ng-show="userForm.username.$error.minlength" class="help-block">Username is too short.</p>
-  					<p ng-show="userForm.username.$error.maxlength" class="help-block">Username is too long.</p>
-			  	  	<p ng-show="userForm.username.$error.required" class="danger">*required</p>
+			  	    <br>
+			  	    <div class="validationMessage">
+				  	    <center>
+					  	    <span ng-show="userForm.username.$error.minlength" class="alert-warning">Username is too short.</span>
+		  					<span ng-show="userForm.username.$error.maxlength" class="alert-warning">Username is too long.</span>
+				  	  	</center>
+			  	  	</div>
 			  	  	
 			  	  <!-- $dirty is set to true if a user interacts with a element and then we check if the elements required field is true -->
 			  </div>
 			  <br>
 		      <div class="input-group input-group-lg">
-		      	<label for="password"><b>Password</b></label>
+		      	<label for="password"><b>Password<sup ng-show="userForm.password.$error.required" class="alert-warning">*</sup></b></label>
 		      	<input type="password" placeholder="Enter Password" class="form-control" ng-model="password" name="password" id="password" ng-required="true" ng-minlength="3" ng-maxlength="15" aria-describedby="sizing-addon1" required>
-		      	<p ng-show="userForm.password.$error.minlength" class="help-block">Password is too short.</p>
-  				<p ng-show="userForm.password.$error.maxlength" class="help-block">Password is too long.</p>
-			  	<p ng-show="userForm.password.$error.required" class="help-block">*required</p>
-			  	  	  	
+		      	<br>
+		      	<center>
+			      	<span ng-show="userForm.password.$error.minlength" class="alert-warning">Password is too short.</span>
+	  				<span ng-show="userForm.password.$error.maxlength" class="alert-warning">Password is too long.</span>
+			  	</center>
 		      </div>
 		      <br>
 		      <center>

@@ -7,51 +7,62 @@
 	<div class="col-sm-4">
 		<form class="form" name="registrationForm" novalidate>
 		      <div class="input-group input-group-lg">
-				  <label for="regFirstName"><b>Firstname</b></label>
+				  <label for="regFirstName"><b>Firstname<sup ng-show="registrationForm.regFirstName.$error.required" class="alert-warning">*</sup></b></label>
 				  <input type="text" placeholder="Enter Firstname" ng-model="regFirstName" ng-required="true" ng-minlength="3" name="regFirstName" id="regFirstName" class="form-control"  aria-describedby="sizing-addon1" required>
-			  	  <p ng-show="registrationForm.regFirstName.$error.required" class="help-block">*required</p>
-			  	  <p ng-show="registrationForm.regFirstName.$error.minlength" class="help-block">Firstname min character 3</p>
+			  	  <br>
+			  	  <center>
+			  	  <span ng-show="registrationForm.regFirstName.$error.minlength" class="alert-warning">Firstname min character 3</span>
+			  	  </center>
 			  	  	
 			  </div>
 		      <div class="input-group input-group-lg">
-			  	  	<label for="regLastName"><b>Lastname</b></label>
+			  	  	<label for="regLastName"><b>Lastname<sup ng-show="registrationForm.regLastName.$error.required" class="alert-warning">*</sup></b></label>
 		      	  	<input type="text" placeholder="Enter lastname" ng-model="regLastName"  ng-required="true" ng-minlength="3" name="regLastName" id="regLastName" class="form-control"  aria-describedby="sizing-addon1" required>
-			  		<p ng-show="registrationForm.regLastName.$error.required" class="help-block">*required</p>
-			  		<p ng-show="registrationForm.regLastName.$error.minlength" class="help-block">Lastname min character 3</p>
+			  		<br>
+			  		<center>
+			  			<span ng-show="registrationForm.regLastName.$error.minlength" class="alert-warning">Lastname min character 3</span>
+			  		</center>
 			  </div>
 			  <div class="input-group input-group-lg">
-			  	  	<label for="regUserName"><b>Username</b></label>
+			  	  	<label for="regUserName"><b>Username<sup ng-show="registrationForm.regUserName.$error.required" class="alert-warning">*</sup></b></label>
 		      	  	<input type="text" placeholder="Enter Username" ng-model="regUserName" ng-required="true" ng-minlength="3" name="regUserName" id="regUserName"  class="form-control"  aria-describedby="sizing-addon1" required>		      
-			  		<p ng-show="registrationForm.regLastName.$error.required" class="help-block">*required</p>
-			  		<p ng-show="registrationForm.regUserName.$error.minlength" class="help-block">Username min character 3</p>
-			
+			  		<br>
+			  		<center>
+			  			<span ng-show="registrationForm.regUserName.$error.minlength" class="alert-warning">Username min character 3</span>
+					</center>
 			  </div>		      
 		      <div class="input-group input-group-lg">
-			  		<label for="regEmail"><b>Email</b></label>
+			  		<label for="regEmail"><b>Email<sup ng-show="registrationForm.regEmail.$error.required" class="alert-warning">*</sup></b></label>
 		      		<input type="email" placeholder="Enter email" ng-model="regEmail" ng-required="true" name="regEmail" id="regEmail" class="form-control"  aria-describedby="sizing-addon1" required>
-			  		<p ng-show="registrationForm.regEmail.$invalid && !registrationForm.regEmail.$pristine" class="help-block">Enter a valid email.</p>
-			  		<p ng-show="registrationForm.regEmail.$error.required" class="help-block">*required</p>
-			  		
+			  		<br>
+			  		<center>
+				  		<span ng-show="registrationForm.regEmail.$invalid && !registrationForm.regEmail.$pristine" class="alert-warning">Enter a valid email.</span>
+				  	</center>	
 			  </div>
 		      <div class="input-group input-group-lg">
-			  		<label for="regPhone"><b>Phone</b></label>
+			  		<label for="regPhone"><b>Phone<sup ng-show="registrationForm.regPhone.$error.required" class="alert-warning">*</sup></b></label>
 		      		<input type="number" placeholder="Enter Phone" ng-model="regPhone" ng-required="true" ng-minlength="10" name="regPhone" id="regPhone" class="form-control"  aria-describedby="sizing-addon1" required>
-			  		<p ng-show="registrationForm.regPhone.$error.required" class="help-block">*required</p>
-			  		<p ng-show="registrationForm.regPhone.$error.minlength" class="help-block">Phone number should be minimum 10 characters</p>
+		      		<br>
+		      		<center>
+			  		<span ng-show="registrationForm.regPhone.$error.minlength" class="alert-warning">Phone number should be minimum 10 characters</span>
+			  		</center>
 			  </div>
 		      <div class="input-group input-group-lg">
-			  		<label for="regPass"><b>Password</b></label>
+			  		<label for="regPass"><b>Password<sup ng-show="registrationForm.regPass.$error.required" class="alert-warning">*</sup></b></label>
 		      		<input type="password" placeholder="Enter the password" ng-model="regPass" ng-required="true" ng-minlength="3" name="regPass" id="regPass" class="form-control"  aria-describedby="sizing-addon1" required>
-			  		<p ng-show="registrationForm.regPass.$error.required" class="help-block">*required</p>
-			  		<p ng-show="registrationForm.regPass.$error.minlength" class="help-block">Password is too short.</p>
+			  		<br>
+			  		<center>
+			  		<span ng-show="registrationForm.regPass.$error.minlength" class="alert-warning">Password is too short.</span>
+			  		</center>
 			  </div>
 		      <div class="input-group input-group-lg">
-			  		<label for="regConfirmPass"><b>Confirm Password</b></label>
+			  		<label for="regConfirmPass"><b>Confirm Password<sup ng-show="registrationForm.regConfirmPass.$error.required" class="alert-warning">*</sup></b></label>
 		      		<input type="password" placeholder="Re-enter the password" ng-model="regConfirmPass" ng-minlength="3" ng-required="true" name="regConfirmPass" id="regConfirmPass" class="form-control"  aria-describedby="sizing-addon1" required>
-			  		<p ng-show="registrationForm.regConfirmPass.$error.required" class="help-block">*required</p>
-			  		<p ng-show="registrationForm.regConfirmPass.$error.minlength" class="help-block">Password is too short.</p>
-			  		<p ng-show="regPass !== regConfirmPass">Password mismatch</p>
-			  		
+			  		<br>
+			  		<center>
+				  		<span ng-show="registrationForm.regConfirmPass.$error.minlength" class="alert-warning">Password is too short.</span>
+				  		<span ng-show="regPass !== regConfirmPass" class="alert-warning">Password mismatch</span>
+			  		</center>
 			  </div>
 			  <br>
 			  <center>
