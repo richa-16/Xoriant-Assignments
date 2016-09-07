@@ -65,7 +65,7 @@ function homeController($scope,appFactory,restApi,$rootScope , $interval) {
 	}
 	$scope.previousPage = function(){
 		console.log("Clicked previous page");
-		var pageIndex = $scope.startIndex;
+		var pageIndex = $scope.startIndex-1;
 		$scope.startIndex--;
 		console.log("page Index "+ pageIndex);
 		getAllProductsForPagination(pageIndex);
@@ -170,6 +170,7 @@ function homeController($scope,appFactory,restApi,$rootScope , $interval) {
 		$scope.displayPostTitle = data['title'];
 		$scope.displayPrice = data['price'];
 		$scope.displayDescription = data['description'];
+		
 		
 		console.log(" Title "+$scope.displayPostTitle);
 		//console.log(JSON.stringify($scope.postDetails,null,4));
