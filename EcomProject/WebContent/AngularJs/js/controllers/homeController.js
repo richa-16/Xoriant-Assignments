@@ -1,4 +1,4 @@
-function homeController($scope,appFactory,restApi,$rootScope) {
+function homeController($scope,appFactory,restApi,$rootScope , $interval) {
 	//console.log("In home controller");
 	// get all the categories
 	$scope.previous = false;
@@ -9,6 +9,8 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	$scope.viewDetails = false;
 	$scope.showResult = true;
 	$scope.showPagination = true;
+	$scope.autoRefreshMessage = "Off";
+	$scope.autoRefresh = false;
 	
 	
 	$scope.testData= '';
@@ -37,8 +39,22 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	
 	// Get the latest product from server
 	// We could accept this data in object model from models.js 
-
+	
 	getAllProductsForPagination($scope.startIndex);
+	
+	
+	$interval( function(){
+		if($scope.autoRefresh){
+			getAllProductsForPagination($scope.startIndex);
+		}
+	},30000);
+	
+	$interval(function () {
+	      $scope.displayTime = new Date().toLocaleTimeString();
+	  }, 1000);
+	
+	// automatic refresh
+	//$interval(getAllProductsForPagination($scope.startIndex), 2000);
 	
 	$scope.nextPage = function(){
 		console.log("Clicked next page");
@@ -120,7 +136,7 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	}
 	
 	function getAllProductsForPagination(startIndex){
-		
+		console.log("Get product called");
 		var getSearchText = $scope.searchText;
 		var getCategory = $scope.categorySelected;
 		var getFilter = $scope.filterBy;
@@ -163,6 +179,15 @@ function homeController($scope,appFactory,restApi,$rootScope) {
 	}
 	function showViewDetails(value){
 		$scope.viewDetails = value;
+	}
+	
+	$scope.autoRefreshToggle = function (){
+		$scope.autoRefresh = !$scope.autoRefresh;
+		if($scope.autoRefresh){
+			$scope.autoRefreshMessage = "On";
+		}else{
+			$scope.autoRefreshMessage = "Off";
+		}
 	}
 	
 }
