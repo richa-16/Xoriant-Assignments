@@ -7,7 +7,6 @@
 */.metadata
 /RemoteSystemsTempFiles/
 /Servers/
-
 .project/
 */.project
 .setting/
@@ -17,3 +16,7 @@
 */.classpath
 META-INF/
 Testing/*
+RoomManagementProject/Theme
+RoomManagementSystem/WebContent/Theme
+*/META-INF
+*/WEB-INF
